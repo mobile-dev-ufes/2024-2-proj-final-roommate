@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">RoomMate</string>
+    <string name="ads_title">Vagas Disponíveis</string>
+    <string name="create_ad">Criar anúncio</string>
+    <string name="ad_img_description">Imagem do imóvel</string>
+    <string name="ad_description">Apartamento na rua debaixo</string>
+    <string name="ad_price">R$ 2200,00/ mês</string>
+    <string name="ad_local">Mata da Praia/ Vitória</string>
+    <string name="heart_img_description">Coração de favorito</string>
 </resources>
