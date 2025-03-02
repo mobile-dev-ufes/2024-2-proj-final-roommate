@@ -3,7 +3,7 @@
     <string name="ads_title">Vagas Disponíveis</string>
     <string name="create_ad">Criar anúncio</string>
     <string name="ad_img_description">Imagem do imóvel</string>
-    <string name="ad_description">Apartamento na rua debaixo</string>
+    <string name="ad_title">Apartamento na rua debaixo</string>
     <string name="ad_price">R$ 2200,00/ mês</string>
     <string name="ad_local">Mata da Praia/ Vitória</string>
     <string name="heart_img_description">Coração de favorito</string>
@@ -45,6 +45,15 @@
     <string name="proceed">Prosseguir</string>
     <string name="birth_date_hint">Selecione a data de nascimento</string>
     <string name="finish_signup">Finalizar Cadastro</string>
+    <string name="pin_icon_description">Ícone de Pin</string>
+    <string name="description">Descrição</string>
+    <string name="ad_description">Apartamento com chão de madeira, parede branca e mesa de madeira</string>
+    <string name="address">Endereço</string>
+    <string name="ad_address">Rua Don Corleone, n° 3324, Mata da Praia, Vitória</string>
+    <string name="g_maps_icon_description">Ícone Google Maps</string>
+    <string name="what_we_have">O que temos a oferecer</string>
+    <string name="r_2_200_00">R$ 2.200,00</string>
+    <string name="groups">Grupos</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
