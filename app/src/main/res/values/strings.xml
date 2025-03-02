@@ -24,4 +24,6 @@
     <string name="favorite_ads">Anúncios Favoritos</string>
     <string name="my_ads">Meus Anúncios</string>
     <string name="ads_icon_description">Ícone de casas</string>
+    <string name="favorite_ads_title">Anúncios Favoritos</string>
+    <string name="my_ads_title">Meus Anúncios</string>
 </resources>
