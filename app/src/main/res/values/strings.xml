@@ -26,4 +26,13 @@
     <string name="ads_icon_description">Ícone de casas</string>
     <string name="favorite_ads_title">Anúncios Favoritos</string>
     <string name="my_ads_title">Meus Anúncios</string>
+    <string name="logo_img_description">Logo com uma casa de dois andares com chaminé e duas árvores</string>
+    <string name="name_app">RoomMates</string>
+    <string name="app_description">Formação de repúblicas universitárias.</string>
+    <string name="created_by">Criado por lelê e dani</string>
+    <string name="e_mail">E-mail</string>
+    <string name="text_box_email_description">Insira seu e-mail</string>
+    <string name="sign_in_btn">Entrar</string>
+    <string name="password">Senha</string>
+    <string name="password_hint">Insira sua senha</string>
 </resources>
