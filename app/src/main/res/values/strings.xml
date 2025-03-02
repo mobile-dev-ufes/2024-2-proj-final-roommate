@@ -12,14 +12,14 @@
     <string name="group_qtt_members">6 membros</string>
     <string name="group_qtt_notification">1</string>
     <string name="camera_icon_description">Ícone câmera</string>
-    <string name="name_profile">Nome</string>
+    <string name="name">Nome</string>
     <string name="username_tv">Daniel Siqueira de Oliveira</string>
     <string name="user_icon_description">Ícone usuário</string>
     <string name="phone_icon">Ícone telefone</string>
     <string name="phone_profile">Telefone</string>
-    <string name="user_phone_profile">(27) 99999-9999</string>
+    <string name="user_phone_profile">(27) 99999–9999</string>
     <string name="bio_icon">Ícone de informação</string>
-    <string name="user_bio_profile">Sou estudante do curso de Ciência da Computação da U...\t</string>
+    <string name="user_bio_profile">Sou estudante do curso de Ciência da Computação da U…\t</string>
     <string name="bio_profile">Bio</string>
     <string name="favorite_ads">Anúncios Favoritos</string>
     <string name="my_ads">Meus Anúncios</string>
@@ -31,8 +31,24 @@
     <string name="app_description">Formação de repúblicas universitárias.</string>
     <string name="created_by">Criado por lelê e dani</string>
     <string name="e_mail">E-mail</string>
-    <string name="text_box_email_description">Insira seu e-mail</string>
+    <string name="email_hint">Insira seu e-mail</string>
     <string name="sign_in_btn">Entrar</string>
     <string name="password">Senha</string>
     <string name="password_hint">Insira sua senha</string>
+    <string name="name_hint">Insira seu nome</string>
+    <string name="phone_hint">Insira seu telefone</string>
+    <string name="phone">Telefone</string>
+    <string name="sex">Sexo</string>
+    <string name="birth_date">Data de Nascimento</string>
+    <string name="e_mail_confirm">Confirme seu e-mail</string>
+    <string name="password_confirm">Confirme sua senha</string>
+    <string name="proceed">Prosseguir</string>
+    <string name="birth_date_hint">Selecione a data de nascimento</string>
+    <string name="finish_signup">Finalizar Cadastro</string>
+    <string-array name="sex_array">
+        <item>Feminino</item>
+        <item>Maculino</item>
+        <item>Outro</item>
+        <item>Prefiro não informar</item>
+    </string-array>
 </resources>
