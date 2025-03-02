@@ -11,4 +11,17 @@
     <string name="my_group_description">República Nova para Apartamento da Rua de Baixo</string>
     <string name="group_qtt_members">6 membros</string>
     <string name="group_qtt_notification">1</string>
+    <string name="camera_icon_description">Ícone câmera</string>
+    <string name="name_profile">Nome</string>
+    <string name="username_tv">Daniel Siqueira de Oliveira</string>
+    <string name="user_icon_description">Ícone usuário</string>
+    <string name="phone_icon">Ícone telefone</string>
+    <string name="phone_profile">Telefone</string>
+    <string name="user_phone_profile">(27) 99999-9999</string>
+    <string name="bio_icon">Ícone de informação</string>
+    <string name="user_bio_profile">Sou estudante do curso de Ciência da Computação da U...\t</string>
+    <string name="bio_profile">Bio</string>
+    <string name="favorite_ads">Anúncios Favoritos</string>
+    <string name="my_ads">Meus Anúncios</string>
+    <string name="ads_icon_description">Ícone de casas</string>
 </resources>
