@@ -59,6 +59,9 @@
     <string name="square_meters">Metros²\n59</string>
     <string name="n_vacancies">Vagas\n4</string>
     <string name="n_parking">Garagem\n2</string>
+    <string name="description_hint">Insira uma descrição</string>
+    <string name="is_it_private_group">É um grupo privado?</string>
+    <string name="create_group">Criar grupo</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
