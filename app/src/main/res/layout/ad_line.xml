@@ -30,7 +30,6 @@
             app:layout_constraintEnd_toEndOf="@id/ad_img"
             app:layout_constraintTop_toTopOf="@id/ad_img"
             android:layout_marginHorizontal="5dp"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
