@@ -45,24 +45,25 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/name"
+        android:text="@string/group_name"
         android:textColor="@color/black"
+        android:layout_marginTop="10dp"
         android:textSize="18sp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="7dp"
-        android:autofillHints="Nome"
+        android:autofillHints="Nome do Grupo"
         android:background="@drawable/text_box_shape"
-        android:hint="@string/name_hint"
+        android:hint="@string/group_name_hint"
         android:inputType="text"
         android:padding="7dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/description"
         android:textColor="@color/black"
         android:textSize="18sp" />

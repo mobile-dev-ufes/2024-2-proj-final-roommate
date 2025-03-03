@@ -62,6 +62,8 @@
     <string name="description_hint">Insira uma descrição</string>
     <string name="is_it_private_group">É um grupo privado?</string>
     <string name="create_group">Criar grupo</string>
+    <string name="group_name_hint">Insira o nome do grupo</string>
+    <string name="group_name">Nome do Grupo</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
