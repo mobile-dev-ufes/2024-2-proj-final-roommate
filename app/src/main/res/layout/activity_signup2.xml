@@ -99,12 +99,13 @@
             android:inputType="phone"
             android:padding="7dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/blue4"
+            android:textColor="@color/white"
             android:text="@string/proceed"
             android:textSize="18sp" />
     </LinearLayout>

@@ -78,6 +78,22 @@
     <string name="rental_value_hint">Insira o valor do aluguel</string>
     <string name="condo_value">Valor do condomínio</string>
     <string name="condo_value_hint">Insira o valor do condomínio</string>
+    <string name="cep">CEP</string>
+    <string name="cep_hint">Insira o CEP</string>
+    <string name="number">Número</string>
+    <string name="number_hint">Insira o número</string>
+    <string name="street">Rua</string>
+    <string name="street_hint">Insira a rua</string>
+    <string name="neighborhood">Bairro</string>
+    <string name="neighborhood_hint">Insira o bairro</string>
+    <string name="city">Cidade</string>
+    <string name="city_hint">Insira a cidade</string>
+    <string name="state">Estado</string>
+    <string name="state_hint">Insira o estado</string>
+    <string name="maximum_of_clients">Número de clientes</string>
+    <string name="maximum_of_clients_hint">Insira o número de clientes</string>
+    <string name="upload_photos">Adicione fotos</string>
+    <string name="upload_icon_description">Icone usado para simbolizar envio de arquivos</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
