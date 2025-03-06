@@ -94,6 +94,22 @@
     <string name="maximum_of_clients_hint">Insira o número de clientes</string>
     <string name="upload_photos">Adicione fotos</string>
     <string name="upload_icon_description">Icone usado para simbolizar envio de arquivos</string>
+    <string name="rooms_number">Quantidade de quartos</string>
+    <string name="rooms_number_hint">Insira o número de quartos</string>
+    <string name="area">Área (M²)</string>
+    <string name="area_hint">Insira a área em m²</string>
+    <string name="suites_number">Quantidade de suítes</string>
+    <string name="suites_number_hint">Insira a quantidade de suítes</string>
+    <string name="benefits">Benefícios</string>
+    <string name="finish_ad_create">Finalizar Cadastro</string>
+    <string name="security_benefits">Segurança 24/7</string>
+    <string name="pet_friendly_benefits">Política Pet-friendly</string>
+    <string name="pool_benefit">Piscina</string>
+    <string name="air_conditioning_benefits">Ar condicionado</string>
+    <string name="hot_water_benefit">Água aquecida</string>
+    <string name="high_network_speed_benefit">Internet de alta velocidade</string>
+    <string name="parking_spot_benefit">Vaga de garagem</string>
+    <string name="girls_only_benefit">Apenas moças</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
