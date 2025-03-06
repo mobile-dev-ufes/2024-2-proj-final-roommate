@@ -39,7 +39,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_marginTop="7dp"
             android:autofillHints="Nome"
             android:background="@drawable/text_box_shape"
@@ -57,7 +57,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_marginTop="7dp"
             android:autofillHints="Telefone"
             android:background="@drawable/text_box_shape"
@@ -91,7 +91,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_marginTop="7dp"
             android:autofillHints="Data de nascimento"
             android:background="@drawable/text_box_shape"
