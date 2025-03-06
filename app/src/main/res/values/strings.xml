@@ -78,6 +78,8 @@
     <string name="rental_value_hint">Insira o valor do aluguel</string>
     <string name="condo_value">Valor do condomínio</string>
     <string name="condo_value_hint">Insira o valor do condomínio</string>
+    <string name="sign_up">Cadastre-se</string>
+    <string name="forget_pass">Esqueceu a senha?</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
