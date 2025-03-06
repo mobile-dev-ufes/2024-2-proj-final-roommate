@@ -64,6 +64,20 @@
     <string name="create_group">Criar grupo</string>
     <string name="group_name_hint">Insira o nome do grupo</string>
     <string name="group_name">Nome do Grupo</string>
+    <string name="selecionar_btn">Selecionar</string>
+    <string name="grupos_interesados_screen">Grupos interesados</string>
+    <string name="plus">+</string>
+    <string name="grupo_organizado">Grupo organizado</string>
+    <string name="thumbs_up">thumbs up</string>
+    <string name="thumbs_down">thumbs down</string>
+    <string name="thumbs_down_description">Ícone de rejeição</string>
+    <string name="thumbs_up_description">Ícon de aceitação.</string>
+    <string name="label_title">Título</string>
+    <string name="title_hint">Insira o título do anúncio</string>
+    <string name="rental_value">Valor de aluguel</string>
+    <string name="rental_value_hint">Insira o valor do aluguel</string>
+    <string name="condo_value">Valor do condomínio</string>
+    <string name="condo_value_hint">Insira o valor do condomínio</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
