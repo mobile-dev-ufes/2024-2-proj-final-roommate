@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:text="@string/forget_pass"
-            android:textColor="@color/blue4"
+            android:textColor="@color/gray"
             android:textSize="15sp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/button_shape"
-            android:backgroundTint="@color/gray"
+            android:backgroundTint="@color/blue4"
             android:text="@string/sign_in_btn"
             android:textColor="@color/white"
             android:textSize="18sp" />
