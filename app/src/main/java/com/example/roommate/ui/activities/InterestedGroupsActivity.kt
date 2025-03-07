@@ -2,7 +2,6 @@ package com.example.roommate.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.roommate.databinding.ActivityEntryRequestsBinding
 import com.example.roommate.databinding.ActivityInterestedGroupsBinding
 
 class InterestedGroupsActivity : AppCompatActivity() {
