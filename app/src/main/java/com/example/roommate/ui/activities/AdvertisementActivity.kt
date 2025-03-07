@@ -1,9 +1,8 @@
-package com.example.roommate.ui
+package com.example.roommate.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.roommate.databinding.ActivityAdvertisementBinding
-import com.example.roommate.databinding.ActivityLoginBinding
 
 class AdvertisementActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdvertisementBinding

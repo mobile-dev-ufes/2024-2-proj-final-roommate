@@ -12,7 +12,7 @@
         android:theme="@style/Theme.RoomMate">
 
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,8 +20,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.AdvertisementActivity" android:exported="true" />
-        <activity android:name=".ui.CreateAdActivity" android:exported="true" />
+        <activity android:name=".ui.activities.AdvertisementActivity" android:exported="true" />
+        <activity android:name=".ui.activities.CreateAdActivity" android:exported="true" />
+        <activity android:name=".ui.activities.EntryRequestsActivity" android:exported="true" />
+
 
     </application>
 

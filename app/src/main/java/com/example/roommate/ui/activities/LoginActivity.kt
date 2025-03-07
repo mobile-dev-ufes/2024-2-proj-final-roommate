@@ -1,4 +1,4 @@
-package com.example.roommate.ui
+package com.example.roommate.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
