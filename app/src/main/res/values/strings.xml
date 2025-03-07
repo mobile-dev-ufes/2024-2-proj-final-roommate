@@ -110,6 +110,8 @@
     <string name="high_network_speed_benefit">Internet de alta velocidade</string>
     <string name="parking_spot_benefit">Vaga de garagem</string>
     <string name="girls_only_benefit">Apenas moças</string>
+    <string name="forget_pass">Esqueceu a senha?</string>
+    <string name="sign_up">Cadastre-se</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
