@@ -1,0 +1,120 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="340dp"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/dialog_shape"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rooms_number"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:autofillHints="E-mail"
+        android:background="@drawable/text_box_shape"
+        android:hint="@string/rooms_number_hint"
+        android:inputType="text"
+        android:padding="7dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/area"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/text_box_shape"
+        android:hint="@string/area_hint"
+        android:inputType="textMultiLine|textPassword"
+        android:padding="7dp"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/suites_number"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:autofillHints="E-mail"
+        android:background="@drawable/text_box_shape"
+        android:hint="@string/suites_number_hint"
+        android:inputType="textEmailAddress"
+        android:padding="7dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/benefits"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="@string/girls_only_benefit" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/parking_spot_benefit" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/high_network_speed_benefit" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hot_water_benefit" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/air_conditioning_benefits" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pool_benefit" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pet_friendly_benefits" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/security_benefits" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/blue4"
+        android:text="@string/finish_ad_create"
+        android:textSize="20sp" />
+</LinearLayout>
