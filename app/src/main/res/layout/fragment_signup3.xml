@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient1">
+    android:background="@drawable/bg_gradient1"
+    android:paddingTop="100dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_image"
@@ -20,43 +21,43 @@
     <LinearLayout
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="@id/profile_image"
-        app:layout_constraintBottom_toBottomOf="@id/profile_image"
+        android:background="@drawable/circle_shape"
         android:gravity="center"
-        android:background="@drawable/circle_shape">
+        app:layout_constraintBottom_toBottomOf="@id/profile_image"
+        app:layout_constraintEnd_toEndOf="@id/profile_image">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="@string/camera_icon_description"
             android:src="@drawable/camera_profile"
-            app:layout_constraintEnd_toEndOf="@id/profile_image"
-            app:layout_constraintBottom_toBottomOf="@id/profile_image" />
+            app:layout_constraintBottom_toBottomOf="@id/profile_image"
+            app:layout_constraintEnd_toEndOf="@id/profile_image" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/profile_image"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="50dp"
         android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="40dp"
+        android:gravity="start"
         android:orientation="horizontal"
-        android:gravity="start">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_image">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/user_icon"/>
+            android:src="@drawable/user_icon" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/name_tv"
@@ -81,32 +82,32 @@
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon"/>
+            android:src="@drawable/pencil_icon" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/phone_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/name_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15dp"
         android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="15dp"
+        android:gravity="start"
         android:orientation="horizontal"
-        android:gravity="start">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_layout">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:contentDescription="@string/phone_icon"
-            android:src="@drawable/phone_icon"/>
+            android:src="@drawable/phone_icon" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/phone_tv"
@@ -131,32 +132,32 @@
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon"/>
+            android:src="@drawable/pencil_icon" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/bio_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/phone_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15dp"
         android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="15dp"
+        android:gravity="start"
         android:orientation="horizontal"
-        android:gravity="start">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phone_layout">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="@string/bio_icon"
-            android:src="@drawable/bio_icon"/>
+            android:src="@drawable/bio_icon" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/bio_tv"
@@ -181,22 +182,21 @@
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon"/>
+            android:src="@drawable/pencil_icon" />
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="125dp"
         android:background="@drawable/button_shape"
         android:backgroundTint="@color/blue4"
+        android:paddingHorizontal="50dp"
         android:text="@string/finish_signup"
+        android:textColor="@color/white"
         android:textSize="18sp"
-        android:layout_marginHorizontal="30dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="50dp"
-        android:paddingHorizontal="50dp"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

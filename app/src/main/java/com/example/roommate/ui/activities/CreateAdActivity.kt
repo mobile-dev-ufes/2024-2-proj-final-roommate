@@ -18,8 +18,7 @@ class CreateAdActivity : AppCompatActivity() {
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<FragmentCreateAd3>(R.id.fragment_create_ad)
+            add<FragmentCreateAd3>(R.id.fragment_container_create_ad)
         }
-
     }
 }

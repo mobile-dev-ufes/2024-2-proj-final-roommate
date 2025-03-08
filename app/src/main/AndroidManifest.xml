@@ -27,6 +27,7 @@
         <activity android:name=".ui.activities.InterestedGroupsActivity" android:exported="true" />
         <activity android:name=".ui.activities.MyAdsActivity" android:exported="true" />
         <activity android:name=".ui.activities.VisitProfileActivity" android:exported="true" />
+        <activity android:name=".ui.activities.SignUpActivity" android:exported="true" />
 
     </application>
 
