@@ -28,6 +28,7 @@
         <activity android:name=".ui.activities.MyAdsActivity" android:exported="true" />
         <activity android:name=".ui.activities.VisitProfileActivity" android:exported="true" />
         <activity android:name=".ui.activities.SignUpActivity" android:exported="true" />
+        <activity android:name=".ui.activities.HomeActivity" android:exported="true" />
 
     </application>
 
