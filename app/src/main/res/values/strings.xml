@@ -112,6 +112,9 @@
     <string name="girls_only_benefit">Apenas moças</string>
     <string name="forget_pass">Esqueceu a senha?</string>
     <string name="sign_up">Cadastre-se</string>
+    <string name="member_qtt">3 membros</string>
+    <string name="group_description">Grupo de pessoas do curso de ciência da computação</string>
+    <string name="members">Membros</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
