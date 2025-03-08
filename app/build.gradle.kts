@@ -52,5 +52,6 @@ dependencies {
     implementation (libs.androidx.core.splashscreen)
     implementation(libs.material)
     implementation(libs.androidx.fragment.ktx)
-
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 }

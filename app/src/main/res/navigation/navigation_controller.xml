@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_controller"
+    app:startDestination="@id/fragmentSignup1">
+
+    <fragment
+        android:id="@+id/fragmentSignup1"
+        android:name="com.example.roommate.ui.fragments.FragmentSignup1"
+        android:label="FragmentSignup1"
+        tools:layout="@layout/fragment_signup1" >
+        <action
+            android:id="@+id/action_fragmentSignup1_to_fragmentSignup2"
+            app:destination="@id/fragmentSignup2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSignup2"
+        android:name="com.example.roommate.ui.fragments.FragmentSignup2"
+        android:label="FragmentSignup2"
+        tools:layout="@layout/fragment_signup2" >
+        <action
+            android:id="@+id/action_fragmentSignup2_to_fragmentSignup3"
+            app:destination="@id/fragmentSignup3" />
+        <action
+            android:id="@+id/action_fragmentSignup2_to_fragmentSignup1"
+            app:destination="@id/fragmentSignup1" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSignup3"
+        android:name="com.example.roommate.ui.fragments.FragmentSignup3"
+        android:label="FragmentSignup3"
+        tools:layout="@layout/fragment_signup3" >
+        <action
+            android:id="@+id/action_fragmentSignup3_to_fragmentSignup2"
+            app:destination="@id/fragmentSignup2" />
+    </fragment>
+</navigation>
