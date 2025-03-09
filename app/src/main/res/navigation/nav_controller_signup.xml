@@ -42,5 +42,5 @@
         android:id="@+id/loginActivity"
         android:name="com.example.roommate.ui.activities.LoginActivity"
         android:label="LoginActivity"
-        tools:layout="@layout/activity_login"/>
+        tools:layout="login"/>
 </navigation>
