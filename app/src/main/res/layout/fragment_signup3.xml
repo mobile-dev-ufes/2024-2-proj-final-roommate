@@ -186,10 +186,11 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/finish_signup_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="125dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/button_shape"
         android:backgroundTint="@color/blue4"
         android:paddingHorizontal="50dp"

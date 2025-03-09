@@ -21,8 +21,8 @@
     <LinearLayout
         android:id="@+id/content_signup2_l"
         android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_height="500dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/dialog_shape"
         android:elevation="7dp"
         android:orientation="vertical"
@@ -101,11 +101,15 @@
             android:inputType="phone"
             android:padding="7dp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signup2_go_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_height="40dp"
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/blue4"
             android:text="@string/proceed"

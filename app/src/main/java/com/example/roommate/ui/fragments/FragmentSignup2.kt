@@ -19,9 +19,7 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1) {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-
         binding = FragmentSignup2Binding.inflate(inflater, container, false)
-
         return binding.root
     }
 
