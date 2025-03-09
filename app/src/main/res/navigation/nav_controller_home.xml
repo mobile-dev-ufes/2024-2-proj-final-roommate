@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_controller_home"
+    app:startDestination="@id/fragmentAds">
+
+    <fragment
+        android:id="@+id/fragmentAds"
+        android:name="com.example.roommate.ui.fragments.FragmentAds"
+        android:label="FragmentAds"
+        tools:layout="@layout/fragment_ads">
+        <action
+            android:id="@+id/action_fragmentAds_to_fragmentMyProfile"
+            app:destination="@id/fragmentMyProfile" />
+        <action
+            android:id="@+id/action_fragmentAds_to_fragmentMyGroups"
+            app:destination="@id/fragmentMyGroups" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMyProfile"
+        android:name="com.example.roommate.ui.fragments.FragmentMyProfile"
+        android:label="FragmentMyProfile"
+        tools:layout="@layout/fragment_my_profile">
+        <action
+            android:id="@+id/action_fragmentMyProfile_to_fragmentAds"
+            app:destination="@id/fragmentAds" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMyGroups"
+        android:name="com.example.roommate.ui.fragments.FragmentMyGroups"
+        android:label="FragmentMyGroups"
+        tools:layout="@layout/fragment_my_groups">
+        <action
+            android:id="@+id/action_fragmentMyGroups_to_fragmentAds"
+            app:destination="@id/fragmentAds" />
+    </fragment>
+</navigation>

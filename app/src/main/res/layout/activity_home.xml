@@ -8,7 +8,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_home"
-        android:name="com.example.roommate.ui.fragments.FragmentAds"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/dialog_shape"
@@ -17,6 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_my_profile" />
+        tools:layout="@layout/fragment_my_profile"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_controller_home"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

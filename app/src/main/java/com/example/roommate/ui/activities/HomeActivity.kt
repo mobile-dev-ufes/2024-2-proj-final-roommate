@@ -15,10 +15,5 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<FragmentMyProfile>(R.id.fragment_container_home)
-        }
     }
 }
