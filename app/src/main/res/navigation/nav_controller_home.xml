@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/fragmentAds"
         android:name="com.example.roommate.ui.fragments.FragmentAds"
-        android:label="FragmentAds"
-        tools:layout="@layout/fragment_ads">
+        tools:layout="@layout/fragment_ads"
+        android:label="Feed">
         <action
             android:id="@+id/action_fragmentAds_to_fragmentMyProfile"
             app:destination="@id/fragmentMyProfile" />
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/fragmentMyProfile"
         android:name="com.example.roommate.ui.fragments.FragmentMyProfile"
-        android:label="FragmentMyProfile"
+        android:label="Meu Perfil"
         tools:layout="@layout/fragment_my_profile">
         <action
             android:id="@+id/action_fragmentMyProfile_to_fragmentAds"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/fragmentMyGroups"
         android:name="com.example.roommate.ui.fragments.FragmentMyGroups"
-        android:label="FragmentMyGroups"
+        android:label="Meus Grupos"
         tools:layout="@layout/fragment_my_groups">
         <action
             android:id="@+id/action_fragmentMyGroups_to_fragmentAds"

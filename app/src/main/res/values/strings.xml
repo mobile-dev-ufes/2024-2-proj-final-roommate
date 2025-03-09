@@ -115,6 +115,7 @@
     <string name="member_qtt">3 membros</string>
     <string name="group_description">Grupo de pessoas do curso de ciência da computação</string>
     <string name="members">Membros</string>
+    <string name="search">Buscar</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>
