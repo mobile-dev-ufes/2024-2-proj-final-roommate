@@ -27,9 +27,8 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Teste.. mudar depois
         binding.createAdBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentAds_to_fragmentMyProfile)
+            // TODO
         }
     }
 }

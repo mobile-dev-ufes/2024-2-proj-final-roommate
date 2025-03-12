@@ -10,29 +10,20 @@
         android:name="com.example.roommate.ui.fragments.FragmentAds"
         tools:layout="@layout/fragment_ads"
         android:label="Feed">
-        <action
-            android:id="@+id/action_fragmentAds_to_fragmentMyProfile"
-            app:destination="@id/fragmentMyProfile" />
-        <action
-            android:id="@+id/action_fragmentAds_to_fragmentMyGroups"
-            app:destination="@id/fragmentMyGroups" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentMyProfile"
         android:name="com.example.roommate.ui.fragments.FragmentMyProfile"
         android:label="Meu Perfil"
         tools:layout="@layout/fragment_my_profile">
-        <action
-            android:id="@+id/action_fragmentMyProfile_to_fragmentAds"
-            app:destination="@id/fragmentAds" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentMyGroups"
         android:name="com.example.roommate.ui.fragments.FragmentMyGroups"
         android:label="Meus Grupos"
         tools:layout="@layout/fragment_my_groups">
-        <action
-            android:id="@+id/action_fragmentMyGroups_to_fragmentAds"
-            app:destination="@id/fragmentAds" />
     </fragment>
+
 </navigation>
