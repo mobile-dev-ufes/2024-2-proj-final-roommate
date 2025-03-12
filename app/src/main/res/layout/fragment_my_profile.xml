@@ -5,211 +5,223 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient1">
 
+    <!-- Profile photo -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="175dp"
+        android:layout_marginTop="20dp"
         android:scaleType="centerCrop"
         android:src="@drawable/profile_image"
+        app:layout_constraintBottom_toTopOf="@id/info_l"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/CircularImageViewStyle" />
 
+    <!-- Camera Icon   -->
     <LinearLayout
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="@id/profile_image"
-        app:layout_constraintBottom_toBottomOf="@id/profile_image"
+        android:background="@drawable/circle_shape"
         android:gravity="center"
-        android:background="@drawable/circle_shape">
+        app:layout_constraintBottom_toBottomOf="@id/profile_image"
+        app:layout_constraintEnd_toEndOf="@id/profile_image">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="@string/camera_icon_description"
             android:src="@drawable/camera_profile"
-            app:layout_constraintEnd_toEndOf="@id/profile_image"
-            app:layout_constraintBottom_toBottomOf="@id/profile_image" />
+            app:layout_constraintBottom_toBottomOf="@id/profile_image"
+            app:layout_constraintEnd_toEndOf="@id/profile_image" />
     </LinearLayout>
 
+    <!-- Center info   -->
     <LinearLayout
-        android:id="@+id/name_layout"
-        android:layout_width="match_parent"
+        android:id="@+id/info_l"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/profile_image"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/buttons_layout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginHorizontal="35dp"
-        android:orientation="horizontal"
-        android:gravity="start">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/user_icon"/>
+        app:layout_constraintTop_toBottomOf="@+id/profile_image">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/name_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp">
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="50dp"
+            android:gravity="start"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/name_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/name"
-                android:textColor="@color/gray"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/user_icon_description"
+                android:src="@drawable/user_icon" />
 
-            <TextView
-                android:id="@+id/username_tv"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/username_tv"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textColor="@color/gray"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/username_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username_tv"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/edit_name_btn"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/user_icon_description"
+                android:src="@drawable/pencil_icon" />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/edit_name_btn"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/phone_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/name_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="35dp"
-        android:orientation="horizontal"
-        android:gravity="start">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:contentDescription="@string/phone_icon"
-            android:src="@drawable/phone_icon"/>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/phone_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp">
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="15dp"
+            android:gravity="start"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/phone_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phone_profile"
-                android:textColor="@color/gray"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/phone_icon"
+                android:src="@drawable/phone_icon" />
 
-            <TextView
-                android:id="@+id/user_phone_tv"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/user_phone_profile"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/phone_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_profile"
+                    android:textColor="@color/gray"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_phone_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_phone_profile"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/edit_tel_btn"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/user_icon_description"
+                android:src="@drawable/pencil_icon" />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/edit_tel_btn"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bio_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/phone_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="35dp"
-        android:orientation="horizontal"
-        android:gravity="start">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:contentDescription="@string/bio_icon"
-            android:src="@drawable/bio_icon"/>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/bio_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp">
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="15dp"
+            android:gravity="start"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/bio_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bio_profile"
-                android:textColor="@color/gray"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/bio_icon"
+                android:src="@drawable/bio_icon" />
 
-            <TextView
-                android:id="@+id/user_bio_tv"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/user_bio_profile"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/bio_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bio_profile"
+                    android:textColor="@color/gray"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user_bio_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_bio_profile"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/user_icon_description"
+                android:src="@drawable/pencil_icon" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon"/>
     </LinearLayout>
 
+    <!-- Bottom buttons   -->
     <LinearLayout
         android:id="@+id/buttons_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/bio_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="80dp">
+        app:layout_constraintTop_toBottomOf="@id/info_l">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                app:layout_constraintEnd_toEndOf="@id/profile_image"
-                app:layout_constraintBottom_toBottomOf="@id/profile_image"
+                android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:background="@drawable/circle_shape">
+                app:layout_constraintBottom_toBottomOf="@id/profile_image"
+                app:layout_constraintEnd_toEndOf="@id/profile_image">
 
                 <ImageView
                     android:id="@+id/my_ads_btn"
@@ -217,8 +229,8 @@
                     android:layout_height="50dp"
                     android:contentDescription="@string/ads_icon_description"
                     android:src="@drawable/ads_icon"
-                    app:layout_constraintEnd_toEndOf="@id/profile_image"
-                    app:layout_constraintBottom_toBottomOf="@id/profile_image" />
+                    app:layout_constraintBottom_toBottomOf="@id/profile_image"
+                    app:layout_constraintEnd_toEndOf="@id/profile_image" />
             </LinearLayout>
 
             <TextView
@@ -235,16 +247,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                app:layout_constraintEnd_toEndOf="@id/profile_image"
-                app:layout_constraintBottom_toBottomOf="@id/profile_image"
+                android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:background="@drawable/circle_shape">
+                app:layout_constraintBottom_toBottomOf="@id/profile_image"
+                app:layout_constraintEnd_toEndOf="@id/profile_image">
 
                 <ImageView
                     android:id="@+id/my_favorite_ads_btn"
@@ -252,8 +264,8 @@
                     android:layout_height="50dp"
                     android:contentDescription="@string/heart_img_description"
                     android:src="@drawable/heart_favorite"
-                    app:layout_constraintEnd_toEndOf="@id/profile_image"
-                    app:layout_constraintBottom_toBottomOf="@id/profile_image" />
+                    app:layout_constraintBottom_toBottomOf="@id/profile_image"
+                    app:layout_constraintEnd_toEndOf="@id/profile_image" />
             </LinearLayout>
 
             <TextView

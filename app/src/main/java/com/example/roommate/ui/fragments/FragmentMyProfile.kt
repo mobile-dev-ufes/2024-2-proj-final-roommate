@@ -27,11 +27,10 @@ class FragmentMyProfile : Fragment(R.layout.fragment_signup1) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // No meu cel não estão aparecendo os botões certos.. Mudar depois
-        binding.editNameBtn.setOnClickListener {
+        binding.myAdsBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentMyProfile_to_fragmentFavoriteAds)
         }
-        binding.editTelBtn.setOnClickListener {
+        binding.myFavoriteAdsBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentMyProfile_to_fragmentMyAds)
         }
     }
