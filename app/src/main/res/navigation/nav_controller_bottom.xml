@@ -83,6 +83,9 @@
         <action
             android:id="@+id/action_fragmentInterestedGroups_to_fragmentGroup"
             app:destination="@id/fragmentGroup" />
+        <action
+            android:id="@+id/action_fragmentInterestedGroups_to_dialogCreateGroup"
+            app:destination="@id/dialogCreateGroup" />
     </fragment>
     <fragment
         android:id="@+id/fragmentMyAds"
@@ -121,6 +124,11 @@
         tools:layout="@layout/fragment_create_ad3">
 
     </fragment>
+    <dialog
+        android:id="@+id/dialogCreateGroup"
+        android:name="com.example.roommate.ui.fragments.DialogCreateGroup"
+        android:label="DialogCreateGroup"
+        tools:layout="@layout/dialog_create_group"/>
 
 
 </navigation>

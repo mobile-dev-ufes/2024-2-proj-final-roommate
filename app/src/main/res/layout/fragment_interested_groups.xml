@@ -35,6 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraint_top_my_groups"/>
 
     <Button
+        android:id="@+id/create_group_btn"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:text="@string/plus"
