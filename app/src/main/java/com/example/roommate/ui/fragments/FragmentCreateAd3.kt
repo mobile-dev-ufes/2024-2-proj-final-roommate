@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentCreateAd3Binding
@@ -28,7 +30,15 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ad3FinishRegistration.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentCreateAd3_to_fragmentMyAds)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.fragmentMyAds, true) // Clears back stack up to fragmentMyAds
+                .build()
+
+            findNavController().navigate(
+                R.id.action_fragmentCreateAd3_to_fragmentMyAds,
+                null,
+                navOptions
+            )
         }
     }
 }
