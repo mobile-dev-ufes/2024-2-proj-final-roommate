@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="340dp"
-        android:layout_height="650dp"
+        android:layout_height="675dp"
         android:background="@drawable/dialog_shape"
         android:orientation="vertical"
         android:padding="15dp"
@@ -129,7 +129,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/ad2_proceed_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,7 +137,8 @@
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/blue4"
             android:text="@string/proceed"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

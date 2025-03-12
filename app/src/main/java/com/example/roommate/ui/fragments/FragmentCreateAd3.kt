@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentCreateAd3Binding
 
@@ -27,7 +28,7 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ad3FinishRegistration.setOnClickListener {
-            // TODO
+            findNavController().navigate(R.id.action_fragmentCreateAd3_to_fragmentMyAds)
         }
     }
 }

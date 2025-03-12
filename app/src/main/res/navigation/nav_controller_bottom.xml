@@ -123,6 +123,9 @@
         android:label="FragmentCreateAd3"
         tools:layout="@layout/fragment_create_ad3">
 
+        <action
+            android:id="@+id/action_fragmentCreateAd3_to_fragmentMyAds"
+            app:destination="@id/fragmentMyAds" />
     </fragment>
     <dialog
         android:id="@+id/dialogCreateGroup"
