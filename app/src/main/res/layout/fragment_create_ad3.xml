@@ -35,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="7dp"
+        android:autofillHints="Area"
         android:background="@drawable/text_box_shape"
         android:hint="@string/area_hint"
         android:inputType="textMultiLine|textPassword"
@@ -110,6 +111,7 @@
 
 
     <Button
+        android:id="@+id/ad3_finish_registration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"

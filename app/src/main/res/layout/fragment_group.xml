@@ -56,38 +56,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/group_qtt_members_tv">
 
-    <TextView
-        android:id="@+id/group_description_title_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/description"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/group_qtt_members_tv"
-        />
+        <TextView
+            android:id="@+id/group_description_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/group_qtt_members_tv"
+            />
 
-    <TextView
-        android:id="@+id/group_description_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/group_description"
-        android:textColor="@color/gray"
-        android:textStyle="bold"
-        android:background="@color/sec_blue"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/group_description_title_tv"
-        />
+        <TextView
+            android:id="@+id/group_description_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/group_description"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
+            android:background="@color/sec_blue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/group_description_title_tv"
+            />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/membros_tv"
+        android:id="@+id/members_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -108,7 +108,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/membros_tv"
+        app:layout_constraintTop_toBottomOf="@+id/members_tv"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

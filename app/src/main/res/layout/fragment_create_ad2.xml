@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="7dp"
+        android:autofillHints="Telefone"
         android:background="@drawable/text_box_shape"
         android:hint="@string/number_hint"
         android:inputType="textMultiLine|textPassword"
@@ -115,6 +116,7 @@
 
 
     <Button
+        android:id="@+id/ad2_proceed_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"

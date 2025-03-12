@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
-import com.example.roommate.databinding.FragmentCreateAd3Binding
+import com.example.roommate.databinding.FragmentMyAdsBinding
 
-class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
-    private lateinit var binding: FragmentCreateAd3Binding
+class FragmentMyAds : Fragment(R.layout.fragment_my_ads) {
+    private lateinit var binding: FragmentMyAdsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,7 +19,7 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        binding = FragmentCreateAd3Binding.inflate(inflater, container, false)
+        binding = FragmentMyAdsBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -26,8 +27,8 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.ad3FinishRegistration.setOnClickListener {
-            // TODO
+        binding.myAdsBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_fragmentMyAds_to_fragmentCreateAd1)
         }
     }
 }

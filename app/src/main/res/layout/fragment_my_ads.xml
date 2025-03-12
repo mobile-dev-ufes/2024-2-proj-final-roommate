@@ -45,6 +45,7 @@
         android:backgroundTint="@color/blue3">
 
         <ImageView
+            android:id="@+id/my_ads_btn"
             android:layout_width="35dp"
             android:layout_height="40dp"
             android:contentDescription="@string/heart_img_description"

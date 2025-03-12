@@ -78,6 +78,7 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/edit_name_btn"
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:contentDescription="@string/user_icon_description"
@@ -128,6 +129,7 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/edit_tel_btn"
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:contentDescription="@string/user_icon_description"
@@ -210,6 +212,7 @@
                 android:background="@drawable/circle_shape">
 
                 <ImageView
+                    android:id="@+id/my_ads_btn"
                     android:layout_width="45dp"
                     android:layout_height="50dp"
                     android:contentDescription="@string/ads_icon_description"
@@ -244,6 +247,7 @@
                 android:background="@drawable/circle_shape">
 
                 <ImageView
+                    android:id="@+id/my_favorite_ads_btn"
                     android:layout_width="45dp"
                     android:layout_height="50dp"
                     android:contentDescription="@string/heart_img_description"
