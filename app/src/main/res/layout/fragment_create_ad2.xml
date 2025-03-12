@@ -1,127 +1,144 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="340dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/dialog_shape"
-    android:orientation="vertical"
-    android:padding="15dp">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cep"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="650dp"
+        android:background="@drawable/dialog_shape"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        android:autofillHints="E-mail"
-        android:background="@drawable/text_box_shape"
-        android:hint="@string/cep_hint"
-        android:inputType="text"
-        android:padding="7dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cep"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/number"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:autofillHints="E-mail"
+            android:background="@drawable/text_box_shape"
+            android:hint="@string/cep_hint"
+            android:inputType="text"
+            android:padding="7dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        android:autofillHints="Telefone"
-        android:background="@drawable/text_box_shape"
-        android:hint="@string/number_hint"
-        android:inputType="textMultiLine|textPassword"
-        android:padding="7dp"
-        android:scrollbars="vertical" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/number"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/street"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:autofillHints="Telefone"
+            android:background="@drawable/text_box_shape"
+            android:hint="@string/number_hint"
+            android:inputType="textMultiLine|textPassword"
+            android:padding="7dp"
+            android:scrollbars="vertical" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        android:autofillHints="E-mail"
-        android:background="@drawable/text_box_shape"
-        android:hint="@string/street_hint"
-        android:inputType="textEmailAddress"
-        android:padding="7dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/street"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/neighborhood"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:autofillHints="E-mail"
+            android:background="@drawable/text_box_shape"
+            android:hint="@string/street_hint"
+            android:inputType="textEmailAddress"
+            android:padding="7dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        android:autofillHints="Password"
-        android:background="@drawable/text_box_shape"
-        android:hint="@string/neighborhood_hint"
-        android:inputType="textPassword"
-        android:padding="7dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/neighborhood"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/city"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:autofillHints="Password"
+            android:background="@drawable/text_box_shape"
+            android:hint="@string/neighborhood_hint"
+            android:inputType="textPassword"
+            android:padding="7dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        android:autofillHints="Password"
-        android:background="@drawable/text_box_shape"
-        android:hint="@string/city_hint"
-        android:inputType="textPassword"
-        android:padding="7dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/city"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/state"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:autofillHints="Password"
+            android:background="@drawable/text_box_shape"
+            android:hint="@string/city_hint"
+            android:inputType="textPassword"
+            android:padding="7dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        android:autofillHints="Password"
-        android:background="@drawable/text_box_shape"
-        android:hint="@string/state_hint"
-        android:inputType="textMultiLine|textPassword"
-        android:padding="7dp"
-        android:scrollbars="vertical" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/state"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:autofillHints="Password"
+            android:background="@drawable/text_box_shape"
+            android:hint="@string/state_hint"
+            android:inputType="textMultiLine|textPassword"
+            android:padding="7dp"
+            android:scrollbars="vertical" />
 
-    <Button
-        android:id="@+id/ad2_proceed_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/button_shape"
-        android:backgroundTint="@color/blue4"
-        android:text="@string/proceed"
-        android:textSize="20sp" />
-</LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/ad2_proceed_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="@color/blue4"
+            android:text="@string/proceed"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
