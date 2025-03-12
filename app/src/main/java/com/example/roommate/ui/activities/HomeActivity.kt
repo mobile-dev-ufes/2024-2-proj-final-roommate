@@ -1,7 +1,7 @@
 package com.example.roommate.ui.activities
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -29,5 +29,14 @@ class HomeActivity : AppCompatActivity() {
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
         binding.toolbar.inflateMenu(R.menu.toolbar_menu)
+
+        // Show BottomNavigationView only in specific fragments
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val showBottomNav = destination.id == R.id.fragmentAds ||
+                    destination.id == R.id.fragmentMyProfile ||
+                    destination.id == R.id.fragmentMyGroups
+
+            binding.bottomNavMenu.visibility = if (showBottomNav) View.VISIBLE else View.GONE
+        }
     }
 }

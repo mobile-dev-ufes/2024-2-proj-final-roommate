@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activities.AdvertisementActivity" android:exported="true" />
         <activity android:name=".ui.activities.CreateAdActivity" android:exported="true" />
         <activity android:name=".ui.activities.EntryRequestsActivity" android:exported="true" />
         <activity android:name=".ui.activities.FavoriteAdsActivity" android:exported="true" />

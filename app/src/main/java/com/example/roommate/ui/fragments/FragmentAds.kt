@@ -28,7 +28,7 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.createAdBtn.setOnClickListener {
-            // TODO
+            findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)
         }
     }
 }
