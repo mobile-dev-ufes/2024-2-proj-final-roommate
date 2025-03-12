@@ -20,6 +20,9 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
+
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_home"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -28,11 +31,27 @@
         android:background="@drawable/dialog_shape"
         android:elevation="7dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_view"
         app:navGraph="@navigation/nav_controller_home"
         tools:layout="@layout/fragment_ads" />
+
+    <LinearLayout
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_nav_menu"
+            />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

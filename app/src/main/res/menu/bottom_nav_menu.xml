@@ -1,0 +1,18 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentAds"
+        android:title="@string/feed"
+        android:icon="@drawable/ads_icon"
+        />
+    <item
+        android:id="@+id/fragmentMyGroups"
+        android:title="@string/groups"
+        android:icon="@drawable/user_icon"
+        />
+    <item
+        android:id="@+id/fragmentMyProfile"
+        android:title="@string/profile"
+        android:icon="@drawable/user_icon"
+        />
+</menu>

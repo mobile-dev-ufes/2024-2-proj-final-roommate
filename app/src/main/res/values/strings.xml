@@ -116,6 +116,8 @@
     <string name="group_description">Grupo de pessoas do curso de ciência da computação</string>
     <string name="members">Membros</string>
     <string name="search">Buscar</string>
+    <string name="profile">Perfil</string>
+    <string name="feed">Feed</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>

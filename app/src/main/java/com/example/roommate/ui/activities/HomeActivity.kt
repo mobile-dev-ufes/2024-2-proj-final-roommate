@@ -24,10 +24,10 @@ class HomeActivity : AppCompatActivity() {
         val navHostFrag =
             supportFragmentManager.findFragmentById(R.id.fragment_container_home) as NavHostFragment
         val navController = navHostFrag.navController
+        binding.bottomNavMenu.setupWithNavController(navController)
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
         binding.toolbar.inflateMenu(R.menu.toolbar_menu)
-
     }
 }
