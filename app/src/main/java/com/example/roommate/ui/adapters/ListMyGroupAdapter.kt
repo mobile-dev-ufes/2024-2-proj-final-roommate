@@ -8,7 +8,7 @@ import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.MyGroupsLineBinding
 import com.example.roommate.ui.viewHolders.ListMyGroupViewHolder
 
-class ListMyGroupAdapter(val onItemClick: (GroupModel) -> Unit) : RecyclerView.Adapter<ListMyGroupViewHolder>() {
+class ListMyGroupAdapter(private val onItemClick: (GroupModel) -> Unit) : RecyclerView.Adapter<ListMyGroupViewHolder>() {
     private var groupList: MutableList<GroupModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListMyGroupViewHolder {

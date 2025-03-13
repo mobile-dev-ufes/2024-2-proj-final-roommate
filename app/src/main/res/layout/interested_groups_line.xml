@@ -39,38 +39,52 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_l"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/group_join_select_btn"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-            <TextView
-                android:id="@+id/group_qtt_members_tv"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/bottom_l"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/group_qtt_members"
-                android:textColor="@color/gray"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/group_description_tv" />
-
-            <!-- Tmb é botão e entrar -->
-            <Button
-                android:id="@+id/group_join_select_btn"
-                android:layout_width="90dp"
-                android:layout_height="48dp"
-                android:background="@drawable/circle_shape"
-                android:gravity="center"
-                android:text="@string/selecionar_btn"
-                android:textColor="@color/white"
-                android:textSize="8sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="SmallSp" />
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/group_qtt_members_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/group_qtt_members"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:gravity="top"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/group_description_tv" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <!-- Tmb é botão e entrar -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/group_join_select_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/button_shape"
+                    android:text="@string/selecionar_btn"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SmallSp" />
+
+
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

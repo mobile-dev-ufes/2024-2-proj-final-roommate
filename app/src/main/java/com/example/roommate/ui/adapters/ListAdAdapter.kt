@@ -8,7 +8,7 @@ import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.AdLineBinding
 import com.example.roommate.ui.viewHolders.ListAdViewHolder
 
-class ListAdAdapter(val onClickItem: (AdModel) -> Unit) : RecyclerView.Adapter<ListAdViewHolder>() {
+class ListAdAdapter(private val onClickItem: (AdModel) -> Unit) : RecyclerView.Adapter<ListAdViewHolder>() {
     private var adList: MutableList<AdModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdViewHolder {

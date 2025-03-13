@@ -6,11 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
+import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.FragmentInterestedGroupsBinding
+import com.example.roommate.ui.adapters.ListInterestedGroupAdapter
 
 class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
     private lateinit var binding: FragmentInterestedGroupsBinding
+    private lateinit var adapter: ListInterestedGroupAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,6 +24,9 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentInterestedGroupsBinding.inflate(inflater, container, false)
+        adapter = ListInterestedGroupAdapter{
+            findNavController().navigate(R.id.action_fragmentInterestedGroups_to_fragmentGroup)
+        }
 
         return binding.root
     }
@@ -30,5 +37,13 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
         binding.createGroupBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentInterestedGroups_to_dialogCreateGroup)
         }
+
+        binding.recycleListAds.layoutManager = LinearLayoutManager(context)
+        binding.recycleListAds.adapter = adapter
+
+        // Apenas para teste do Recycle View
+        adapter.insertGroupList(GroupModel("Meu teste de grupo3", 3, 6))
+        adapter.insertGroupList(GroupModel("Meu teste de grupo2", 2, 4))
+        adapter.insertGroupList(GroupModel("Meu teste de grupo1", 1, 2))
     }
 }
