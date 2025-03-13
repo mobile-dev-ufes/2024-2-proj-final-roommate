@@ -20,6 +20,7 @@ import com.example.roommate.R
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.FragmentSignup3Binding
 import com.example.roommate.ui.activities.LoginActivity
+import com.example.roommate.utils.statusEnum
 import com.example.roommate.viewModel.SignUpViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -59,12 +60,12 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
     }
 
     private fun setObserver(){
-        signUpVM.isRegistered().observe(viewLifecycleOwner, Observer {
-            Log.d("TESTE", it.toString())
-            when(it) {
-                1 -> Toast.makeText(requireContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
-                2 -> Toast.makeText(requireContext(), "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show()
+        signUpVM.isRegistered().observe(viewLifecycleOwner) { status ->
+            when(status) {
+                statusEnum.SUCCESS -> Toast.makeText(requireContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+                statusEnum.FAIL -> Toast.makeText(requireContext(), "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show()
+                else -> UInt
             }
-        })
+        }
     }
 }

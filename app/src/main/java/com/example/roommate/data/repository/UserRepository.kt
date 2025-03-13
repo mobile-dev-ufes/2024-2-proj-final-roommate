@@ -4,11 +4,12 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.roommate.data.model.UserModel
+import com.example.roommate.utils.statusEnum
 import com.google.firebase.firestore.FirebaseFirestore
 
 class UserRepository {
-    private val _status = MutableLiveData<Int>()
-    val status: MutableLiveData<Int> get() = _status
+    private val _status = MutableLiveData<statusEnum>()
+    val status: MutableLiveData<statusEnum> get() = _status
 
     fun create(user: UserModel){
         val db = FirebaseFirestore.getInstance()
@@ -26,10 +27,10 @@ class UserRepository {
         db.collection("user").document(user.email!!)
             .set(userMap)
             .addOnSuccessListener {
-                _status.postValue(1)
+                _status.postValue(statusEnum.SUCCESS)
             }
             .addOnFailureListener{
-                _status.postValue(2)
+                _status.postValue(statusEnum.FAIL)
             }
     }
 }
