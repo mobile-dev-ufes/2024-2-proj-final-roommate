@@ -14,7 +14,7 @@ import com.example.roommate.ui.adapters.ListAdAdapter
 
 class FragmentAds : Fragment(R.layout.fragment_ads) {
     private lateinit var binding: FragmentAdsBinding
-    private val adapter = ListAdAdapter()
+    private lateinit var adapter: ListAdAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +24,9 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentAdsBinding.inflate(inflater, container, false)
+        adapter = ListAdAdapter {
+            findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)
+        }
 
         return binding.root
     }

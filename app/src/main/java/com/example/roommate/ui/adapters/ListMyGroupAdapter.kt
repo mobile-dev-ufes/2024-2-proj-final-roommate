@@ -3,7 +3,6 @@ package com.example.roommate.ui.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.MyGroupsLineBinding
