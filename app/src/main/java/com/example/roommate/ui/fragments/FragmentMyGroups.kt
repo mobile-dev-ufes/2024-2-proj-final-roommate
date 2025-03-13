@@ -48,7 +48,7 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
 
     private fun observerGroups() {
         viewModel.groups.observe(viewLifecycleOwner) { groups ->
-            adapter.updateGroupList(groups.toMutableList()) // Update RecyclerView when data changes
+            adapter.updateGroupList(groups.toMutableList())
         }
     }
 }
