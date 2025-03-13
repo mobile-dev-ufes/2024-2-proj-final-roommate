@@ -6,11 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
+import com.example.roommate.data.model.AdModel
+import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.FragmentGroupBinding
+import com.example.roommate.ui.adapters.ListMemberAdapter
 
 class FragmentGroup : Fragment(R.layout.fragment_group) {
     private lateinit var binding: FragmentGroupBinding
+    private lateinit var adapter: ListMemberAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,6 +25,9 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentGroupBinding.inflate(inflater, container, false)
+        adapter = ListMemberAdapter {
+            findNavController().navigate(R.id.action_fragmentGroup_to_fragmentVisitProfile)
+        }
 
         return binding.root
     }
@@ -27,10 +35,12 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*
-        binding.adGroupBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentAdvertisement_to_fragmentInterestedGroups)
-        }
-        */
+        binding.recycleListAds.layoutManager = LinearLayoutManager(context)
+        binding.recycleListAds.adapter = adapter
+
+        // Apenas para testar o Recycle View
+        adapter.insertMemberList(UserModel("Daniel1", "A vida é bela1"))
+        adapter.insertMemberList(UserModel("Daniel2", "A vida é bela2"))
+        adapter.insertMemberList(UserModel("Daniel3", "A vida é bela3"))
     }
 }

@@ -31,7 +31,7 @@
             android:paddingHorizontal="10dp">
 
             <TextView
-                android:id="@+id/group_description_tv"
+                android:id="@+id/name_tv"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="@string/username"
@@ -43,7 +43,7 @@
 
 
             <TextView
-                android:id="@+id/group_qtt_members_tv"
+                android:id="@+id/bio_tv"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:text="@string/user_bio_profile"
@@ -52,7 +52,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/thumbs_up_img"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/group_description_tv" />
+                app:layout_constraintTop_toBottomOf="@id/name_tv" />
 
             <ImageView
                 android:id="@+id/thumbs_up_img"
