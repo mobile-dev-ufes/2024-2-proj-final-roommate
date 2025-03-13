@@ -14,7 +14,7 @@ import com.example.roommate.ui.adapters.ListMyGroupAdapter
 
 class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
     private lateinit var binding: FragmentMyGroupsBinding
-    private val adapter = ListMyGroupAdapter()
+    private lateinit var adapter : ListMyGroupAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +24,10 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentMyGroupsBinding.inflate(inflater, container, false)
+
+        adapter = ListMyGroupAdapter{
+            findNavController().navigate(R.id.action_fragmentMyGroups_to_fragmentGroup)
+        }
 
         return binding.root
     }
@@ -38,11 +42,5 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
         adapter.insertGroupList(GroupModel("Meu teste de grupo", 1, 2))
         adapter.insertGroupList(GroupModel("Meu teste de grupo2", 2, 4))
         adapter.insertGroupList(GroupModel("Meu teste de grupo3", 3, 6))
-
-        /*
-        binding.adGroupBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentAdvertisement_to_fragmentInterestedGroups)
-        }
-        */
     }
 }

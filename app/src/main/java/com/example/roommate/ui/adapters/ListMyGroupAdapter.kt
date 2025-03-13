@@ -3,12 +3,13 @@ package com.example.roommate.ui.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.MyGroupsLineBinding
 import com.example.roommate.ui.viewHolders.ListMyGroupViewHolder
 
-class ListMyGroupAdapter : RecyclerView.Adapter<ListMyGroupViewHolder>() {
+class ListMyGroupAdapter(val onItemClick: (GroupModel) -> Unit) : RecyclerView.Adapter<ListMyGroupViewHolder>() {
     private var groupList: MutableList<GroupModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListMyGroupViewHolder {
@@ -19,6 +20,10 @@ class ListMyGroupAdapter : RecyclerView.Adapter<ListMyGroupViewHolder>() {
 
     override fun onBindViewHolder(holder: ListMyGroupViewHolder, position: Int) {
         holder.bindVH(groupList[position])
+
+        holder.itemView.setOnClickListener{
+            onItemClick(groupList[position])
+        }
     }
 
     override fun getItemCount(): Int {
