@@ -29,7 +29,14 @@ class GroupViewModel : ViewModel() {
                     val qttMembers = document.getLong("qttMembers")?.toInt() ?: 0
                     val qttNotifications = document.getLong("qttNotifications")?.toInt() ?: 0
 
-                    groupList.add(GroupModel(name, description, qttMembers, qttNotifications))
+                    // Get the 'users' field which is a List of DocumentReferences
+                    val usersRef = document.get("users") as? List<*> ?: emptyList<DocumentReference>()
+
+                    // Convert the List<*> to List<DocumentReference> safely
+                    val userRefsList = usersRef.mapNotNull { it as? DocumentReference }
+
+                    // Create the GroupModel with the list of DocumentReference
+                    groupList.add(GroupModel(name, description, qttMembers, qttNotifications, userRefsList))
                 }
 
                 _groups.postValue(groupList)
