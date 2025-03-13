@@ -1,8 +1,9 @@
 package com.example.roommate.data.model
 
+import java.io.Serializable
 import java.time.LocalDate
 
-enum class SexEnum {
+enum class SexEnum: Serializable {
     MALE, FEMALE, OTHER, UNIDENTIFIED
 }
 
