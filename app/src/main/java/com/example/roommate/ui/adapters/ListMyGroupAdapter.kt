@@ -1,0 +1,38 @@
+package com.example.roommate.ui.adapters
+
+import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.roommate.data.model.GroupModel
+import com.example.roommate.databinding.MyGroupsLineBinding
+import com.example.roommate.ui.viewHolders.ListMyGroupViewHolder
+
+class ListMyGroupAdapter : RecyclerView.Adapter<ListMyGroupViewHolder>() {
+    private var groupList: MutableList<GroupModel> = mutableListOf()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListMyGroupViewHolder {
+        val item = MyGroupsLineBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return ListMyGroupViewHolder(item)
+    }
+
+    override fun onBindViewHolder(holder: ListMyGroupViewHolder, position: Int) {
+        holder.bindVH(groupList[position])
+    }
+
+    override fun getItemCount(): Int {
+        return groupList.count()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateGroupList(list: MutableList<GroupModel>){
+        groupList = list
+        notifyDataSetChanged()
+    }
+
+    fun insertGroupList(group: GroupModel){
+        groupList.add(group)
+        notifyItemInserted(groupList.count())
+    }
+}

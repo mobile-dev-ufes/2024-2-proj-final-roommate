@@ -13,7 +13,7 @@ class ListAdViewHolder(private val binding: AdLineBinding) :
             binding.adDescriptionTv.text = ad.description
             binding.adLocalTv.text = ad.local
 
-            // Avaliar modularizar esse trecho
+            // TODO Avaliar modularizar esse trecho
             val locale = Locale.getDefault()
             val currencyFormat = NumberFormat.getCurrencyInstance(locale)
             val formattedCurrency = currencyFormat.format(ad.price)

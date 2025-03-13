@@ -7,7 +7,7 @@
         />
     <item
         android:id="@+id/fragmentMyGroups"
-        android:title="@string/groups"
+        android:title="@string/my_groups"
         android:icon="@drawable/group_icon"
         />
     <item
