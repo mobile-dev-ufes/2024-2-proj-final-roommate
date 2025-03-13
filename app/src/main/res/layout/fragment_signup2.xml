@@ -40,6 +40,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/name_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
@@ -58,6 +59,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/phone_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
@@ -76,7 +78,7 @@
             android:textSize="18sp" />
 
         <Spinner
-            android:id="@+id/spinnerDays"
+            android:id="@+id/sex_sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -92,6 +94,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/birthday_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
