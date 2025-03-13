@@ -42,8 +42,8 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
         binding.recycleListAds.adapter = adapter
 
         // Apenas para teste do Recycle View
-        adapter.insertGroupList(GroupModel("Meu teste de grupo3", 3, 6))
-        adapter.insertGroupList(GroupModel("Meu teste de grupo2", 2, 4))
-        adapter.insertGroupList(GroupModel("Meu teste de grupo1", 1, 2))
+        adapter.insertGroupList(GroupModel("Grupo1", "Meu teste de grupo3", 3, 6))
+        adapter.insertGroupList(GroupModel("Grupo1", "Meu teste de grupo2", 2, 4))
+        adapter.insertGroupList(GroupModel("Grupo1", "Meu teste de grupo1", 1, 2))
     }
 }

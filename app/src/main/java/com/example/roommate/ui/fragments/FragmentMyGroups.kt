@@ -29,8 +29,11 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentMyGroupsBinding.inflate(inflater, container, false)
 
-        adapter = ListMyGroupAdapter {
-            findNavController().navigate(R.id.action_fragmentMyGroups_to_fragmentGroup)
+        adapter = ListMyGroupAdapter { group ->  // Corrected: Using ListMyGroupAdapter
+            val bundle = Bundle().apply {
+                putSerializable("group", group)  // Passing GroupModel to FragmentGroup
+            }
+            findNavController().navigate(R.id.action_fragmentMyGroups_to_fragmentGroup, bundle)
         }
 
         return binding.root

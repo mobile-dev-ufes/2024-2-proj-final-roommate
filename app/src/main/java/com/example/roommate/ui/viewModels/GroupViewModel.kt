@@ -29,7 +29,7 @@ class GroupViewModel : ViewModel() {
                     val qttMembers = document.getLong("qttMembers")?.toInt() ?: 0
                     val qttNotifications = document.getLong("qttNotifications")?.toInt() ?: 0
 
-                    groupList.add(GroupModel(description, qttMembers, qttNotifications))
+                    groupList.add(GroupModel(name, description, qttMembers, qttNotifications))
                 }
 
                 _groups.postValue(groupList)
