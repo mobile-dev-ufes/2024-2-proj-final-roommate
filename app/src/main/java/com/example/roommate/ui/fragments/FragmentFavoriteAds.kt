@@ -14,7 +14,7 @@ import com.example.roommate.ui.adapters.ListAdAdapter
 
 class FragmentFavoriteAds : Fragment(R.layout.fragment_favorite_ads) {
     private lateinit var binding: FragmentFavoriteAdsBinding
-//    private val adapter = ListAdAdapter()
+    private lateinit var adapter: ListAdAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +24,9 @@ class FragmentFavoriteAds : Fragment(R.layout.fragment_favorite_ads) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentFavoriteAdsBinding.inflate(inflater, container, false)
+        adapter = ListAdAdapter {
+            findNavController().navigate(R.id.action_fragmentFavoriteAds_to_fragmentAdvertisement)
+        }
 
         return binding.root
     }
@@ -31,12 +34,12 @@ class FragmentFavoriteAds : Fragment(R.layout.fragment_favorite_ads) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.recycleListAds.layoutManager = LinearLayoutManager(context)
-//        binding.recycleListAds.adapter = adapter
-//
-//        // Apenas para testar o Recycle View
-//        adapter.updateAdList(mutableListOf( AdModel("TESTE", "Bela Aurora/ Cariacica", 250.0)))
-//        adapter.insertAdList(AdModel("TESTE1", "Bela Aurora/ Cariacica", 500.0))
-//        adapter.insertAdList(AdModel("TESTE2", "Bela Aurora/ Cariacica", 750.0))
+        binding.recycleListAds.layoutManager = LinearLayoutManager(context)
+        binding.recycleListAds.adapter = adapter
+
+        // Apenas para testar o Recycle View
+        adapter.updateAdList(mutableListOf( AdModel("TESTE", "Bela Aurora/ Cariacica", 250.0)))
+        adapter.insertAdList(AdModel("TESTE1", "Bela Aurora/ Cariacica", 500.0))
+        adapter.insertAdList(AdModel("TESTE2", "Bela Aurora/ Cariacica", 750.0))
     }
 }

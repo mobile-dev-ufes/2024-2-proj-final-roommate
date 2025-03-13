@@ -74,7 +74,11 @@
         android:id="@+id/fragmentFavoriteAds"
         android:name="com.example.roommate.ui.fragments.FragmentFavoriteAds"
         android:label="FragmentFavoriteAds"
-        tools:layout="@layout/fragment_favorite_ads"/>
+        tools:layout="@layout/fragment_favorite_ads">
+        <action
+            android:id="@+id/action_fragmentFavoriteAds_to_fragmentAdvertisement"
+            app:destination="@id/fragmentAdvertisement" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentInterestedGroups"
         android:name="com.example.roommate.ui.fragments.FragmentInterestedGroups"

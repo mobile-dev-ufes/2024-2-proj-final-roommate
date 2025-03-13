@@ -28,10 +28,10 @@ class FragmentMyProfile : Fragment(R.layout.fragment_signup1) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.myAdsBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentMyProfile_to_fragmentFavoriteAds)
+            findNavController().navigate(R.id.action_fragmentMyProfile_to_fragmentMyAds)
         }
         binding.myFavoriteAdsBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentMyProfile_to_fragmentMyAds)
+            findNavController().navigate(R.id.action_fragmentMyProfile_to_fragmentFavoriteAds)
         }
     }
 }
