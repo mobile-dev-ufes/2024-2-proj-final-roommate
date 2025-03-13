@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.roommate.data.model.GroupModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.DocumentReference
 
 class GroupViewModel : ViewModel() {
     private val db = FirebaseFirestore.getInstance()
@@ -14,10 +13,10 @@ class GroupViewModel : ViewModel() {
     val groups: LiveData<List<GroupModel>> = _groups
 
     fun fetchUserGroups(userId: String) {
-        val userRef: DocumentReference = db.collection("users").document(userId) // Create user reference
+        val userRef = db.collection("user").document(userId)
 
-        db.collection("groups")
-            .whereArrayContains("users", userRef) // Query groups where user is a member
+        db.collection("group")
+            .whereArrayContains("users", userRef) // Correct usage
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val groupList = mutableListOf<GroupModel>()
@@ -32,7 +31,7 @@ class GroupViewModel : ViewModel() {
                     groupList.add(GroupModel(description, qttMembers, qttNotifications))
                 }
 
-                _groups.value = groupList // Update LiveData
+                _groups.postValue(groupList) // Ensure UI thread update
             }
             .addOnFailureListener { e ->
                 println("Error fetching groups: $e")
