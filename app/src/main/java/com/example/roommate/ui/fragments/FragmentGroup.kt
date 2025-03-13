@@ -12,6 +12,8 @@ import com.example.roommate.data.model.AdModel
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.FragmentGroupBinding
 import com.example.roommate.ui.adapters.ListMemberAdapter
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class FragmentGroup : Fragment(R.layout.fragment_group) {
     private lateinit var binding: FragmentGroupBinding
@@ -42,5 +44,41 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
         adapter.insertMemberList(UserModel("Daniel1", "A vida é bela1"))
         adapter.insertMemberList(UserModel("Daniel2", "A vida é bela2"))
         adapter.insertMemberList(UserModel("Daniel3", "A vida é bela3"))
+
+        fetchUsers()
+    }
+
+    private fun fetchUsers() {
+        val db = Firebase.firestore
+
+        /* val groupMap = hashMapOf(
+            "name" to "TesteGrupo",
+            "description" to "Descricao"
+        )
+
+        db.collection("group")
+            .add(groupMap)
+            .addOnSuccessListener { documentRef ->
+                println("Group added with ID: ${documentRef.id}")
+            }
+            .addOnFailureListener { e ->
+                println("Error adding group: $e")
+            } */
+
+        /* db.collection("group")
+            .document("w6FkvkuwfQZnbDPJ7Bnd")
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val name = document.getString("name")
+                    val description = document.getString("description")
+                    println("Group: $name - $description")
+                } else {
+                    println("No such group found!")
+                }
+            }
+            .addOnFailureListener { e ->
+                println("Error fetching group: $e")
+            } */
     }
 }
