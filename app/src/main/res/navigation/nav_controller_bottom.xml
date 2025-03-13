@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/fragmentAdvertisement"
         android:name="com.example.roommate.ui.fragments.FragmentAdvertisement"
-        android:label="FragmentAdvertisement"
+        android:label="Anúncio"
         tools:layout="@layout/fragment_advertisement">
         <action
             android:id="@+id/action_fragmentAdvertisement_to_fragmentInterestedGroups"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/fragmentGroup"
         android:name="com.example.roommate.ui.fragments.FragmentGroup"
-        android:label="FragmentGroup"
+        android:label="Grupo"
         tools:layout="@layout/fragment_group">
         <action
             android:id="@+id/action_fragmentGroup_to_fragmentEntryRequests"
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/fragmentVisitProfile"
         android:name="com.example.roommate.ui.fragments.FragmentVisitProfile"
-        android:label="FragmentVisitProfile"
+        android:label="Perfil"
         tools:layout="@layout/fragment_visit_profile"/>
     <fragment
         android:id="@+id/fragmentEntryRequests"
@@ -73,7 +73,7 @@
     <fragment
         android:id="@+id/fragmentFavoriteAds"
         android:name="com.example.roommate.ui.fragments.FragmentFavoriteAds"
-        android:label="FragmentFavoriteAds"
+        android:label="Anúncios Favoritos"
         tools:layout="@layout/fragment_favorite_ads">
         <action
             android:id="@+id/action_fragmentFavoriteAds_to_fragmentAdvertisement"
@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/fragmentInterestedGroups"
         android:name="com.example.roommate.ui.fragments.FragmentInterestedGroups"
-        android:label="FragmentInterestedGroups"
+        android:label="Grupos Interessados"
         tools:layout="@layout/fragment_interested_groups">
         <action
             android:id="@+id/action_fragmentInterestedGroups_to_fragmentGroup"
@@ -94,7 +94,7 @@
     <fragment
         android:id="@+id/fragmentMyAds"
         android:name="com.example.roommate.ui.fragments.FragmentMyAds"
-        android:label="FragmentMyAds"
+        android:label="Meus Anúncios"
         tools:layout="@layout/fragment_my_ads">
         <action
             android:id="@+id/action_fragmentMyAds_to_fragmentCreateAd1"
@@ -106,7 +106,7 @@
     <fragment
         android:id="@+id/fragmentCreateAd1"
         android:name="com.example.roommate.ui.fragments.FragmentCreateAd1"
-        android:label="FragmentCreateAd1"
+        android:label="Criar Anúncio"
         tools:layout="@layout/fragment_create_ad1">
         <action
             android:id="@+id/action_fragmentCreateAd1_to_fragmentCreateAd2"
@@ -115,7 +115,7 @@
     <fragment
         android:id="@+id/fragmentCreateAd2"
         android:name="com.example.roommate.ui.fragments.FragmentCreateAd2"
-        android:label="FragmentCreateAd2"
+        android:label="Criar Anúncio"
         tools:layout="@layout/fragment_create_ad2">
         <action
             android:id="@+id/action_fragmentCreateAd2_to_fragmentCreateAd3"
@@ -124,7 +124,7 @@
     <fragment
         android:id="@+id/fragmentCreateAd3"
         android:name="com.example.roommate.ui.fragments.FragmentCreateAd3"
-        android:label="FragmentCreateAd3"
+        android:label="Criar Anúncio"
         tools:layout="@layout/fragment_create_ad3">
 
         <action
