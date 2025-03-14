@@ -35,34 +35,32 @@ class UserRepository {
             }
     }
 
-//    fun get(userEmail: String) : UserModel {
-//        var user = UserModel()
-//
-//        db.collection("user").document(userEmail)
-//            .get()
-//            .addOnSuccessListener { document ->
-//                if (document != null) {
-//                    user = UserModel(
-//                        document.getString("email"),
-//                        document.getString("name"),
-//                        document.getString("bio"),
-//                        document.getString("sex"),
-//                        document.getString("phone"),
-//                        document.getTimestamp("birthDate")!!.toDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-//                        document.getString("photo_uri")
-//                    )
-//                    Log.d("FIREBASE", "DocumentSnapshot data: ${document.data}")
-//                } else {
-//                    Log.d("FIREBASE", "No such document")
-//
-//                }
-//                _status.postValue(statusEnum.SUCCESS)
-//            }
-//            .addOnFailureListener { exception ->
-//                Log.d("FIREBASE", "get failed with ", exception)
-//                _status.postValue(statusEnum.FAIL)
-//            }
-//
-//        return user
-//    }
+    fun get(userEmail: String, liveData: MutableLiveData<UserModel>) {
+        var user = UserModel()
+
+        db.collection("user").document(userEmail)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    user = UserModel(
+                        document.getString("email"),
+                        document.getString("name"),
+                        document.getString("bio"),
+                        document.getString("sex"),
+                        document.getString("phone"),
+                        document.getTimestamp("birthDate")!!.toDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                        document.getString("photo_uri")
+                    )
+                    Log.d("FIREBASE", "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d("FIREBASE", "No such document")
+
+                }
+
+                liveData.value = user
+            }
+            .addOnFailureListener { exception ->
+                Log.d("FIREBASE", "get failed with ", exception)
+            }
+    }
 }

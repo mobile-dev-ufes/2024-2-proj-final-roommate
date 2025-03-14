@@ -2,6 +2,7 @@ package com.example.roommate.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.roommate.data.model.UserModel
@@ -20,13 +21,34 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.signUpTv.setOnClickListener({
-            startActivity(Intent(this, SignUpActivity::class.java))
-            finish()
+            if(checkFields() && authenticate()){
+                startActivity(Intent(this, SignUpActivity::class.java))
+                finish()
+            }
         })
+
         binding.signInBtn.setOnClickListener({
-            userManager.user = UserModel(email= "daniel@gmail.com")
             startActivity((Intent(this, HomeActivity::class.java)))
             finish()
         })
+    }
+
+    private fun authenticate(): Boolean{
+        userManager.user = UserModel(email = binding.emailEt.text.toString())
+
+        return true
+    }
+
+    private fun checkFields(): Boolean{
+        if(binding.emailEt.text.isEmpty() || binding.emailEt.text.isEmpty()){
+            Toast.makeText(
+                this,
+                "Preencha todos os campos",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            return false
+        }
+        return true
     }
 }

@@ -20,9 +20,7 @@ class UserViewModel: ViewModel() {
         userRepository.create(user, status)
     }
 
-//    fun getUser(userEmail: String): UserModel{
-//        userRepository.get(userEmail).observeForever { result ->
-//            status.value = result
-//        }
-//    }
+    fun getUser(userEmail: String): UserModel{
+        userRepository.get(userEmail, currentUser)
+    }
 }
