@@ -3,22 +3,18 @@ package com.example.roommate.data.repository
 import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.utils.statusEnum
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AdRepository {
-    private val _status = MutableLiveData<statusEnum>()
-    val status: MutableLiveData<statusEnum> get() = _status
+    private val db = FirebaseFirestore.getInstance()
 
-    init {
-        _status.value = statusEnum.NIL
-    }
-
-    fun getAllAds(): MutableList<AdModel> {
-        val db = FirebaseFirestore.getInstance()
+    fun getAllAds(): MutableLiveData<MutableList<AdModel>> {
         val adList = mutableListOf<AdModel>()
+        val liveData = MutableLiveData<MutableList<AdModel>>()
 
         db.collection("advertisement")
             .get()
@@ -32,13 +28,12 @@ class AdRepository {
                         )
                     )
                 }
-                _status.postValue(statusEnum.SUCCESS)
+                liveData.value = adList
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting Ad documents: ", exception)
-                _status.postValue(statusEnum.SUCCESS)
             }
 
-        return adList
+        return liveData
     }
 }

@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.ActivityLoginBinding
+import com.example.roommate.utils.userManager
+import com.example.roommate.viewModel.UserViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
@@ -22,26 +25,9 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
         binding.signInBtn.setOnClickListener({
+            userManager.user = UserModel(email= "daniel@gmail.com")
             startActivity((Intent(this, HomeActivity::class.java)))
             finish()
         })
-
-        // Apenas para testar o Firebase
-        val db = Firebase.firestore
-
-        val jogMap = hashMapOf(
-            "name" to "Letícia",
-            "nick" to "lelê",
-            "age" to 24
-        )
-
-        db.collection("user").document("leticia@gmail.com")
-            .set(jogMap)
-            .addOnSuccessListener({
-                // Código se deu tudo certo
-            })
-            .addOnFailureListener({
-                // Código se deu errado
-            })
     }
 }

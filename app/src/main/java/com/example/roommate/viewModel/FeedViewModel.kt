@@ -9,16 +9,10 @@ import com.example.roommate.utils.statusEnum
 
 class FeedViewModel: ViewModel() {
     private val adRepository = AdRepository()
+    private var adList = MutableLiveData<MutableList<AdModel>>()
 
-    private var status : MutableLiveData<statusEnum> = adRepository.status
-    private var adList = mutableListOf<AdModel>()
-
-    fun getAdList() : MutableList<AdModel>{
-        return adList ?: mutableListOf()
-    }
-
-    fun isOperationCompleted() : MutableLiveData<statusEnum>{
-        return status
+    fun getAdList() : MutableLiveData<MutableList<AdModel>>{
+        return adList
     }
 
     fun getAds() {

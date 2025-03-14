@@ -6,7 +6,7 @@ import com.example.roommate.data.model.UserModel
 import com.example.roommate.data.repository.UserRepository
 import com.example.roommate.utils.statusEnum
 
-class SignUpViewModel: ViewModel() {
+class UserViewModel: ViewModel() {
     private var currentUser = MutableLiveData<UserModel>()
     private val userRepository = UserRepository()
     private var status: MutableLiveData<statusEnum> = userRepository.status
@@ -18,5 +18,9 @@ class SignUpViewModel: ViewModel() {
     fun registerUser(user: UserModel){
         currentUser.value = user
         userRepository.create(user)
+    }
+
+    fun getUser(userEmail: String): UserModel{
+        return userRepository.get(userEmail)
     }
 }

@@ -13,12 +13,16 @@ import com.example.roommate.R
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentAdsBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
+import com.example.roommate.utils.statusEnum
 import com.example.roommate.viewModel.FeedViewModel
+import com.example.roommate.viewModel.UserViewModel
 
 class FragmentAds : Fragment(R.layout.fragment_ads) {
     private lateinit var binding: FragmentAdsBinding
     private lateinit var adapter: ListAdAdapter
+
     private lateinit var adsVM: FeedViewModel
+    private lateinit var userVM: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,8 +44,8 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setObserver()
         adsVM.getAds()
+        setObserver()
 
         binding.createAdBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)
@@ -52,8 +56,8 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
     }
 
     private fun setObserver(){
-        adsVM.isOperationCompleted().observe(viewLifecycleOwner) { status ->
-            adapter.updateAdList(adsVM.getAdList())
+        adsVM.getAdList().observe(viewLifecycleOwner) { adList ->
+            adapter.updateAdList(adList)
         }
     }
 }
