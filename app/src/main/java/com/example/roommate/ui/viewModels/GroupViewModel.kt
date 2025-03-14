@@ -26,7 +26,8 @@ class GroupViewModel : ViewModel() {
                     val id = document.id
                     val name = document.getString("name") ?: ""
                     val description = document.getString("description") ?: ""
-                    val qttMembers = document.getLong("qttMembers")?.toInt() ?: 0
+                    //val qttMembers = document.getLong("qttMembers")?.toInt() ?: 0
+
                     val qttNotifications = document.getLong("qttNotifications")?.toInt() ?: 0
 
                     // Get the 'users' field which is a List of DocumentReferences
@@ -34,6 +35,7 @@ class GroupViewModel : ViewModel() {
 
                     // Convert the List<*> to List<DocumentReference> safely
                     val userRefsList = usersRef.mapNotNull { it as? DocumentReference }
+                    val qttMembers = userRefsList.size
 
                     // Create the GroupModel with the list of DocumentReference
                     groupList.add(GroupModel(name, description, qttMembers, qttNotifications, userRefsList))
