@@ -47,8 +47,6 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
         if (view.id == R.id.finish_signup_btn) {
             args.userInfo.bio = binding.userBioEt.text.toString()
             signUpVM.registerUser(args.userInfo)
-
-            navigate()
         }
     }
 

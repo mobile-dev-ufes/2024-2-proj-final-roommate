@@ -54,7 +54,6 @@ class UserRepository {
                     Log.d("FIREBASE", "DocumentSnapshot data: ${document.data}")
                 } else {
                     Log.d("FIREBASE", "No such document")
-
                 }
 
                 liveData.value = user

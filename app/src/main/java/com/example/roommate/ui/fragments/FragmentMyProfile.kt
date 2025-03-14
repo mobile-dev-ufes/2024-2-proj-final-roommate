@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentMyProfileBinding
+import com.example.roommate.utils.userManager
 
 class FragmentMyProfile : Fragment(R.layout.fragment_signup1) {
     private lateinit var binding: FragmentMyProfileBinding
@@ -20,6 +21,7 @@ class FragmentMyProfile : Fragment(R.layout.fragment_signup1) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentMyProfileBinding.inflate(inflater, container, false)
+        setInfos()
 
         return binding.root
     }
@@ -33,5 +35,11 @@ class FragmentMyProfile : Fragment(R.layout.fragment_signup1) {
         binding.myFavoriteAdsBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentMyProfile_to_fragmentFavoriteAds)
         }
+    }
+
+    fun setInfos(){
+        binding.usernameTv.text = userManager.user.name
+        binding.userPhoneTv.text = userManager.user.phone
+        binding.userBioTv.text = userManager.user.bio
     }
 }
