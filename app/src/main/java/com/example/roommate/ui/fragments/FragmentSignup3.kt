@@ -47,6 +47,7 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
         super.onViewCreated(view, savedInstanceState)
 
         setObserver()
+        bindUserInfo()
         binding.finishSignupBtn.setOnClickListener(this)
     }
 
@@ -57,6 +58,12 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
             startActivity(Intent(requireContext(), LoginActivity::class.java))
             requireActivity().finish()
         }
+    }
+
+    private fun bindUserInfo(){
+        binding.usernameTv.text = args.userInfo.name
+        binding.userPhoneTv.text = args.userInfo.phone
+        binding.userBioTv.text = getString(R.string.bio_default)
     }
 
     private fun setObserver(){
