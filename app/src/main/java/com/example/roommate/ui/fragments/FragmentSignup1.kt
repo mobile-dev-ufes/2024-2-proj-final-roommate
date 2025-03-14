@@ -32,11 +32,9 @@ class FragmentSignup1 : Fragment(R.layout.fragment_signup1), View.OnClickListene
 
     override fun onClick(view: View) {
         if (view.id == R.id.signup1_go_btn && checkFields()) {
-            val email = binding.emailEt.text.toString()
-
             val action = FragmentSignup1Directions.actionFragmentSignup1ToFragmentSignup2(
                 UserModel(
-                    email = email,
+                    email = binding.emailEt.text.toString(),
                     name = null,
                     bio = null,
                     sex = null,

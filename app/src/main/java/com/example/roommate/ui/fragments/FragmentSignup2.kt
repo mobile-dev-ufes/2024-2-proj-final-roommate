@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -40,20 +41,14 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
     }
 
     override fun onClick(view: View) {
-        if (view.id == R.id.signup2_go_btn) {
-
-            // TODO Acertar os tipos e modularizar
-            val nameText = binding.nameEt.text.toString()
-            val phoneText = binding.phoneEt.text.toString()
-            val sexText = binding.sexSp.selectedItem.toString()
-
+        if (view.id == R.id.signup2_go_btn && checkFields()) {
             val action = FragmentSignup2Directions.actionFragmentSignup2ToFragmentSignup3(
                 UserModel(
                     email = args.userInfo.email,
-                    name = nameText,
+                    name = binding.nameEt.text.toString(),
                     bio = null,
-                    sex = sexText,
-                    phone = phoneText,
+                    sex = binding.sexSp.selectedItem.toString(),
+                    phone = binding.phoneEt.text.toString(),
                     birthDate = args.userInfo.birthDate,
                     photo_uri = null
                 )
@@ -73,5 +68,18 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
             DatePickerDialog(requireContext(), listener, cal.get(Calendar.YEAR),
                                 cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }
+    }
+
+    private fun checkFields(): Boolean{
+        if (binding.nameEt.text.isEmpty() ||
+            binding.phoneEt.text.isEmpty() ||
+            binding.birthdayTv.text.isEmpty()){
+
+            Toast.makeText(context, "Preencha todos os campos.", Toast.LENGTH_SHORT).show()
+
+            return false
+        }
+
+        return true
     }
 }
