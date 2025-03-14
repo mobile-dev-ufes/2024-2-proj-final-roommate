@@ -4,8 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.data.repository.AdRepository
+import com.example.roommate.utils.userManager
 
-class FeedViewModel: ViewModel() {
+class MyAdsViewModel: ViewModel() {
     private val adRepository = AdRepository()
 
     private var adList = MutableLiveData<MutableList<AdModel>>()
@@ -15,7 +16,6 @@ class FeedViewModel: ViewModel() {
     }
 
     fun getAds() {
-        adRepository.getAllAds(adList)
+        adRepository.getAdsByUser(userManager.user.email!!, adList)
     }
-
 }

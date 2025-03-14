@@ -33,4 +33,29 @@ class AdRepository {
                 Log.d(TAG, "Error getting Ad documents: ", exception)
             }
     }
+
+    fun getAdsByUser(userId: String, liveData: MutableLiveData<MutableList<AdModel>>) {
+        val adList = mutableListOf<AdModel>()
+
+        db.collection("advertisement")
+            .whereEqualTo("owner", userId)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    adList.add(
+                        AdModel(
+                            description = document.getString("title")!!,
+                            price = document.getDouble("price")!!,
+                            local = document.getString("city")!!,
+                        )
+                    )
+                    Log.d("FIREBASE-MYADS", "${document.id} => ${document.data}")
+                }
+                Log.d("TESTE", "hello")
+                liveData.value = adList
+            }
+            .addOnFailureListener { exception ->
+                Log.d("FIREBASE-MYADS", "Error getting Ad documents: ", exception)
+            }
+    }
 }

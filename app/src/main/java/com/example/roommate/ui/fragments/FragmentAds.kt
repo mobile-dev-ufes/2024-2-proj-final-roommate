@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
-import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentAdsBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
-import com.example.roommate.utils.statusEnum
 import com.example.roommate.viewModel.FeedViewModel
 import com.example.roommate.viewModel.UserViewModel
 
@@ -22,7 +19,6 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
     private lateinit var adapter: ListAdAdapter
 
     private lateinit var adsVM: FeedViewModel
-    private lateinit var userVM: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,

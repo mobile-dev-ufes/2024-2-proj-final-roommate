@@ -17,6 +17,7 @@ class UserRepository {
         val birthDate = Date.from(user.birthDate!!.atStartOfDay(ZoneId.systemDefault()).toInstant())
 
         val userMap = hashMapOf(
+            "email" to user.email,
             "name" to user.name,
             "bio" to user.bio,
             "sex" to user.sex,

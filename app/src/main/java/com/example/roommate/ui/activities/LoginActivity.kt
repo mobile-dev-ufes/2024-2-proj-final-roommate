@@ -41,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setObserver() {
         userVM.getCurrentUser().observe(this) { currentUser ->
+            // Tratamento se o usuário existe será feito em authenticate
             userManager.user = UserModel(
                 email = currentUser.email,
                 name = currentUser.name,
@@ -61,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkFields(): Boolean {
-        if (binding.emailEt.text.isEmpty() || binding.emailEt.text.isEmpty()) {
+        if (binding.emailEt.text.isEmpty() || binding.passEt.text.isEmpty()) {
             Toast.makeText(
                 this,
                 "Preencha todos os campos",
