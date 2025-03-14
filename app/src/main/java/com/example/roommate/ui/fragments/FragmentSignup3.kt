@@ -72,13 +72,13 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
             when (status) {
                 statusEnum.SUCCESS -> Toast.makeText(
                     requireContext(),
-                    "Usuário cadastrado com sucesso!",
+                    "Cadastro realizado com sucesso!",
                     Toast.LENGTH_SHORT
                 ).show()
 
                 statusEnum.FAIL -> Toast.makeText(
                     requireContext(),
-                    "Erro ao cadastrar usuário!",
+                    "Ocorreu um erro! Tente novamente.",
                     Toast.LENGTH_SHORT
                 ).show()
 

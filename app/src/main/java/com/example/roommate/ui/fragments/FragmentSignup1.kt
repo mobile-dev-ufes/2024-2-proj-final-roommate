@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
@@ -14,9 +15,7 @@ class FragmentSignup1 : Fragment(R.layout.fragment_signup1), View.OnClickListene
     private lateinit var binding: FragmentSignup1Binding
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
@@ -32,7 +31,7 @@ class FragmentSignup1 : Fragment(R.layout.fragment_signup1), View.OnClickListene
     }
 
     override fun onClick(view: View) {
-        if (view.id == R.id.signup1_go_btn) {
+        if (view.id == R.id.signup1_go_btn && checkFields()) {
             val email = binding.emailEt.text.toString()
 
             val action = FragmentSignup1Directions.actionFragmentSignup1ToFragmentSignup2(
@@ -48,5 +47,27 @@ class FragmentSignup1 : Fragment(R.layout.fragment_signup1), View.OnClickListene
             )
             findNavController().navigate(action)
         }
+    }
+
+    private fun checkFields(): Boolean{
+        if (binding.emailEt.text.isEmpty() ||
+            binding.confirmEmailEt.text.isEmpty() ||
+            binding.passEt.text.isEmpty() ||
+            binding.confirmPassEt.text.isEmpty()) {
+
+            Toast.makeText(context, "Preencha todos os campos.", Toast.LENGTH_SHORT).show()
+
+            return false
+        }
+        if (binding.emailEt.text.toString() != binding.confirmEmailEt.text.toString()){
+            Toast.makeText(context, "Os e-mails não coincidem.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (binding.passEt.text.toString() != binding.confirmPassEt.text.toString()){
+            Toast.makeText(context, "As senhas não coincidem.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
     }
 }
