@@ -34,7 +34,8 @@ class GroupViewModel : ViewModel() {
                             document?.let {
                                 val name = it.getString("name") ?: ""
                                 val bio = it.getString("bio") ?: ""
-                                userList.add(UserModel(name, bio))
+                                val phone = it.getString("phone") ?: ""
+                                userList.add(UserModel(name, bio, phone))
                                 println("Usuário carregado: $name")
                             }
                         }.addOnCompleteListener {

@@ -13,8 +13,10 @@ class UserModel(
     var age: Int?,
     var sex: SexEnum?,
     var birthDate: LocalDate?,
-    var photo_uri: String?
-) {
+    var photo_uri: String?,
+    var phone: String?
+): Serializable {
 
-    constructor(name: String, bio: String) : this(name, bio, null, null, null, null)
+    constructor(name: String, bio: String) : this(name, bio, null, null, null, null, null)
+    constructor(name: String, bio: String, phone: String) : this(name, bio, null, null, null, null, phone)
 }

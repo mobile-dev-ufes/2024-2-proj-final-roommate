@@ -10,15 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
-import com.example.roommate.data.model.AdModel
 import com.example.roommate.data.model.GroupModel
-import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.FragmentGroupBinding
 import com.example.roommate.ui.adapters.ListMemberAdapter
 import com.example.roommate.ui.viewModels.GroupViewModel
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
 
 class FragmentGroup : Fragment(R.layout.fragment_group) {
     private lateinit var binding: FragmentGroupBinding
@@ -38,7 +33,10 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
         argsGroup = arguments?.getSerializable("group") as? GroupModel
 
         adapter = ListMemberAdapter { user ->
-            findNavController().navigate(R.id.action_fragmentGroup_to_fragmentVisitProfile)
+            val bundle = Bundle().apply {
+                putSerializable("user", user)  // Passing GroupModel to FragmentGroup
+            }
+            findNavController().navigate(R.id.action_fragmentGroup_to_fragmentVisitProfile, bundle)
         }
 
         return binding.root
