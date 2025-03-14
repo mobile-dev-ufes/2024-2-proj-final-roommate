@@ -47,23 +47,22 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
         super.onViewCreated(view, savedInstanceState)
 
         setObserver()
-        bindUserInfo()
+        setUserInfo()
+
         binding.finishSignupBtn.setOnClickListener(this)
     }
 
     override fun onClick(view: View){
-        signUpVM.registerUser(args.userInfo)
-
         if(view.id == R.id.finish_signup_btn){
+            signUpVM.registerUser(args.userInfo)
             startActivity(Intent(requireContext(), LoginActivity::class.java))
             requireActivity().finish()
         }
     }
 
-    private fun bindUserInfo(){
-        binding.usernameTv.text = args.userInfo.name
-        binding.userPhoneTv.text = args.userInfo.phone
-        binding.userBioTv.text = getString(R.string.bio_default)
+    private fun setUserInfo(){
+        binding.usernameEt.setText(args.userInfo.name)
+        binding.userPhoneEt.setText(args.userInfo.phone)
     }
 
     private fun setObserver(){
