@@ -1,16 +1,20 @@
 package com.example.roommate.ui.fragments
 
+import android.app.DatePickerDialog
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.roommate.R
 import com.example.roommate.data.model.UserModel
-import com.example.roommate.databinding.FragmentSignup1Binding
 import com.example.roommate.databinding.FragmentSignup2Binding
+import java.time.LocalDate
+import java.util.Date
 
 class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListener {
     private lateinit var binding: FragmentSignup2Binding
@@ -24,12 +28,15 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentSignup2Binding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.signup2GoBtn.setOnClickListener(this)
+        binding.birthdayTv.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -38,7 +45,6 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
             // TODO Acertar os tipos e modularizar
             val nameText = binding.nameEt.text.toString()
             val phoneText = binding.phoneEt.text.toString()
-            val birthdayText = binding.birthdayEt.text.toString()
             val sexText = binding.sexSp.selectedItem.toString()
 
             val action = FragmentSignup2Directions.actionFragmentSignup2ToFragmentSignup3(
@@ -46,14 +52,26 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
                     email = args.userInfo.email,
                     name = nameText,
                     bio = null,
-                    age = null,
                     sex = sexText,
                     phone = phoneText,
-                    birthDate = birthdayText,
+                    birthDate = args.userInfo.birthDate,
                     photo_uri = null
                 )
             )
             findNavController().navigate(action)
+
+        } else if(view.id == R.id.birthday_tv){
+            val listener =
+                DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                    args.userInfo.birthDate = LocalDate.of(year, month + 1, dayOfMonth)
+
+                    val textData = "$dayOfMonth/${month + 1}/$year"
+                    binding.birthdayTv.text = textData
+                }
+
+            val cal = Calendar.getInstance()
+            DatePickerDialog(requireContext(), listener, cal.get(Calendar.YEAR),
+                                cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }
     }
 }

@@ -96,16 +96,17 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/birthday_et"
+        <TextView
+            android:id="@+id/birthday_tv"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
             android:autofillHints="Data de nascimento"
             android:background="@drawable/text_box_shape"
             android:hint="@string/birth_date_hint"
-            android:inputType="phone"
             android:padding="7dp"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
             android:textColor="@color/gray" />
 
         <View

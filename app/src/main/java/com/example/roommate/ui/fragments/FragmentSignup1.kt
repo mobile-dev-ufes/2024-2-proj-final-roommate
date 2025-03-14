@@ -40,7 +40,6 @@ class FragmentSignup1 : Fragment(R.layout.fragment_signup1), View.OnClickListene
                     email = email,
                     name = null,
                     bio = null,
-                    age = null,
                     sex = null,
                     phone = null,
                     birthDate = null,
