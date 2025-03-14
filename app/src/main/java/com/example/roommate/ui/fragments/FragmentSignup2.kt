@@ -34,10 +34,12 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
 
     override fun onClick(view: View) {
         if (view.id == R.id.signup2_go_btn) {
+
             // TODO Acertar os tipos e modularizar
             val nameText = binding.nameEt.text.toString()
             val phoneText = binding.phoneEt.text.toString()
             val birthdayText = binding.birthdayEt.text.toString()
+            val sexText = binding.sexSp.selectedItem.toString()
 
             val action = FragmentSignup2Directions.actionFragmentSignup2ToFragmentSignup3(
                 UserModel(
@@ -45,7 +47,7 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
                     name = nameText,
                     bio = null,
                     age = null,
-                    sex = null,
+                    sex = sexText,
                     phone = phoneText,
                     birthDate = birthdayText,
                     photo_uri = null

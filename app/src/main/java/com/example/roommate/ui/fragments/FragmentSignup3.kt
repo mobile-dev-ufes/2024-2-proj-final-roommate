@@ -24,7 +24,7 @@ import com.example.roommate.utils.statusEnum
 import com.example.roommate.viewModel.SignUpViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 
-class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListener{
+class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListener {
     private lateinit var binding: FragmentSignup3Binding
     private lateinit var signUpVM: SignUpViewModel
 
@@ -52,24 +52,36 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
         binding.finishSignupBtn.setOnClickListener(this)
     }
 
-    override fun onClick(view: View){
-        if(view.id == R.id.finish_signup_btn){
+    override fun onClick(view: View) {
+        if (view.id == R.id.finish_signup_btn) {
+            args.userInfo.bio = binding.userBioEt.text.toString()
             signUpVM.registerUser(args.userInfo)
+
             startActivity(Intent(requireContext(), LoginActivity::class.java))
             requireActivity().finish()
         }
     }
 
-    private fun setUserInfo(){
+    private fun setUserInfo() {
         binding.usernameEt.setText(args.userInfo.name)
         binding.userPhoneEt.setText(args.userInfo.phone)
     }
 
-    private fun setObserver(){
+    private fun setObserver() {
         signUpVM.isRegistered().observe(viewLifecycleOwner) { status ->
-            when(status) {
-                statusEnum.SUCCESS -> Toast.makeText(requireContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
-                statusEnum.FAIL -> Toast.makeText(requireContext(), "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show()
+            when (status) {
+                statusEnum.SUCCESS -> Toast.makeText(
+                    requireContext(),
+                    "Usuário cadastrado com sucesso!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                statusEnum.FAIL -> Toast.makeText(
+                    requireContext(),
+                    "Erro ao cadastrar usuário!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
                 else -> UInt
             }
         }

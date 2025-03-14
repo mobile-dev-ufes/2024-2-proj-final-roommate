@@ -81,11 +81,12 @@
 
         <Spinner
             android:id="@+id/sex_sp"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/text_box_shape"
-            android:entries="@array/sex_array" />
+            android:entries="@array/sex_array"
+            android:theme="@style/CustomSpinnerStyle"
+            />
 
         <TextView
             android:layout_width="wrap_content"
