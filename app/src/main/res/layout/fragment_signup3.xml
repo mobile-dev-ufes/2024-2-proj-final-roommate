@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient1"
@@ -10,7 +11,7 @@
         android:id="@+id/profile_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
         android:src="@drawable/profile_image"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,21 +69,19 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/username_tv"
+            <EditText
+                android:id="@+id/username_et"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:autofillHints="name"
+                android:backgroundTint="@color/blue3"
+                android:inputType="text"
                 android:text="@string/username"
                 android:textColor="@color/black"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="LabelFor" />
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon" />
     </LinearLayout>
 
     <LinearLayout
@@ -118,21 +117,19 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/user_phone_tv"
+            <EditText
+                android:id="@+id/user_phone_et"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:autofillHints="phone"
+                android:backgroundTint="@color/blue3"
+                android:inputType="phone"
                 android:text="@string/user_phone_profile"
                 android:textColor="@color/black"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="LabelFor" />
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon" />
     </LinearLayout>
 
     <LinearLayout
@@ -168,21 +165,19 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/user_bio_tv"
+            <EditText
+                android:id="@+id/user_bio_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/user_bio_profile"
+                android:autofillHints=""
+                android:backgroundTint="@color/blue3"
+                android:inputType="textMultiLine"
+                android:text="@string/bio_default"
                 android:textColor="@color/black"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="LabelFor" />
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:contentDescription="@string/user_icon_description"
-            android:src="@drawable/pencil_icon" />
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -197,7 +192,7 @@
         android:text="@string/finish_signup"
         android:textColor="@color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,8 @@
             android:background="@drawable/text_box_shape"
             android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,7 +63,8 @@
             android:background="@drawable/text_box_shape"
             android:hint="@string/password_hint"
             android:inputType="textEmailAddress"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
