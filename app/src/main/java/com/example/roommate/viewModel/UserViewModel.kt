@@ -9,7 +9,7 @@ import com.example.roommate.utils.statusEnum
 class UserViewModel: ViewModel() {
     private var currentUser = MutableLiveData<UserModel>()
     private val userRepository = UserRepository()
-    private var status: MutableLiveData<statusEnum> = userRepository.status
+    private var status = MutableLiveData<statusEnum>(statusEnum.NIL)
 
     fun isRegistered() : MutableLiveData<statusEnum>{
         return status
@@ -17,10 +17,12 @@ class UserViewModel: ViewModel() {
 
     fun registerUser(user: UserModel){
         currentUser.value = user
-        userRepository.create(user)
+        userRepository.create(user).observeForever { result ->
+            status.value = result
+        }
     }
 
-    fun getUser(userEmail: String): UserModel{
-        return userRepository.get(userEmail)
-    }
+//    fun getUser(userEmail: String): UserModel{
+//        return userRepository.get(userEmail)
+//    }
 }
