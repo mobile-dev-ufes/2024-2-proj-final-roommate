@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.roommate.data.model.GroupModel
+import com.example.roommate.data.model.UserModel
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -12,6 +13,44 @@ class GroupViewModel : ViewModel() {
 
     private val _groups = MutableLiveData<List<GroupModel>>()
     val groups: LiveData<List<GroupModel>> = _groups
+
+    private val _members = MutableLiveData<List<UserModel>>()
+    val members: LiveData<List<UserModel>> = _members
+
+    fun getMembersFromGroup(groupId: String) {
+        db.collection("group").document(groupId)
+            .get()
+            .addOnSuccessListener { argsGroup ->
+                val usersRefs = argsGroup.get("users") as? List<DocumentReference> ?: emptyList()
+                val userList = mutableListOf<UserModel>()
+                var count = 0
+                val qttUsers = usersRefs.size
+
+                if (qttUsers == 0) {
+                    _members.postValue(emptyList())
+                } else {
+                    usersRefs.forEach { userRef ->
+                        userRef.get().addOnSuccessListener { document ->
+                            document?.let {
+                                val name = it.getString("name") ?: ""
+                                val bio = it.getString("bio") ?: ""
+                                userList.add(UserModel(name, bio))
+                                println("Usuário carregado: $name")
+                            }
+                        }.addOnCompleteListener {
+                            count++
+                            if (count == qttUsers) {
+                                _members.postValue(userList)
+                                println("Todos os usuários carregados.")
+                            }
+                        }
+                    }
+                }
+            }.addOnFailureListener {
+                println("Erro ao buscar grupo: ${it.message}")
+            }
+    }
+
 
     fun fetchUserGroups(userId: String) {
         val userRef: DocumentReference = db.collection("user").document(userId)
@@ -38,7 +77,7 @@ class GroupViewModel : ViewModel() {
                     val qttMembers = userRefsList.size
 
                     // Create the GroupModel with the list of DocumentReference
-                    groupList.add(GroupModel(name, description, qttMembers, qttNotifications, userRefsList))
+                    groupList.add(GroupModel(id, name, description, qttMembers, qttNotifications, userRefsList))
                 }
 
                 _groups.postValue(groupList)

@@ -19,7 +19,7 @@ import com.google.firebase.firestore.firestore
 class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
     private lateinit var binding: FragmentMyGroupsBinding
     private lateinit var adapter: ListMyGroupAdapter
-    private val viewModel: GroupViewModel by viewModels()
+    private val groupViewModel: GroupViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,12 +45,12 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
         binding.recycleListGroups.layoutManager = LinearLayoutManager(context)
         binding.recycleListGroups.adapter = adapter
 
-        viewModel.fetchUserGroups("daniel@gmail.com")
+        groupViewModel.fetchUserGroups("daniel@gmail.com")
         observerGroups()
     }
 
     private fun observerGroups() {
-        viewModel.groups.observe(viewLifecycleOwner) { groups ->
+        groupViewModel.groups.observe(viewLifecycleOwner) { groups ->
             adapter.updateGroupList(groups.toMutableList())
         }
     }
