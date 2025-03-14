@@ -119,6 +119,7 @@
     <string name="profile">Perfil</string>
     <string name="feed">Feed</string>
     <string name="show_members_qtt">Members: %1$s</string>
+    <string name="bio_default">Olá! Estou usando o RoomMate!</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>

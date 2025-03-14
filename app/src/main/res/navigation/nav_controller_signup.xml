@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_fragmentSignup2_to_fragmentSignup1"
             app:destination="@id/fragmentSignup1" />
+        <argument
+            android:name="userInfo"
+            app:argType="com.example.roommate.data.model.UserModel" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSignup3"
@@ -37,6 +40,9 @@
         <action
             android:id="@+id/action_fragmentSignup3_to_loginActivity"
             app:destination="@id/loginActivity" />
+        <argument
+            android:name="userInfo"
+            app:argType="com.example.roommate.data.model.UserModel" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"
