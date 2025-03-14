@@ -2,21 +2,18 @@ package com.example.roommate.data.model
 
 import java.io.Serializable
 import java.time.LocalDate
-
-enum class SexEnum: Serializable {
-    MALE, FEMALE, OTHER, UNIDENTIFIED
-}
+import java.util.Date
 
 class UserModel(
-    var name: String,
-    var bio: String,
-    var age: Int?,
-    var sex: SexEnum?,
+    var email: String?,
+    var name: String?,
+    var bio: String?,
+    var sex: String?,         //   var sex: SexEnum?,
+    var phone: String?,
     var birthDate: LocalDate?,
-    var photo_uri: String?,
-    var phone: String?
+    var photo_uri: String?
 ): Serializable {
 
-    constructor(name: String, bio: String) : this(name, bio, null, null, null, null, null)
-    constructor(name: String, bio: String, phone: String) : this(name, bio, null, null, null, null, phone)
+    constructor(name: String, bio: String?) : this(null, name, bio, null, null, null, null)
+    constructor(name: String, bio: String, phone: String) : this(null, name, bio, null, phone, null, null)
 }

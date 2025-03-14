@@ -1,5 +1,6 @@
 package com.example.roommate.ui.viewModels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,17 @@ class GroupViewModel : ViewModel() {
 
     private val _members = MutableLiveData<List<UserModel>>()
     val members: LiveData<List<UserModel>> = _members
+
+    fun registerGroup(group: GroupModel) {
+        db.collection("group")
+            .add(group)
+            .addOnSuccessListener { documentReference ->
+                Log.d("RegisterGroup", "Group added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w("RegisterGroup", "Error adding group", e)
+            }
+    }
 
     fun getMembersFromGroup(groupId: String) {
         db.collection("group").document(groupId)
@@ -77,8 +89,23 @@ class GroupViewModel : ViewModel() {
                     val userRefsList = usersRef.mapNotNull { it as? DocumentReference }
                     val qttMembers = userRefsList.size
 
-                    // Create the GroupModel with the list of DocumentReference
-                    groupList.add(GroupModel(id, name, description, qttMembers, qttNotifications, userRefsList))
+                    val advertisementId = document.getDocumentReference("advertisementId")
+
+                    if (advertisementId == null) {
+                        println("ERROR: on fetch group")
+                    } else {
+                        groupList.add(
+                            GroupModel(
+                                id,
+                                name,
+                                description,
+                                qttMembers,
+                                qttNotifications,
+                                userRefsList,
+                                advertisementId
+                            )
+                        )
+                    }
                 }
 
                 _groups.postValue(groupList)

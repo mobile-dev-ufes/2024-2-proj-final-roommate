@@ -135,7 +135,11 @@
         android:id="@+id/dialogCreateGroup"
         android:name="com.example.roommate.ui.fragments.DialogCreateGroup"
         android:label="DialogCreateGroup"
-        tools:layout="@layout/dialog_create_group"/>
+        tools:layout="@layout/dialog_create_group">
+        <action
+            android:id="@+id/action_dialogCreateGroup_to_fragmentInterestedGroups"
+            app:destination="@id/fragmentInterestedGroups" />
+    </dialog>
 
 
 </navigation>
