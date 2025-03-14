@@ -48,7 +48,7 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
                     name = binding.nameEt.text.toString(),
                     bio = null,
                     sex = binding.sexSp.selectedItem.toString(),
-                    phone = binding.phoneEt.text.toString(),
+                    phone = binding.phoneEt.masked.toString(),
                     birthDate = args.userInfo.birthDate,
                     photo_uri = null
                 )
@@ -72,14 +72,13 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
 
     private fun checkFields(): Boolean{
         if (binding.nameEt.text.isEmpty() ||
-            binding.phoneEt.text.isEmpty() ||
+            binding.phoneEt.masked.isEmpty() ||
             binding.birthdayTv.text.isEmpty()){
 
             Toast.makeText(context, "Preencha todos os campos.", Toast.LENGTH_SHORT).show()
 
             return false
         }
-
         return true
     }
 }
