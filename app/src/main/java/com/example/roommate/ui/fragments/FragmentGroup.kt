@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
 import com.example.roommate.data.model.GroupModel
@@ -18,8 +19,8 @@ import com.example.roommate.ui.viewModels.GroupViewModel
 class FragmentGroup : Fragment(R.layout.fragment_group) {
     private lateinit var binding: FragmentGroupBinding
     private lateinit var adapter: ListMemberAdapter
-    private var argsGroup: GroupModel? = null
     private val groupViewModel: GroupViewModel by viewModels()
+    private val args: FragmentGroupArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,15 +31,11 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
 
         binding = FragmentGroupBinding.inflate(inflater, container, false)
 
-        argsGroup = arguments?.getSerializable("group") as? GroupModel
-
         adapter = ListMemberAdapter { user ->
-            val bundle = Bundle().apply {
-                putSerializable("user", user)  // Passing GroupModel to FragmentGroup
-            }
-            findNavController().navigate(R.id.action_fragmentGroup_to_fragmentVisitProfile, bundle)
+            val action = FragmentGroupDirections
+                .actionFragmentGroupToFragmentVisitProfile(user) // ✅ Use Safe Args
+            findNavController().navigate(action)
         }
-
         return binding.root
     }
 
@@ -48,15 +45,13 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
         binding.recycleListAds.layoutManager = LinearLayoutManager(context)
         binding.recycleListAds.adapter = adapter
 
-        argsGroup?.let { group ->
-            binding.groupNameTv.text = group.name
-            binding.groupDescriptionTv.text = group.description
-            binding.groupQttMembersTv.text = getString(R.string.show_members_qtt, group.qttMembers.toString())
+        val argsGroup = args.group
 
-            groupViewModel.getMembersFromGroup(group.id)
-        } ?: run {
-            Toast.makeText(context, "Error loading group data", Toast.LENGTH_SHORT).show()
-        }
+        binding.groupNameTv.text = argsGroup.name
+        binding.groupDescriptionTv.text = argsGroup.description
+        binding.groupQttMembersTv.text = getString(R.string.show_members_qtt, argsGroup.qttMembers.toString())
+
+        groupViewModel.getMembersFromGroup(argsGroup.id)
 
         observerGroups()
     }
