@@ -48,7 +48,8 @@
             android:background="@drawable/text_box_shape"
             android:hint="@string/name_hint"
             android:inputType="text"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textColor="@color/gray" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -67,7 +68,8 @@
             android:background="@drawable/text_box_shape"
             android:hint="@string/phone_hint"
             android:inputType="phone"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textColor="@color/gray" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,7 +104,8 @@
             android:background="@drawable/text_box_shape"
             android:hint="@string/birth_date_hint"
             android:inputType="phone"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textColor="@color/gray" />
 
         <View
             android:layout_width="match_parent"
