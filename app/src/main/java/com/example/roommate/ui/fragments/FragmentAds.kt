@@ -44,8 +44,8 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adsVM.getAds()
         setObserver()
+        adsVM.getAds()
 
         binding.createAdBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)

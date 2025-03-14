@@ -13,14 +13,8 @@ import java.util.Date
 class UserRepository {
     private val db = FirebaseFirestore.getInstance()
 
-    fun create(user: UserModel) : MutableLiveData<statusEnum>{
-        val status = MutableLiveData<statusEnum>()
-
-        status.value = statusEnum.NIL
-
+    fun create(user: UserModel, status : MutableLiveData<statusEnum>){
         val birthDate = Date.from(user.birthDate!!.atStartOfDay(ZoneId.systemDefault()).toInstant())
-
-        val db = FirebaseFirestore.getInstance()
 
         val userMap = hashMapOf(
             "name" to user.name,
@@ -39,8 +33,6 @@ class UserRepository {
             .addOnFailureListener {
                 status.value = statusEnum.FAIL
             }
-
-        return status
     }
 
 //    fun get(userEmail: String) : UserModel {

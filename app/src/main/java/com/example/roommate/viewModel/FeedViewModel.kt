@@ -16,7 +16,7 @@ class FeedViewModel: ViewModel() {
     }
 
     fun getAds() {
-        adList = adRepository.getAllAds()
+        adRepository.getAllAds(adList)
     }
 
 }

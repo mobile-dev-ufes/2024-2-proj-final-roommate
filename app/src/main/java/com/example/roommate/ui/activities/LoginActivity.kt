@@ -7,7 +7,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.ActivityLoginBinding
 import com.example.roommate.utils.userManager
-import com.example.roommate.viewModel.UserViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 

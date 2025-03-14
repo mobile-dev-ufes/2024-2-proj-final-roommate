@@ -48,8 +48,7 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
             args.userInfo.bio = binding.userBioEt.text.toString()
             signUpVM.registerUser(args.userInfo)
 
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-            requireActivity().finish()
+            navigate()
         }
     }
 
@@ -61,20 +60,31 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
     private fun setObserver() {
         signUpVM.isRegistered().observe(viewLifecycleOwner) { status ->
             when (status) {
-                statusEnum.SUCCESS -> Toast.makeText(
-                    requireContext(),
-                    "Cadastro realizado com sucesso!",
-                    Toast.LENGTH_SHORT
-                ).show()
+                statusEnum.SUCCESS -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Cadastro realizado com sucesso!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigate()
+                }
 
-                statusEnum.FAIL -> Toast.makeText(
-                    requireContext(),
-                    "Ocorreu um erro! Tente novamente.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                statusEnum.FAIL -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocorreu um erro! Tente novamente.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigate()
+                }
 
                 else -> UInt
             }
         }
+    }
+
+    private fun navigate(){
+        startActivity(Intent(requireContext(), LoginActivity::class.java))
+        requireActivity().finish()
     }
 }

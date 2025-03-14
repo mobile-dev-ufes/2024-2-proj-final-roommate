@@ -12,9 +12,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 class AdRepository {
     private val db = FirebaseFirestore.getInstance()
 
-    fun getAllAds(): MutableLiveData<MutableList<AdModel>> {
+    fun getAllAds(liveData: MutableLiveData<MutableList<AdModel>>) {
         val adList = mutableListOf<AdModel>()
-        val liveData = MutableLiveData<MutableList<AdModel>>()
 
         db.collection("advertisement")
             .get()
@@ -33,7 +32,5 @@ class AdRepository {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting Ad documents: ", exception)
             }
-
-        return liveData
     }
 }

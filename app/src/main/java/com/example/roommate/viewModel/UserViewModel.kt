@@ -17,12 +17,12 @@ class UserViewModel: ViewModel() {
 
     fun registerUser(user: UserModel){
         currentUser.value = user
-        userRepository.create(user).observeForever { result ->
-            status.value = result
-        }
+        userRepository.create(user, status)
     }
 
 //    fun getUser(userEmail: String): UserModel{
-//        return userRepository.get(userEmail)
+//        userRepository.get(userEmail).observeForever { result ->
+//            status.value = result
+//        }
 //    }
 }
