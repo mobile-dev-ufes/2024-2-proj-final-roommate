@@ -20,7 +20,7 @@ import com.google.firebase.firestore.firestore
 class FragmentGroup : Fragment(R.layout.fragment_group) {
     private lateinit var binding: FragmentGroupBinding
     private lateinit var adapter: ListMemberAdapter
-    private var group: GroupModel? = null
+    private var argsGroup: GroupModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +31,7 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
 
         binding = FragmentGroupBinding.inflate(inflater, container, false)
 
-        group = arguments?.getSerializable("group") as? GroupModel
+        argsGroup = arguments?.getSerializable("group") as? GroupModel
 
         adapter = ListMemberAdapter { user ->  // Corrected: Using ListMemberAdapter
             findNavController().navigate(R.id.action_fragmentGroup_to_fragmentVisitProfile)
@@ -46,15 +46,42 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
         binding.recycleListAds.layoutManager = LinearLayoutManager(context)
         binding.recycleListAds.adapter = adapter
 
-        binding.groupNameTv.text = group?.name
-        binding.groupDescriptionTv.text = group?.description
-        binding.groupQttMembersTv.text = "Members: ${group?.qttMembers}"  // Display members count
+        binding.groupNameTv.text = argsGroup?.name
+        binding.groupDescriptionTv.text = argsGroup?.description
+        binding.groupQttMembersTv.text = "Members: ${argsGroup?.qttMembers}"  // Display members count
 
-        // Apenas para testar o Recycle View
-        adapter.insertMemberList(UserModel("Daniel1", "A vida é bela1"))
-        adapter.insertMemberList(UserModel("Daniel2", "A vida é bela2"))
-        adapter.insertMemberList(UserModel("Daniel3", "A vida é bela3"))
+        ///////////////// Get List of Users /////////////////////////////////
+        val listaUsuarios = mutableListOf<UserModel>()
+        val db = FirebaseFirestore.getInstance()
 
+        var contagem = 0
+        val totalUsuarios = argsGroup?.users?.size ?: 0
+
+        argsGroup?.users?.forEach { userRef ->
+            userRef.get().addOnSuccessListener { document ->
+                document?.let {
+                    val name = it.getString("name") ?: ""
+                    val bio = it.getString("bio") ?: ""
+
+                    val user = UserModel(name, bio)
+                    listaUsuarios.add(user)
+
+                    // Exibe o nome do usuário carregado
+                    println("Usuário carregado: $name")
+                }
+
+                contagem++
+                if (contagem == totalUsuarios) {
+                    adapter.updateMemberList(listaUsuarios)
+                    println("Todos os usuários carregados.")
+                }
+            }.addOnFailureListener {
+                contagem++
+                if (contagem == totalUsuarios) {
+                    println("Falha ao carregar alguns usuários.")
+                }
+            }
+        }
     }
 
 
