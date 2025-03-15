@@ -121,6 +121,7 @@
     <string name="show_members_qtt">Members: %1$s</string>
     <string name="bio_default">Olá! Estou usando o RoomMate!</string>
     <string name="bedrooms">Quartos</string>
+    <string name="parking_hint">Insira a quantidade de vagas</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>

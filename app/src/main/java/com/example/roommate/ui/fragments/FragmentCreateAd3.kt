@@ -68,6 +68,7 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
             local = args.adInfo.local,
             bedroom_qtt = binding.bedroomEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
             suite_qtt = binding.suitesEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
+            parking_qtt = binding.parkingEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
             area = binding.areaEt.text.toString().takeIf { it.isNotEmpty() }?.toDouble() ?: 0.0,
             benefits = benefits,
             groups = arrayOf()

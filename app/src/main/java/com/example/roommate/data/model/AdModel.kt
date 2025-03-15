@@ -42,6 +42,7 @@ class AdModel(
     var local: Address?,
     var suite_qtt: Long?,
     var bedroom_qtt: Long?,
+    var parking_qtt: Long?,
     var area: Double?,
     var benefits: Map<String, Boolean>? =  mapOf(
         "ladies" to false,
@@ -80,6 +81,7 @@ class AdModel(
             "local" to local?.toMap(),
             "suite_qtt" to suite_qtt,
             "bedroom_qtt" to bedroom_qtt,
+            "parking_qtt" to parking_qtt,
             "area" to area,
             "benefits" to benefits,
             "groups" to groups.toList(),

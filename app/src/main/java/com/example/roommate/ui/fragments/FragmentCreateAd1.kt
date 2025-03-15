@@ -48,6 +48,7 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
             description = binding.descriptionEt.text.toString(),
             suite_qtt = null,
             bedroom_qtt = null,
+            parking_qtt = null,
             area = null,
             local = null,
             groups = arrayOf()

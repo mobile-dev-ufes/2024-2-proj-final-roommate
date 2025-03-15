@@ -73,7 +73,7 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         binding.suitesTv.text = args.adInfo.suite_qtt.toString()
         binding.areaTv.text = args.adInfo.area.toString()
         binding.clientsTv.text = args.adInfo.max_client.toString()
-        // binding.parkingTv.text = args.adInfo..toString()
+        binding.parkingTv.text = args.adInfo.parking_qtt.toString()
     }
 
     private fun goToMap() {

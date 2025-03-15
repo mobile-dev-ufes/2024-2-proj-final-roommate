@@ -89,6 +89,7 @@ class AdRepository {
             description = document.getString("description"),
             suite_qtt = document.getLong("suite_qtt"),
             bedroom_qtt = document.getLong("bedroom_qtt"),
+            parking_qtt = document.getLong("parking_qtt"),
             area = document.getDouble("area"),
             benefits = benefits,
             local = local,

@@ -58,6 +58,7 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
             local = address,
             suite_qtt = null,
             bedroom_qtt = null,
+            parking_qtt = null,
             area = null,
             groups = arrayOf()
         )
