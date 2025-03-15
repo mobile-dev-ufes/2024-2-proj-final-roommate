@@ -6,10 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.data.model.Address
 import com.example.roommate.utils.statusEnum
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
-import java.io.Serializable
 
 class AdRepository {
     private val db = FirebaseFirestore.getInstance()

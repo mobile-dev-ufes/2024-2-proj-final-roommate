@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
-import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.FragmentGroupBinding
 import com.example.roommate.ui.adapters.ListMemberAdapter
 import com.example.roommate.ui.viewModels.GroupViewModel

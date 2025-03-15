@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
-import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentMyAdsBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
 import com.example.roommate.viewModel.MyAdsViewModel

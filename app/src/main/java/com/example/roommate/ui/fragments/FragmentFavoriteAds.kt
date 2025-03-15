@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
-import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentFavoriteAdsBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
 

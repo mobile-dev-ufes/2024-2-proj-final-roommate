@@ -12,7 +12,6 @@ import com.example.roommate.R
 import com.example.roommate.databinding.FragmentAdsBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
 import com.example.roommate.viewModel.FeedViewModel
-import com.example.roommate.viewModel.UserViewModel
 
 class FragmentAds : Fragment(R.layout.fragment_ads) {
     private lateinit var binding: FragmentAdsBinding
