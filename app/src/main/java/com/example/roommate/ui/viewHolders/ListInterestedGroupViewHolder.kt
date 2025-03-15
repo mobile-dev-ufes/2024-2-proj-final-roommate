@@ -10,7 +10,10 @@ class ListInterestedGroupViewHolder(private val binding: InterestedGroupsLineBin
         fun bindVH(group: GroupModel){
             binding.groupDescriptionTv.text = group.description
 
+            // Erro: Tem que pegar o tamanho da lista de usuários
             val textQttMembers = "${group.qttMembers} membros"
             binding.groupQttMembersTv.text = textQttMembers
+
+            println(textQttMembers)
         }
 }

@@ -93,6 +93,14 @@
         android:name="com.example.roommate.ui.fragments.FragmentInterestedGroups"
         android:label="Grupos Interessados"
         tools:layout="@layout/fragment_interested_groups">
+        <argument
+            android:name="advertisementId"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="false" />
         <action
             android:id="@+id/action_fragmentInterestedGroups_to_fragmentGroup"
             app:destination="@id/fragmentGroup" />
@@ -145,6 +153,15 @@
         android:name="com.example.roommate.ui.fragments.DialogCreateGroup"
         android:label="DialogCreateGroup"
         tools:layout="@layout/dialog_create_group">
+        <argument
+            android:name="advertisementId"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="false" />
         <action
             android:id="@+id/action_dialogCreateGroup_to_fragmentInterestedGroups"
             app:destination="@id/fragmentInterestedGroups" />

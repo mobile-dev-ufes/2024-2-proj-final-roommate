@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.roommate.R
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.DialogCreateGroupBinding
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
     private lateinit var binding: DialogCreateGroupBinding
     private lateinit var groupViewModel: GroupViewModel
+    private val args: DialogCreateGroupArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,17 +36,13 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Lixo de código apenas pq não foi passado a referência por navegação
-        val db = FirebaseFirestore.getInstance()
-        val advertisementId = "D3KsuvpM8BrDlg8MD5tP"
-        val advertisementRef: DocumentReference = db.collection("group").document(advertisementId)
-
         binding.createGroupBtn.setOnClickListener {
             groupViewModel.registerGroup(
                 GroupModel(
-                    binding.createGroupNameTv.text.toString(),
-                    binding.createGroupDescriptionTv.text.toString(),
-                    advertisementRef
+                    name = binding.createGroupNameTv.text.toString(),
+                    description = binding.createGroupDescriptionTv.text.toString(),
+                    advertisementId = args.advertisementId,
+                    users = listOf(args.userId)
                 )
             )
 

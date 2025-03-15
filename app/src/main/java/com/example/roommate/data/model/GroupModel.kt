@@ -10,8 +10,10 @@ data class GroupModel(
     val description: String,
     val qttMembers: Int,
     val qttNotifications: Int,
-    val users: List<DocumentReference>,
-    val advertisementId: DocumentReference
+    val users: List<String>,
+    val advertisementId: String
 ) : Serializable {
-    constructor(name: String, description: String, advertisementId: DocumentReference) : this("salve", name, description, 0, 0, emptyList<DocumentReference>(), advertisementId)
+    constructor(name: String, description: String, advertisementId: String) : this("salve", name, description, 0, 0, emptyList<String>(), advertisementId)
+    constructor(name: String, description: String, advertisementId: String, qttMembers: Int) : this("salve", name, description, qttMembers, 0, emptyList<String>(), advertisementId)
+    constructor(name: String, description: String, advertisementId: String, users: List<String>) : this("salve", name, description, 1, 0, users, advertisementId)
 }

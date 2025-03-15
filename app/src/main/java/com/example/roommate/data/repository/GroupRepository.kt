@@ -77,14 +77,16 @@ class GroupRepository {
 
                     val qttNotifications = document.getLong("qttNotifications")?.toInt() ?: 0
 
-                    // Get the 'users' field which is a List of DocumentReferences
-                    val usersRef = document.get("users") as? List<*> ?: emptyList<DocumentReference>()
+                    // Get the 'users' field which is a List of Strings
+                    val usersList = document.get("users") as? List<*> ?: emptyList<String>()
 
-                    // Convert the List<*> to List<DocumentReference> safely
-                    val userRefsList = usersRef.mapNotNull { it as? DocumentReference }
-                    val qttMembers = userRefsList.size
+                    // Convert the List<*> to List<String> safely
+                    val userIdsList = usersList.mapNotNull { it as? String }
 
-                    val advertisementId = document.getDocumentReference("advertisementId")
+                    val qttMembers = userIdsList.size
+
+                    val advertisementId = document.getDocumentReference("advertisementId")!!.id
+
 
                     if (advertisementId == null) {
                         println("ERROR: on fetch group")
@@ -96,7 +98,7 @@ class GroupRepository {
                                 description,
                                 qttMembers,
                                 qttNotifications,
-                                userRefsList,
+                                userIdsList,
                                 advertisementId
                             )
                         )

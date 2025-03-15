@@ -1,11 +1,13 @@
 package com.example.roommate.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.InterestedGroupsLineBinding
 import com.example.roommate.ui.viewHolders.ListInterestedGroupViewHolder
+import com.google.firebase.firestore.QuerySnapshot
 
 class ListInterestedGroupAdapter(private val onClickItem: (GroupModel) -> Unit) :
     RecyclerView.Adapter<ListInterestedGroupViewHolder>() {
@@ -22,7 +24,12 @@ class ListInterestedGroupAdapter(private val onClickItem: (GroupModel) -> Unit) 
     }
 
     override fun onBindViewHolder(holder: ListInterestedGroupViewHolder, position: Int) {
-        holder.bindVH(groupList[position])
+        val group = groupList[position]
+        holder.bindVH(group)
+
+        holder.itemView.setOnClickListener {
+            onClickItem(group)  // Pass the group when the item is clicked
+        }
     }
 
     override fun getItemCount(): Int {
@@ -32,5 +39,12 @@ class ListInterestedGroupAdapter(private val onClickItem: (GroupModel) -> Unit) 
     fun insertGroupList(group: GroupModel){
         groupList.add(group)
         notifyItemInserted(groupList.count())
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateGroupList(list: MutableList<GroupModel>) {
+        groupList.clear() // Avoid replacing the reference
+        groupList.addAll(list)
+        notifyDataSetChanged()
     }
 }
