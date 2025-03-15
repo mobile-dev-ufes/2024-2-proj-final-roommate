@@ -2,14 +2,19 @@ package com.example.roommate.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.ViewModelProvider
+import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.ActivityLoginBinding
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.firestore
+import com.example.roommate.utils.statusEnum
+import com.example.roommate.utils.userManager
+import com.example.roommate.viewModel.UserViewModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var userVM: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -17,31 +22,70 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        userVM = ViewModelProvider(this)[UserViewModel::class.java]
+        setObserver()
+
         binding.signUpTv.setOnClickListener({
-            startActivity(Intent(this, SignUpActivity::class.java))
-            finish()
+            startActivity((Intent(this, SignUpActivity::class.java)))
         })
+
         binding.signInBtn.setOnClickListener({
-            startActivity((Intent(this, HomeActivity::class.java)))
-            finish()
+            if (checkFields() && authenticate()) {
+                userVM.getUser(binding.emailEt.text.toString())
+            }
         })
+    }
 
-        // Apenas para testar o Firebase
-        val db = Firebase.firestore
+    private fun navigate(){
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
+    }
 
-        val jogMap = hashMapOf(
-            "name" to "Letícia",
-            "nick" to "lelê",
-            "age" to 24
-        )
+    private fun setObserver() {
+        userVM.isRegistered().observe(this) { status ->
+            when (status) {
+                statusEnum.SUCCESS -> {
+                    val currentUser = userVM.getCurrentUser()
 
-        db.collection("user").document("leticia@gmail.com")
-            .set(jogMap)
-            .addOnSuccessListener({
-                // Código se deu tudo certo
-            })
-            .addOnFailureListener({
-                // Código se deu errado
-            })
+                    userManager.user = UserModel(
+                        email = currentUser.email,
+                        name = currentUser.name,
+                        bio = currentUser.bio,
+                        sex = currentUser.sex,
+                        phone = currentUser.phone,
+                        birthDate = currentUser.birthDate,
+                        photo_uri = currentUser.photo_uri
+                    )
+                    navigate()
+                }
+
+                statusEnum.FAIL -> {
+                    Toast.makeText(
+                        this,
+                        "Usuário não existe",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                else -> UInt
+            }
+        }
+    }
+
+    private fun authenticate(): Boolean {
+        return true
+    }
+
+    private fun checkFields(): Boolean {
+        if (binding.emailEt.text.isEmpty() || binding.passEt.text.isEmpty()) {
+            Toast.makeText(
+                this,
+                "Preencha todos os campos",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            return false
+        }
+        return true
     }
 }

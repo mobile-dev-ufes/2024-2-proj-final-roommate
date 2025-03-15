@@ -13,11 +13,11 @@ import com.example.roommate.R
 import com.example.roommate.databinding.FragmentSignup3Binding
 import com.example.roommate.ui.activities.LoginActivity
 import com.example.roommate.utils.statusEnum
-import com.example.roommate.viewModel.SignUpViewModel
+import com.example.roommate.viewModel.UserViewModel
 
 class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListener {
     private lateinit var binding: FragmentSignup3Binding
-    private lateinit var signUpVM: SignUpViewModel
+    private lateinit var signUpVM: UserViewModel
 
     private val args: FragmentSignup3Args by navArgs()
 
@@ -29,7 +29,7 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentSignup3Binding.inflate(inflater, container, false)
-        signUpVM = ViewModelProvider(this)[SignUpViewModel::class.java]
+        signUpVM = ViewModelProvider(this)[UserViewModel::class.java]
 
         return binding.root
     }
@@ -47,9 +47,6 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
         if (view.id == R.id.finish_signup_btn) {
             args.userInfo.bio = binding.userBioEt.text.toString()
             signUpVM.registerUser(args.userInfo)
-
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-            requireActivity().finish()
         }
     }
 
@@ -61,20 +58,31 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
     private fun setObserver() {
         signUpVM.isRegistered().observe(viewLifecycleOwner) { status ->
             when (status) {
-                statusEnum.SUCCESS -> Toast.makeText(
-                    requireContext(),
-                    "Cadastro realizado com sucesso!",
-                    Toast.LENGTH_SHORT
-                ).show()
+                statusEnum.SUCCESS -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Cadastro realizado com sucesso!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigate()
+                }
 
-                statusEnum.FAIL -> Toast.makeText(
-                    requireContext(),
-                    "Ocorreu um erro! Tente novamente.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                statusEnum.FAIL -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocorreu um erro! Tente novamente.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigate()
+                }
 
                 else -> UInt
             }
         }
+    }
+
+    private fun navigate(){
+        startActivity(Intent(requireContext(), LoginActivity::class.java))
+        requireActivity().finish()
     }
 }

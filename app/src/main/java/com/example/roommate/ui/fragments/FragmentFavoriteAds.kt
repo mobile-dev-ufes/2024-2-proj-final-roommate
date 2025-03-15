@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
-import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentFavoriteAdsBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
 
@@ -36,10 +35,5 @@ class FragmentFavoriteAds : Fragment(R.layout.fragment_favorite_ads) {
 
         binding.recycleListAds.layoutManager = LinearLayoutManager(context)
         binding.recycleListAds.adapter = adapter
-
-        // Apenas para testar o Recycle View
-        adapter.updateAdList(mutableListOf( AdModel("TESTE", "Bela Aurora/ Cariacica", 250.0)))
-        adapter.insertAdList(AdModel("TESTE1", "Bela Aurora/ Cariacica", 500.0))
-        adapter.insertAdList(AdModel("TESTE2", "Bela Aurora/ Cariacica", 750.0))
     }
 }

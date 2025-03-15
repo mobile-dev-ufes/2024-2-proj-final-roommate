@@ -23,14 +23,16 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/bedroom_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="E-mail"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/rooms_number_hint"
-            android:inputType="text"
-            android:padding="7dp" />
+            android:inputType="number"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,15 +43,16 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/area_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="Area"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/area_hint"
-            android:inputType="textMultiLine|textPassword"
+            android:inputType="numberDecimal"
             android:padding="7dp"
-            android:scrollbars="vertical" />
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,14 +63,16 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/suites_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="E-mail"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/suites_number_hint"
-            android:inputType="textEmailAddress"
-            android:padding="7dp" />
+            android:inputType="number"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,6 +93,7 @@
                 android:orientation="vertical">
 
                 <CheckBox
+                    android:id="@+id/ladies_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -96,6 +102,7 @@
                     android:buttonTint="@color/black"/>
 
                 <CheckBox
+                    android:id="@+id/garage_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/parking_spot_benefit"
@@ -103,6 +110,7 @@
                     android:buttonTint="@color/black"/>
 
                 <CheckBox
+                    android:id="@+id/internet_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/high_network_speed_benefit"
@@ -110,6 +118,7 @@
                     android:buttonTint="@color/black"/>
 
                 <CheckBox
+                    android:id="@+id/hot_water_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hot_water_benefit"
@@ -117,6 +126,7 @@
                     android:buttonTint="@color/black"/>
 
                 <CheckBox
+                    android:id="@+id/ar_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/air_conditioning_benefits"
@@ -124,6 +134,7 @@
                     android:buttonTint="@color/black"/>
 
                 <CheckBox
+                    android:id="@+id/pool_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pool_benefit"
@@ -131,6 +142,7 @@
                     android:buttonTint="@color/black"/>
 
                 <CheckBox
+                    android:id="@+id/pet_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pet_friendly_benefits"
@@ -138,6 +150,7 @@
                     android:buttonTint="@color/black"/>
 
                 <CheckBox
+                    android:id="@+id/security_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/security_benefits"

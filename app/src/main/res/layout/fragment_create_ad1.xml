@@ -24,14 +24,16 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/title_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="E-mail"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/title_hint"
             android:inputType="text"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,14 +44,16 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/rent_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="E-mail"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/rental_value_hint"
-            android:inputType="textEmailAddress"
-            android:padding="7dp" />
+            android:inputType="numberDecimal"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,14 +64,16 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/cond_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="Password"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
-            android:hint="@string/password_hint"
-            android:inputType="textPassword"
-            android:padding="7dp" />
+            android:hint="@string/condo_value_hint"
+            android:inputType="numberDecimal"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,35 +84,39 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/clients_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="Password"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/maximum_of_clients_hint"
-            android:inputType="textPassword"
-            android:padding="7dp" />
+            android:inputType="number"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="@string/condo_value"
+            android:text="@string/description"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/description_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:autofillHints="Password"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:gravity="top"
-            android:hint="@string/condo_value_hint"
-            android:inputType="textMultiLine|textPassword"
+            android:hint="@string/description_hint"
+            android:inputType="textMultiLine"
             android:lines="3"
             android:padding="7dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:textColor="@color/gray"/>
 
 
         <LinearLayout
