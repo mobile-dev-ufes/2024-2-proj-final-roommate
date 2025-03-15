@@ -27,11 +27,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="E-mail"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/rooms_number_hint"
-            android:inputType="text"
-            android:padding="7dp" />
+            android:inputType="number"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,12 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="Area"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/area_hint"
-            android:inputType="textMultiLine|textPassword"
+            android:inputType="numberDecimal"
             android:padding="7dp"
-            android:scrollbars="vertical" />
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,11 +67,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="E-mail"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/suites_number_hint"
-            android:inputType="textEmailAddress"
-            android:padding="7dp" />
+            android:inputType="number"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"

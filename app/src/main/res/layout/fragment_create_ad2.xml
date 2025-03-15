@@ -27,11 +27,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="E-mail"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/cep_hint"
             android:inputType="text"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,12 +47,13 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="Telefone"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/number_hint"
-            android:inputType="textMultiLine|textPassword"
+            android:inputType="number"
             android:padding="7dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,11 +68,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="E-mail"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/street_hint"
-            android:inputType="textEmailAddress"
-            android:padding="7dp" />
+            android:inputType="text"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -85,11 +88,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="Password"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/neighborhood_hint"
-            android:inputType="textPassword"
-            android:padding="7dp" />
+            android:inputType="text"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -104,11 +108,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="Password"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/city_hint"
-            android:inputType="textPassword"
-            android:padding="7dp" />
+            android:inputType="text"
+            android:padding="7dp"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -123,12 +128,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
-            android:autofillHints="Password"
+            android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/state_hint"
-            android:inputType="textMultiLine|textPassword"
+            android:inputType="text"
             android:padding="7dp"
-            android:scrollbars="vertical" />
+            android:textColor="@color/gray"/>
 
         <Space
             android:layout_width="match_parent"
