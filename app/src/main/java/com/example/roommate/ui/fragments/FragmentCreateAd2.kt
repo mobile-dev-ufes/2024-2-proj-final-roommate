@@ -41,7 +41,7 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
     private fun adModelFromViewInfo(): AdModel {
         val address = Address(
             cep = binding.cepEt.text.toString(),
-            number = binding.numberEt.text.toString().takeIf { it.isNotEmpty() }?.toInt() ?: 0,
+            number = binding.numberEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
             street = binding.streetEt.text.toString(),
             nb = binding.nbEt.text.toString(),
             city = binding.cityEt.text.toString(),

@@ -53,7 +53,7 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         binding.recycleListBenefits.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recycleListBenefits.adapter = adapter
 
-        adapter.updateBenefitList(mutableListOf("Deu", "certo", "galera"))
+        adapter.updateBenefitList(benefitsList())
     }
 
     private fun bindInfo(){
@@ -61,5 +61,19 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         binding.localTv.text = args.adInfo.localToString()
         binding.adDescriptionTv.text = args.adInfo.description
         binding.adAddressTv.text = args.adInfo.localCompleteToString()
+
+        binding.bedroomTv.text = args.adInfo.bedroom_qtt.toString()
+        binding.suitesTv.text = args.adInfo.suite_qtt.toString()
+        binding.areaTv.text = args.adInfo.area.toString()
+        binding.clientsTv.text = args.adInfo.max_client.toString()
+        // binding.parkingTv.text = args.adInfo..toString()
+    }
+
+    private fun benefitsList(): MutableList<String>{
+        return mutableListOf(
+            "deu",
+            "certo",
+            "galera"
+        )
     }
 }

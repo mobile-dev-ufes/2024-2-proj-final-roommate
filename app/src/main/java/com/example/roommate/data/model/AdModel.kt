@@ -4,15 +4,16 @@ import java.io.Serializable
 
 class Address(
     var cep: String? = "unknown",
-    var number: Int? = 0,
+    var number: Long? = 0,
     var street: String? = "unknown",
     var nb: String? = "unknown",
     var city: String? = "unknown",
     var state: String? = "unknown"
+
 ) : Serializable {
      constructor(data: Map<Any, Any>) : this (
         cep = data["cep"] as? String ?: "unknown",
-        number = data["number"] as? Int ?: 0,
+        number = data["number"] as? Long ? ?: 0L,
         street = data["street"] as? String ?: "unknown",
         nb = data["nb"] as? String ?: "unknown",
         city = data["city"] as? String ?: "unknown",
@@ -35,11 +36,11 @@ class AdModel(
     var title: String?,
     var rent_value: Double?,
     var cond_value: Double?,
-    var max_client: Int?,
+    var max_client: Long?,
     var description: String?,
     var local: Address?,
-    var suite_qtt: Int?,
-    var bedroom_qtt: Int?,
+    var suite_qtt: Long?,
+    var bedroom_qtt: Long?,
     var area: Double?,
     var benefits: Map<String, Boolean>? =  mapOf(
         "ladies" to false,
@@ -55,6 +56,7 @@ class AdModel(
     var photos: Array<String> = arrayOf()
 
 ) : Serializable {
+
     fun toMap(): Map<String, Any?> {
         return mapOf(
             "title" to title,

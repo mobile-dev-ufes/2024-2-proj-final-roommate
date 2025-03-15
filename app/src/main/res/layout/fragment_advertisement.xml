@@ -87,60 +87,130 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line3_v">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="70dp"
                     android:layout_height="55dp"
                     android:layout_margin="5dp"
                     android:background="@drawable/button_shape"
                     android:backgroundTint="@color/blue3"
                     android:gravity="center"
-                    android:text="@string/n_bedrooms"
-                    android:textColor="@color/blue4"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="55dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/button_shape"
-                    android:backgroundTint="@color/blue3"
-                    android:gravity="center"
-                    android:text="@string/n_suites"
-                    android:textColor="@color/blue4"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bedrooms"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="55dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/button_shape"
-                    android:backgroundTint="@color/blue3"
-                    android:gravity="center"
-                    android:text="@string/square_meters"
-                    android:textColor="@color/blue4"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/bedroom_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_test"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="70dp"
                     android:layout_height="55dp"
                     android:layout_margin="5dp"
                     android:background="@drawable/button_shape"
                     android:backgroundTint="@color/blue3"
                     android:gravity="center"
-                    android:text="@string/n_vacancies"
-                    android:textColor="@color/blue4"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/suites"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/suites_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_test"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="70dp"
                     android:layout_height="55dp"
                     android:layout_margin="5dp"
                     android:background="@drawable/button_shape"
                     android:backgroundTint="@color/blue3"
                     android:gravity="center"
-                    android:text="@string/n_parking"
-                    android:textColor="@color/blue4"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/square_meters"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/area_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_test"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/blue3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/vacancies"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/clients_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_test"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/blue3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/parking"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/parking_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_test"
+                        android:textColor="@color/blue4"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
 
             <View

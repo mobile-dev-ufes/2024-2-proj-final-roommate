@@ -69,7 +69,7 @@ class AdRepository {
         var local = document.get("local")
 
         benefits = if (benefits is Map<*, *>){
-            (benefits as? Map<String, Boolean>)
+            benefits as? Map<String, Boolean>
         } else {
             null
         }
@@ -77,17 +77,17 @@ class AdRepository {
         local = if(local is Map<*, *>) {
             Address(local as Map<Any, Any>)
         } else {
-            Address("unknown", null, "unknown", "unknown", "unknown", "unknown")
+            Address()
         }
 
         return AdModel(
             title = document.getString("title"),
             rent_value = document.getDouble("rent_value") ?: 0.0,
             cond_value = document.getDouble("cond_value"),
-            max_client = document.getLong("max_client")?.toInt(),
+            max_client = document.getLong("max_client"),
             description = document.getString("description"),
-            suite_qtt = document.getLong("suiteQtt")?.toInt(),
-            bedroom_qtt = document.getLong("bedroomQtt")?.toInt(),
+            suite_qtt = document.getLong("suite_qtt"),
+            bedroom_qtt = document.getLong("bedroom_qtt"),
             area = document.getDouble("area"),
             benefits = benefits,
             local = local,

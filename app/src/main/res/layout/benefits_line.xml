@@ -13,7 +13,7 @@
         android:background="@drawable/button_shape"
         android:backgroundTint="@color/blue3"
         android:gravity="center"
-        android:text="@string/n_bedrooms"
+        android:text="@string/bedrooms"
         android:textColor="@color/blue4"
         android:textStyle="bold"
         android:paddingHorizontal="5dp"
