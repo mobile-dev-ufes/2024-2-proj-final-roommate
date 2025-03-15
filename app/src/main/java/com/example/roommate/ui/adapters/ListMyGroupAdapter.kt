@@ -13,30 +13,28 @@ class ListMyGroupAdapter(private val onItemClick: (GroupModel) -> Unit) : Recycl
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListMyGroupViewHolder {
         val item = MyGroupsLineBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
         return ListMyGroupViewHolder(item)
     }
 
     override fun onBindViewHolder(holder: ListMyGroupViewHolder, position: Int) {
         holder.bindVH(groupList[position])
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             onItemClick(groupList[position])
         }
     }
 
-    override fun getItemCount(): Int {
-        return groupList.count()
-    }
+    override fun getItemCount(): Int = groupList.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateGroupList(list: MutableList<GroupModel>){
-        groupList = list
+    fun updateGroupList(list: MutableList<GroupModel>) {
+        groupList.clear() // Avoid replacing the reference
+        groupList.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun insertGroupList(group: GroupModel){
+    fun insertGroupList(group: GroupModel) {
         groupList.add(group)
-        notifyItemInserted(groupList.count())
+        notifyItemInserted(groupList.size - 1) // Corrected index
     }
 }

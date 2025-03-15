@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.roommate.R
+import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.FragmentVisitProfileBinding
 
 class FragmentVisitProfile : Fragment(R.layout.fragment_visit_profile) {
     private lateinit var binding: FragmentVisitProfileBinding
+    private val args: FragmentVisitProfileArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,7 +20,6 @@ class FragmentVisitProfile : Fragment(R.layout.fragment_visit_profile) {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-
         binding = FragmentVisitProfileBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -27,10 +28,10 @@ class FragmentVisitProfile : Fragment(R.layout.fragment_visit_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*
-        binding.adGroupBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentAdvertisement_to_fragmentInterestedGroups)
-        }
-        */
+        val argsUser = args.user
+
+        binding.usernameTv.text = argsUser.name
+        binding.userBioTv.text = argsUser.bio
+        binding.userPhoneTv.text = argsUser.phone
     }
 }

@@ -49,6 +49,10 @@
         android:name="com.example.roommate.ui.fragments.FragmentGroup"
         android:label="Grupo"
         tools:layout="@layout/fragment_group">
+        <argument
+            android:name="group"
+            app:argType="com.example.roommate.data.model.GroupModel"
+            app:nullable="false" />
         <action
             android:id="@+id/action_fragmentGroup_to_fragmentEntryRequests"
             app:destination="@id/fragmentEntryRequests" />
@@ -60,7 +64,12 @@
         android:id="@+id/fragmentVisitProfile"
         android:name="com.example.roommate.ui.fragments.FragmentVisitProfile"
         android:label="Perfil"
-        tools:layout="@layout/fragment_visit_profile"/>
+        tools:layout="@layout/fragment_visit_profile">
+        <argument
+            android:name="user"
+            app:argType="com.example.roommate.data.model.UserModel"
+            app:nullable="false" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentEntryRequests"
         android:name="com.example.roommate.ui.fragments.FragmentEntryRequests"
@@ -135,7 +144,11 @@
         android:id="@+id/dialogCreateGroup"
         android:name="com.example.roommate.ui.fragments.DialogCreateGroup"
         android:label="DialogCreateGroup"
-        tools:layout="@layout/dialog_create_group"/>
+        tools:layout="@layout/dialog_create_group">
+        <action
+            android:id="@+id/action_dialogCreateGroup_to_fragmentInterestedGroups"
+            app:destination="@id/fragmentInterestedGroups" />
+    </dialog>
 
 
 </navigation>

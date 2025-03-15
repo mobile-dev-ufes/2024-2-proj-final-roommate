@@ -4,7 +4,7 @@ import java.io.Serializable
 import java.time.LocalDate
 import java.util.Date
 
-class UserModel (
+class UserModel(
     var email: String?,
     var name: String?,
     var bio: String?,
@@ -12,6 +12,8 @@ class UserModel (
     var phone: String?,
     var birthDate: LocalDate?,
     var photo_uri: String?
-) : Serializable{
+): Serializable {
+
     constructor(name: String, bio: String?) : this(null, name, bio, null, null, null, null)
+    constructor(name: String, bio: String, phone: String) : this(null, name, bio, null, phone, null, null)
 }
