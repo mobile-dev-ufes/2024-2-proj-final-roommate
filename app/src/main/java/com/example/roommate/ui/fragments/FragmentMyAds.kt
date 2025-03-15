@@ -29,8 +29,10 @@ class FragmentMyAds : Fragment(R.layout.fragment_my_ads) {
         myAdsVM = ViewModelProvider(this)[MyAdsViewModel::class.java]
 
         binding = FragmentMyAdsBinding.inflate(inflater, container, false)
-        adapter = ListAdAdapter{
-            findNavController().navigate(R.id.action_fragmentMyAds_to_fragmentAdvertisement)
+
+        adapter = ListAdAdapter{adModel ->
+            val action = FragmentMyAdsDirections.actionFragmentMyAdsToFragmentAdvertisement(adModel)
+            findNavController().navigate(action)
         }
         return binding.root
     }
@@ -42,7 +44,8 @@ class FragmentMyAds : Fragment(R.layout.fragment_my_ads) {
         myAdsVM.getAds()
 
         binding.myAdsBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentMyAds_to_fragmentCreateAd1)
+            val action = FragmentMyAdsDirections.actionFragmentMyAdsToFragmentCreateAd1(1)
+            findNavController().navigate(action)
         }
 
         binding.recycleListAds.layoutManager = LinearLayoutManager(context)

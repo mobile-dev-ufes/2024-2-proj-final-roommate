@@ -33,15 +33,15 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ad2ProceedBtn.setOnClickListener {
-            val action = FragmentCreateAd2Directions.actionFragmentCreateAd2ToFragmentCreateAd3(adModelFromViewInfo())
+            val action = FragmentCreateAd2Directions.actionFragmentCreateAd2ToFragmentCreateAd3(adModelFromViewInfo(), args.route)
             findNavController().navigate(action)
         }
     }
 
     private fun adModelFromViewInfo(): AdModel {
         val address = Address(
-            cep = binding.cepEt.text.toString(),
-            number = binding.numberEt.text.toString().takeIf { it.isNotEmpty() }?.toInt() ?: 0,
+            cep = binding.cepEt.masked.toString(),
+            number = binding.numberEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
             street = binding.streetEt.text.toString(),
             nb = binding.nbEt.text.toString(),
             city = binding.cityEt.text.toString(),
@@ -49,6 +49,7 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
         )
 
         return AdModel(
+            owner = args.adInfo.owner,
             title = args.adInfo.title,
             rent_value = args.adInfo.rent_value,
             cond_value = args.adInfo.cond_value,
@@ -57,6 +58,7 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
             local = address,
             suite_qtt = null,
             bedroom_qtt = null,
+            parking_qtt = null,
             area = null,
             groups = arrayOf()
         )

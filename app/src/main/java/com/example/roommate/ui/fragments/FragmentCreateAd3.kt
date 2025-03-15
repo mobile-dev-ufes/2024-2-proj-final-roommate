@@ -57,14 +57,16 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
             "security" to binding.securityCb.isChecked)
 
         return AdModel(
+            owner = args.adInfo.owner,
             title = args.adInfo.title,
             rent_value = args.adInfo.rent_value,
             cond_value = args.adInfo.cond_value,
             max_client = args.adInfo.max_client,
             description = args.adInfo.description,
             local = args.adInfo.local,
-            bedroom_qtt = binding.bedroomEt.text.toString().takeIf { it.isNotEmpty() }?.toInt() ?: 0,
-            suite_qtt = binding.suitesEt.text.toString().takeIf { it.isNotEmpty() }?.toInt() ?: 0,
+            bedroom_qtt = binding.bedroomEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
+            suite_qtt = binding.suitesEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
+            parking_qtt = binding.parkingEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
             area = binding.areaEt.text.toString().takeIf { it.isNotEmpty() }?.toDouble() ?: 0.0,
             benefits = benefits,
             groups = arrayOf()
@@ -72,15 +74,23 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
     }
 
     private fun navigate(){
-        val navOptions = NavOptions.Builder()
-            .setPopUpTo(R.id.fragmentMyAds, true) // Clears back stack up to fragmentMyAds
-            .build()
+        var navOptions: NavOptions
+        var id: Int
 
-        findNavController().navigate(
-            R.id.action_fragmentCreateAd3_to_fragmentMyAds,
-            null,
-            navOptions
-        )
+        if (args.route == 0){
+            navOptions =
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.fragmentAds, true) // Clears back stack up to fragmentMyAds
+                    .build()
+            id = R.id.action_fragmentCreateAd3_to_fragmentAds
+        } else {
+            navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.fragmentMyAds, true) // Clears back stack up to fragmentMyAds
+                .build()
+            id = R.id.action_fragmentCreateAd3_to_fragmentMyAds
+        }
+
+        findNavController().navigate(id, null, navOptions)
     }
 
     private fun setObserver() {
