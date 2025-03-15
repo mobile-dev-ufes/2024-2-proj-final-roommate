@@ -15,6 +15,7 @@ import com.example.roommate.databinding.FragmentInterestedGroupsBinding
 import com.example.roommate.ui.adapters.ListInterestedGroupAdapter
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.concurrent.atomic.AtomicInteger
 
 class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
     private lateinit var binding: FragmentInterestedGroupsBinding
@@ -58,7 +59,7 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
         }
     }
 
-    fun getGroupsFromAdvertisementId(advertisementId: String) {
+    private fun getGroupsFromAdvertisementId(advertisementId: String) {
         val db = FirebaseFirestore.getInstance()
 
         // Reference to the advertisement document
@@ -67,47 +68,50 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
         // Fetch the advertisement document to get the "groups" field
         advertisementRef.get()
             .addOnSuccessListener { advertisementDocument ->
-                // Check if the "groups" field exists and contains a list of DocumentReferences
-                val groupRefs = advertisementDocument.get("groups") as? List<DocumentReference>
+                val groupRefs = (advertisementDocument.get("groups") as? List<*>)?.mapNotNull { it as? DocumentReference }
 
-                if (groupRefs != null && groupRefs.isNotEmpty()) {
-                    // Log the groupRefs to ensure they are being retrieved correctly
-                    Log.d("Firebase", "Retrieved group references: $groupRefs")
-
-                    // Now, iterate through the groupRefs and fetch each group document
-                    val groupsList = mutableListOf<GroupModel>()
-                    groupRefs.forEach { groupRef ->
-                        // Fetch each group document by its reference
-                        groupRef.get()
-                            .addOnSuccessListener { groupDocument ->
-                                val groupName = groupDocument.getString("name") ?: ""
-                                val groupDescription = groupDocument.getString("description") ?: ""
-                                val qttMembers = (groupDocument.get("qttMembers") as? Long)?.toInt() ?: 0  // Ensure qttMembers is an Int
-                                val group = GroupModel(
-                                    name = groupName,
-                                    description = groupDescription,
-                                    advertisementId = advertisementId,
-                                    qttMembers = qttMembers
-                                )
-
-                                groupsList.add(group)
-
-                                // If all groups have been fetched, update the RecyclerView
-                                if (groupsList.size == groupRefs.size) {
-                                    // Here, you call the adapter's update method to update the RecyclerView
-                                    adapter.updateGroupList(groupsList)
-                                }
-                            }
-                            .addOnFailureListener { exception ->
-                                Log.w("Firebase", "Error getting group document: ", exception)
-                            }
-                    }
-                } else {
+                if (groupRefs.isNullOrEmpty()) {
                     Log.w("Firebase", "No valid group references found for advertisement ID: $advertisementId")
+                    return@addOnSuccessListener
+                }
+
+                Log.d("Firebase", "Retrieved group references: $groupRefs")
+
+                val groupsList = mutableListOf<GroupModel>()
+                val remainingRequests = AtomicInteger(groupRefs.size)
+
+                groupRefs.forEach { groupRef ->
+                    groupRef.get()
+                        .addOnSuccessListener { groupDocument ->
+                            val groupName = groupDocument.getString("name").orEmpty()
+                            val groupDescription = groupDocument.getString("description").orEmpty()
+                            val qttMembers = (groupDocument.get("qttMembers") as? Long)?.toInt() ?: 0
+
+                            val group = GroupModel(
+                                name = groupName,
+                                description = groupDescription,
+                                advertisementId = advertisementId,
+                                qttMembers = qttMembers
+                            )
+
+                            synchronized(groupsList) { groupsList.add(group) }
+
+                            if (remainingRequests.decrementAndGet() == 0) {
+                                adapter.updateGroupList(groupsList)
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.e("Firebase", "Error fetching group document: $groupRef", exception)
+                            if (remainingRequests.decrementAndGet() == 0) {
+                                adapter.updateGroupList(groupsList)
+                            }
+                        }
                 }
             }
             .addOnFailureListener { exception ->
-                Log.w("Firebase", "Error getting advertisement document: ", exception)
+                Log.e("Firebase", "Error getting advertisement document: ", exception)
             }
+
+
     }
 }

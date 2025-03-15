@@ -9,12 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
-import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.FragmentMyGroupsBinding
 import com.example.roommate.ui.adapters.ListMyGroupAdapter
 import com.example.roommate.ui.viewModels.GroupViewModel
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.firestore
 
 class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
     private lateinit var binding: FragmentMyGroupsBinding

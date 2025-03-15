@@ -2,27 +2,18 @@ package com.example.roommate.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.roommate.R
-import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.FragmentSignup3Binding
 import com.example.roommate.ui.activities.LoginActivity
 import com.example.roommate.utils.statusEnum
 import com.example.roommate.viewModel.SignUpViewModel
-import com.google.firebase.firestore.FirebaseFirestore
 
 class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListener {
     private lateinit var binding: FragmentSignup3Binding

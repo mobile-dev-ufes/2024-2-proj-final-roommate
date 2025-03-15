@@ -64,7 +64,7 @@ class GroupRepository {
         val userRef: DocumentReference = db.collection("user").document(userId)
 
         db.collection("group")
-            .whereArrayContains("users", userRef)
+            .whereArrayContains("users", userRef) // Ensure userRef type matches Firestore data
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val groupList = mutableListOf<GroupModel>()
@@ -73,42 +73,39 @@ class GroupRepository {
                     val id = document.id
                     val name = document.getString("name") ?: ""
                     val description = document.getString("description") ?: ""
-                    //val qttMembers = document.getLong("qttMembers")?.toInt() ?: 0
-
                     val qttNotifications = document.getLong("qttNotifications")?.toInt() ?: 0
 
-                    // Get the 'users' field which is a List of Strings
-                    val usersList = document.get("users") as? List<*> ?: emptyList<String>()
-
-                    // Convert the List<*> to List<String> safely
-                    val userIdsList = usersList.mapNotNull { it as? String }
+                    // Retrieve 'users' safely
+                    val usersList = document.get("users") as? List<*> ?: emptyList<Any>()
+                    val userIdsList = usersList.mapNotNull {
+                        when (it) {
+                            is String -> it
+                            is DocumentReference -> it.id
+                            else -> null
+                        }
+                    }
 
                     val qttMembers = userIdsList.size
 
                     val advertisementId = document.getDocumentReference("advertisementId")!!.id
 
-
-                    if (advertisementId == null) {
-                        println("ERROR: on fetch group")
-                    } else {
-                        groupList.add(
-                            GroupModel(
-                                id,
-                                name,
-                                description,
-                                qttMembers,
-                                qttNotifications,
-                                userIdsList,
-                                advertisementId
-                            )
+                    groupList.add(
+                        GroupModel(
+                            id,
+                            name,
+                            description,
+                            qttMembers,
+                            qttNotifications,
+                            userIdsList,
+                            advertisementId
                         )
-                    }
+                    )
                 }
 
                 callback(groupList)
             }
             .addOnFailureListener { e ->
-                println("Error fetching groups: $e")
+                println("❌ Error fetching groups: $e")
             }
     }
 }

@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
-import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.FragmentAdvertisementBinding
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
 
 class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
     private lateinit var binding: FragmentAdvertisementBinding
