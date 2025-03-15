@@ -9,16 +9,16 @@ import java.util.Locale
 class ListAdViewHolder(private val binding: AdLineBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-        fun bindVH(ad: AdModel){
-            binding.adDescriptionTv.text = ad.title
-            binding.adLocalTv.text = ad.localToString()
+    fun bindVH(ad: AdModel) {
+        binding.adDescriptionTv.text = ad.title
+        binding.adLocalTv.text = ad.localToString()
 
-            // TODO Avaliar modularizar esse trecho
-            val locale = Locale.getDefault()
-            val currencyFormat = NumberFormat.getCurrencyInstance(locale)
-            val formattedCurrency = currencyFormat.format(ad.rent_value)
-            val text = "$formattedCurrency/ mês"
+        // TODO Avaliar modularizar esse trecho
+        val locale = Locale.getDefault()
+        val currencyFormat = NumberFormat.getCurrencyInstance(locale)
+        val formattedCurrency = currencyFormat.format(ad.rent_value)
+        val text = "$formattedCurrency/ mês"
 
-            binding.adPriceTv.text = text
-        }
+        binding.adPriceTv.text = text
+    }
 }

@@ -6,14 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.FragmentAdvertisementBinding
+import com.example.roommate.ui.adapters.ListAdAdapter
+import com.example.roommate.ui.adapters.ListBenefitsAdapter
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
     private lateinit var binding: FragmentAdvertisementBinding
+    private lateinit var adapter: ListBenefitsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +25,9 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
+
         binding = FragmentAdvertisementBinding.inflate(inflater, container, false)
+        adapter = ListBenefitsAdapter()
 
         return binding.root
     }
@@ -40,11 +46,9 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
             findNavController().navigate(action)
         }
 
+        binding.recycleListBenefits.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.recycleListBenefits.adapter = adapter
 
-
-
-//        binding.adGroupBtn.setOnClickListener {
-//            findNavController().navigate(R.id.action_fragmentAdvertisement_to_fragmentInterestedGroups)
-//        }
+        adapter.updateBenefitList(mutableListOf("Deu", "certo", "galera"))
     }
 }

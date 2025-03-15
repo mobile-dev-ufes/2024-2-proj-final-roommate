@@ -28,6 +28,7 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentAdsBinding.inflate(inflater, container, false)
+
         adapter = ListAdAdapter {
             findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)
         }
