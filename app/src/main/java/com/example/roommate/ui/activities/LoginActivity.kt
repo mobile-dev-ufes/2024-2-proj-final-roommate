@@ -8,6 +8,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.ActivityLoginBinding
+import com.example.roommate.utils.statusEnum
 import com.example.roommate.utils.userManager
 import com.example.roommate.viewModel.UserViewModel
 import com.google.firebase.Firebase
@@ -38,21 +39,39 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun setObserver() {
-        userVM.getCurrentUser().observe(this) { currentUser ->
-            // Tratamento se o usuário existe será feito em authenticate
-            userManager.user = UserModel(
-                email = currentUser.email,
-                name = currentUser.name,
-                bio = currentUser.bio,
-                sex = currentUser.sex,
-                phone = currentUser.phone,
-                birthDate = currentUser.birthDate,
-                photo_uri = currentUser.photo_uri
-            )
+    private fun navigate(){
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
+    }
 
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
+    private fun setObserver() {
+        userVM.isRegistered().observe(this) { status ->
+            when (status) {
+                statusEnum.SUCCESS -> {
+                    val currentUser = userVM.getCurrentUser()
+
+                    userManager.user = UserModel(
+                        email = currentUser.email,
+                        name = currentUser.name,
+                        bio = currentUser.bio,
+                        sex = currentUser.sex,
+                        phone = currentUser.phone,
+                        birthDate = currentUser.birthDate,
+                        photo_uri = currentUser.photo_uri
+                    )
+                    navigate()
+                }
+
+                statusEnum.FAIL -> {
+                    Toast.makeText(
+                        this,
+                        "Usuário não existe",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                else -> UInt
+            }
         }
     }
 

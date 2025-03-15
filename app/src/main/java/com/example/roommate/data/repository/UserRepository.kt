@@ -36,7 +36,7 @@ class UserRepository {
             }
     }
 
-    fun get(userEmail: String, liveData: MutableLiveData<UserModel>) {
+    fun get(userEmail: String, liveStatus: MutableLiveData<statusEnum>, liveData: MutableLiveData<UserModel>) {
         var user = UserModel()
 
         db.collection("user").document(userEmail)
@@ -53,14 +53,17 @@ class UserRepository {
                         document.getString("photo_uri")
                     )
                     Log.d("FIREBASE", "DocumentSnapshot data: ${document.data}")
+
+                    liveData.value = user
+                    liveStatus.value = statusEnum.SUCCESS
                 } else {
                     Log.d("FIREBASE", "No such document")
+                    liveStatus.value = statusEnum.FAIL
                 }
-
-                liveData.value = user
             }
             .addOnFailureListener { exception ->
                 Log.d("FIREBASE", "get failed with ", exception)
+                liveStatus.value = statusEnum.FAIL
             }
     }
 }
