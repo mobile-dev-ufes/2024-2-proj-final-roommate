@@ -56,6 +56,17 @@ class AdModel(
     var photos: Array<String> = arrayOf()
 
 ) : Serializable {
+    val customNames = mapOf(
+        "ladies" to "Apenas moças",
+        "garage" to "Vaga de garagem",
+        "internet" to "Internet de alta velocidade",
+        "hotWater" to "Água aquecida",
+        "ar" to "Ar condicionado",
+        "pool" to "Pscina",
+        "pet" to "Pet Friendly",
+        "security" to "Segurança"
+    )
+
 
     fun toMap(): Map<String, Any?> {
         return mapOf(
@@ -80,5 +91,13 @@ class AdModel(
 
     fun localCompleteToString(): String{
         return "${local?.street}, n° ${local?.number}, ${local?.nb}, ${local?.city}"
+    }
+
+    fun getBenefitsList(): MutableList<String>{
+        var trueBenefits = benefits?.filter{ it.value }
+            ?.keys
+            ?.mapNotNull { customNames[it] }
+
+        return trueBenefits?.toMutableList() ?: mutableListOf()
     }
 }

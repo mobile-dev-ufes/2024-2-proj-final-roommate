@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
+import com.example.roommate.data.model.AdModel
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.FragmentAdvertisementBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
@@ -53,7 +54,7 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         binding.recycleListBenefits.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recycleListBenefits.adapter = adapter
 
-        adapter.updateBenefitList(benefitsList())
+        adapter.updateBenefitList(args.adInfo.getBenefitsList())
     }
 
     private fun bindInfo(){
