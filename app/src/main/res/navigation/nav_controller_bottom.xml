@@ -125,9 +125,6 @@
         <action
             android:id="@+id/action_fragmentMyAds_to_fragmentAdvertisement"
             app:destination="@id/fragmentAdvertisement" />
-        <action
-            android:id="@+id/action_fragmentMyAds_to_fragmentCreateAd12"
-            app:destination="@id/fragmentCreateAd1" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCreateAd1"

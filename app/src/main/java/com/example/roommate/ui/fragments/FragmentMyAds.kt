@@ -30,8 +30,10 @@ class FragmentMyAds : Fragment(R.layout.fragment_my_ads) {
         myAdsVM = ViewModelProvider(this)[MyAdsViewModel::class.java]
 
         binding = FragmentMyAdsBinding.inflate(inflater, container, false)
-        adapter = ListAdAdapter{
-            findNavController().navigate(R.id.action_fragmentMyAds_to_fragmentAdvertisement)
+
+        adapter = ListAdAdapter{adModel ->
+            val action = FragmentMyAdsDirections.actionFragmentMyAdsToFragmentAdvertisement(adModel)
+            findNavController().navigate(action)
         }
         return binding.root
     }
