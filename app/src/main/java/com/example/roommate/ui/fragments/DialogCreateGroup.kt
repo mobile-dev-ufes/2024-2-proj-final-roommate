@@ -56,4 +56,10 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
 
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent) // This removes the default dark background
+    }
 }
