@@ -94,7 +94,7 @@ class AdModel(
     }
 
     fun localCompleteToString(): String{
-        return "${local?.street}, n° ${local?.number}, ${local?.nb}, ${local?.city}"
+        return "${local?.street}, n° ${local?.number}, ${local?.nb}, ${local?.city} - ${local?.cep}"
     }
 
     fun getBenefitsList(): MutableList<String>{
