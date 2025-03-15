@@ -1,7 +1,78 @@
 package com.example.roommate.data.model
 
-class AdModel (
-    var description: String,
-    var local: String,
-    var price: Double
-)
+import java.io.Serializable
+
+class Address(
+    var cep: String? = "unknown",
+    var number: Int? = 0,
+    var street: String? = "unknown",
+    var nb: String? = "unknown",
+    var city: String? = "unknown",
+    var state: String? = "unknown"
+) : Serializable {
+     constructor(data: Map<Any, Any>) : this (
+        cep = data["cep"] as? String ?: "unknown",
+        number = data["number"] as? Int ?: 0,
+        street = data["street"] as? String ?: "unknown",
+        nb = data["nb"] as? String ?: "unknown",
+        city = data["city"] as? String ?: "unknown",
+        state = data["state"] as? String ?: "unknown",
+    )
+
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "cep" to cep,
+            "number" to number,
+            "street" to street,
+            "nb" to nb,
+            "city" to city,
+            "state" to state
+        )
+    }
+}
+
+class AdModel(
+    var title: String?,
+    var rent_value: Double?,
+    var cond_value: Double?,
+    var max_client: Int?,
+    var description: String?,
+    var local: Address?,
+    var suite_qtt: Int?,
+    var bedroom_qtt: Int?,
+    var area: Double?,
+    var benefits: Map<String, Boolean>? =  mapOf(
+        "ladies" to false,
+        "garage" to false,
+        "internet" to false,
+        "hotWater" to false,
+        "ar" to false,
+        "pool" to false,
+        "pet" to false,
+        "security" to false
+    ),
+    var groups: Array<String>,
+    var photos: Array<String> = arrayOf()
+
+) : Serializable {
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "title" to title,
+            "rent_value" to rent_value,
+            "cond_value" to cond_value,
+            "max_client" to max_client,
+            "description" to description,
+            "local" to local?.toMap(),
+            "suite_qtt" to suite_qtt,
+            "bedroom_qtt" to bedroom_qtt,
+            "area" to area,
+            "benefits" to benefits,
+            "groups" to groups.toList(),
+            "photos" to photos.toList()
+        )
+    }
+
+    fun localToString(): String{
+        return "${local?.nb}, ${local?.city}"
+    }
+}

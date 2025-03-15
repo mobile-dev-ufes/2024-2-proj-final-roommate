@@ -24,6 +24,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/title_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
@@ -42,6 +43,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/rent_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
@@ -60,6 +62,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/cond_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
@@ -78,6 +81,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/clients_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
@@ -91,18 +95,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="@string/condo_value"
+            android:text="@string/description"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/description_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:autofillHints="Password"
             android:background="@drawable/text_box_shape"
             android:gravity="top"
-            android:hint="@string/condo_value_hint"
+            android:hint="@string/description_hint"
             android:inputType="textMultiLine|textPassword"
             android:lines="3"
             android:padding="7dp"

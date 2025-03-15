@@ -29,7 +29,6 @@ class LoginActivity : AppCompatActivity() {
 
         binding.signUpTv.setOnClickListener({
             startActivity((Intent(this, SignUpActivity::class.java)))
-            finish()
         })
 
         binding.signInBtn.setOnClickListener({

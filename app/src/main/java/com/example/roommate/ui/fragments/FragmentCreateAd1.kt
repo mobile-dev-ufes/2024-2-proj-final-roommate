@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
+import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentCreateAd1Binding
 
 class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
@@ -28,7 +29,23 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ad1ProceedBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentCreateAd1_to_fragmentCreateAd2)
+            val action = FragmentCreateAd1Directions.actionFragmentCreateAd1ToFragmentCreateAd2(adModelFromViewInfo())
+            findNavController().navigate(action)
         }
+    }
+
+    private fun adModelFromViewInfo(): AdModel {
+        return AdModel(
+            title = binding.titleEt.text.toString(),
+            rent_value = binding.rentEt.text.toString().toDouble(),
+            cond_value = binding.condEt.text.toString().toDouble(),
+            max_client = binding.clientsEt.text.toString().toInt(),
+            description = binding.descriptionEt.text.toString(),
+            suite_qtt = null,
+            bedroom_qtt = null,
+            area = null,
+            local = null,
+            groups = arrayOf()
+        )
     }
 }
