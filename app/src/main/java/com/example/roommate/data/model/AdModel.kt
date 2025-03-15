@@ -75,4 +75,8 @@ class AdModel(
     fun localToString(): String{
         return "${local?.nb}, ${local?.city}"
     }
+
+    fun localCompleteToString(): String{
+        return "${local?.street}, n° ${local?.number}, ${local?.nb}, ${local?.city}"
+    }
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
 import com.example.roommate.data.model.GroupModel
@@ -19,6 +20,8 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
     private lateinit var binding: FragmentAdvertisementBinding
     private lateinit var adapter: ListBenefitsAdapter
 
+    private val args: FragmentAdvertisementArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,12 +32,13 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         binding = FragmentAdvertisementBinding.inflate(inflater, container, false)
         adapter = ListBenefitsAdapter()
 
+        bindInfo()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         // Hardcoded
         val advertisementId = "D3KsuvpM8BrDlg8MD5tP"
@@ -50,5 +54,12 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         binding.recycleListBenefits.adapter = adapter
 
         adapter.updateBenefitList(mutableListOf("Deu", "certo", "galera"))
+    }
+
+    private fun bindInfo(){
+        binding.adTitle.text = args.adInfo.title
+        binding.localTv.text = args.adInfo.localToString()
+        binding.adDescriptionTv.text = args.adInfo.description
+        binding.adAddressTv.text = args.adInfo.localCompleteToString()
     }
 }

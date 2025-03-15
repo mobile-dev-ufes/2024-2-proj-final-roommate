@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_fragmentAdvertisement_to_fragmentInterestedGroups"
             app:destination="@id/fragmentInterestedGroups" />
+        <argument
+            android:name="adInfo"
+            app:argType="com.example.roommate.data.model.AdModel" />
     </fragment>
     <fragment
         android:id="@+id/fragmentGroup"

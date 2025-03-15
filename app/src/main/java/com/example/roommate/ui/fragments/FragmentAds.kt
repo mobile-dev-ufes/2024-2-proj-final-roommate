@@ -12,7 +12,6 @@ import com.example.roommate.R
 import com.example.roommate.databinding.FragmentAdsBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
 import com.example.roommate.viewModel.FeedViewModel
-import com.example.roommate.viewModel.UserViewModel
 
 class FragmentAds : Fragment(R.layout.fragment_ads) {
     private lateinit var binding: FragmentAdsBinding
@@ -29,8 +28,9 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
 
         binding = FragmentAdsBinding.inflate(inflater, container, false)
 
-        adapter = ListAdAdapter {
-            findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)
+        adapter = ListAdAdapter { adModel ->
+            val action = FragmentAdsDirections.actionFragmentAdsToFragmentAdvertisement(adModel)
+            findNavController().navigate(action)
         }
 
         adsVM = ViewModelProvider(this)[FeedViewModel::class.java]
@@ -45,7 +45,7 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
         adsVM.getAds()
 
         binding.createAdBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)
+            findNavController().navigate(R.id.action_fragmentMyAds_to_fragmentCreateAd1)
         }
 
         binding.recycleListAds.layoutManager = LinearLayoutManager(context)
