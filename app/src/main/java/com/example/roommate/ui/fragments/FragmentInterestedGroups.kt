@@ -88,6 +88,7 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
                             val qttMembers = (groupDocument.get("qttMembers") as? Long)?.toInt() ?: 0
 
                             val group = GroupModel(
+                                id = groupDocument.id,
                                 name = groupName,
                                 description = groupDescription,
                                 advertisementId = advertisementId,

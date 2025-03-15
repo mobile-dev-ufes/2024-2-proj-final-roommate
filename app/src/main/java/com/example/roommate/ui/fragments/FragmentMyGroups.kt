@@ -41,7 +41,7 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
         binding.recycleListGroups.layoutManager = LinearLayoutManager(context)
         binding.recycleListGroups.adapter = adapter
 
-        groupViewModel.fetchUserGroups("daniel@gmail.com")
+        groupViewModel.fetchUserGroups("leticia@email.com")
         observerGroups()
     }
 

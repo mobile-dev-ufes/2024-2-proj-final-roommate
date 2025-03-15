@@ -13,6 +13,7 @@ class GroupRepository {
         db.collection("group")
             .add(group)
             .addOnSuccessListener { documentReference ->
+                group.id = documentReference.id
                 Log.d("RegisterGroup", "Group added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
