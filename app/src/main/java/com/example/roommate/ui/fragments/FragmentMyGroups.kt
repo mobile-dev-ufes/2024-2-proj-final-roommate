@@ -5,16 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.FragmentMyGroupsBinding
 import com.example.roommate.ui.adapters.ListMyGroupAdapter
+import com.example.roommate.ui.viewModels.GroupViewModel
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
     private lateinit var binding: FragmentMyGroupsBinding
-    private lateinit var adapter : ListMyGroupAdapter
+    private lateinit var adapter: ListMyGroupAdapter
+    private val groupViewModel: GroupViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,11 +27,12 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-
         binding = FragmentMyGroupsBinding.inflate(inflater, container, false)
 
-        adapter = ListMyGroupAdapter{
-            findNavController().navigate(R.id.action_fragmentMyGroups_to_fragmentGroup)
+        adapter = ListMyGroupAdapter { group ->
+            val action = FragmentMyGroupsDirections
+                .actionFragmentMyGroupsToFragmentGroup(group)
+            findNavController().navigate(action)
         }
 
         return binding.root
@@ -35,12 +41,16 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recycleListAds.layoutManager = LinearLayoutManager(context)
-        binding.recycleListAds.adapter = adapter
+        binding.recycleListGroups.layoutManager = LinearLayoutManager(context)
+        binding.recycleListGroups.adapter = adapter
 
-        // Apenas para teste do Recycle View
-        adapter.insertGroupList(GroupModel("Meu teste de grupo", 1, 2))
-        adapter.insertGroupList(GroupModel("Meu teste de grupo2", 2, 4))
-        adapter.insertGroupList(GroupModel("Meu teste de grupo3", 3, 6))
+        groupViewModel.fetchUserGroups("daniel@gmail.com")
+        observerGroups()
+    }
+
+    private fun observerGroups() {
+        groupViewModel.groups.observe(viewLifecycleOwner) { groups ->
+            adapter.updateGroupList(groups.toMutableList())
+        }
     }
 }

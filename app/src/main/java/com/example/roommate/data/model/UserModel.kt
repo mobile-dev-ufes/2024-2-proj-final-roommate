@@ -13,4 +13,5 @@ class UserModel (
     var photo_uri: String? = null
 ) : Serializable{
     constructor(name: String, bio: String?) : this(null, name, bio, null, null, null, null)
+    constructor(name: String, bio: String, phone: String) : this(null, name, bio, null, phone, null, null)
 }

@@ -1,8 +1,10 @@
 package com.example.roommate.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.roommate.data.model.GroupModel
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.EntryRequestsLineBinding
 import com.example.roommate.ui.viewHolders.ListMemberViewHolder
@@ -24,8 +26,13 @@ class ListMemberAdapter(private val onClickItem: (UserModel) -> Unit): RecyclerV
         }
     }
 
-    override fun getItemCount(): Int {
-       return memberList.count()
+    override fun getItemCount(): Int = memberList.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateMemberList(list: MutableList<UserModel>) {
+        memberList.clear() // Avoid replacing the reference
+        memberList.addAll(list)
+        notifyDataSetChanged()
     }
 
     fun insertMemberList(user: UserModel){
