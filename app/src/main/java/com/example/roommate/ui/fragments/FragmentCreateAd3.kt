@@ -59,6 +59,7 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
             "security" to binding.securityCb.isChecked)
 
         return AdModel(
+            owner = args.adInfo.owner,
             title = args.adInfo.title,
             rent_value = args.adInfo.rent_value,
             cond_value = args.adInfo.cond_value,

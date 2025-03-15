@@ -33,6 +33,7 @@ class Address(
 }
 
 class AdModel(
+    var owner: String?,
     var title: String?,
     var rent_value: Double?,
     var cond_value: Double?,
@@ -70,6 +71,7 @@ class AdModel(
 
     fun toMap(): Map<String, Any?> {
         return mapOf(
+            "owner" to owner,
             "title" to title,
             "rent_value" to rent_value,
             "cond_value" to cond_value,

@@ -49,6 +49,7 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
         )
 
         return AdModel(
+            owner = args.adInfo.owner,
             title = args.adInfo.title,
             rent_value = args.adInfo.rent_value,
             cond_value = args.adInfo.cond_value,

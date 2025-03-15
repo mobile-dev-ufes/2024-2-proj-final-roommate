@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentCreateAd1Binding
+import com.example.roommate.utils.userManager
 
 class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
     private lateinit var binding: FragmentCreateAd1Binding
@@ -36,6 +37,7 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
 
     private fun adModelFromViewInfo(): AdModel {
         return AdModel(
+            owner = userManager.user.email,
             title = binding.titleEt.text.toString(),
             rent_value =binding.rentEt.text.toString().takeIf { it.isNotEmpty() }?.toDouble() ?: 0.0,
             cond_value = binding.condEt.text.toString().takeIf { it.isNotEmpty() }?.toDouble() ?: 0.0,

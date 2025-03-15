@@ -81,6 +81,7 @@ class AdRepository {
         }
 
         return AdModel(
+            owner = document.getString("owner"),
             title = document.getString("title"),
             rent_value = document.getDouble("rent_value") ?: 0.0,
             cond_value = document.getDouble("cond_value"),
