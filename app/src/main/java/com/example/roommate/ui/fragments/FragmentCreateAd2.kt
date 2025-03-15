@@ -33,7 +33,7 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ad2ProceedBtn.setOnClickListener {
-            val action = FragmentCreateAd2Directions.actionFragmentCreateAd2ToFragmentCreateAd3(adModelFromViewInfo())
+            val action = FragmentCreateAd2Directions.actionFragmentCreateAd2ToFragmentCreateAd3(adModelFromViewInfo(), args.route)
             findNavController().navigate(action)
         }
     }

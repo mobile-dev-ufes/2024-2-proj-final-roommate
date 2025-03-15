@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.roommate.R
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentCreateAd1Binding
@@ -13,6 +14,8 @@ import com.example.roommate.utils.userManager
 
 class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
     private lateinit var binding: FragmentCreateAd1Binding
+
+    private val args: FragmentCreateAd1Args by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +33,7 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ad1ProceedBtn.setOnClickListener {
-            val action = FragmentCreateAd1Directions.actionFragmentCreateAd1ToFragmentCreateAd2(adModelFromViewInfo())
+            val action = FragmentCreateAd1Directions.actionFragmentCreateAd1ToFragmentCreateAd2(adModelFromViewInfo(), args.route)
             findNavController().navigate(action)
         }
     }

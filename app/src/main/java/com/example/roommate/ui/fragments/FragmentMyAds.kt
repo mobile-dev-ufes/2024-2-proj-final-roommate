@@ -45,7 +45,8 @@ class FragmentMyAds : Fragment(R.layout.fragment_my_ads) {
         myAdsVM.getAds()
 
         binding.myAdsBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentMyAds_to_fragmentCreateAd1)
+            val action = FragmentMyAdsDirections.actionFragmentMyAdsToFragmentCreateAd1(1)
+            findNavController().navigate(action)
         }
 
         binding.recycleListAds.layoutManager = LinearLayoutManager(context)

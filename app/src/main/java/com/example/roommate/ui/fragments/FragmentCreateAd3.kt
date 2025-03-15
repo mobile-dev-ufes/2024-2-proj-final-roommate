@@ -75,15 +75,23 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
     }
 
     private fun navigate(){
-        val navOptions = NavOptions.Builder()
-            .setPopUpTo(R.id.fragmentMyAds, true) // Clears back stack up to fragmentMyAds
-            .build()
+        var navOptions: NavOptions
+        var id: Int
 
-        findNavController().navigate(
-            R.id.action_fragmentCreateAd3_to_fragmentMyAds,
-            null,
-            navOptions
-        )
+        if (args.route == 0){
+            navOptions =
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.fragmentAds, true) // Clears back stack up to fragmentMyAds
+                    .build()
+            id = R.id.action_fragmentCreateAd3_to_fragmentAds
+        } else {
+            navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.fragmentMyAds, true) // Clears back stack up to fragmentMyAds
+                .build()
+            id = R.id.action_fragmentCreateAd3_to_fragmentMyAds
+        }
+
+        findNavController().navigate(id, null, navOptions)
     }
 
     private fun setObserver() {
