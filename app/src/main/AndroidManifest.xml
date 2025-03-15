@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activities.CreateAdActivity" android:exported="true" />
         <activity android:name=".ui.activities.SignUpActivity" android:exported="true" />
         <activity android:name=".ui.activities.HomeActivity" android:exported="true" />
 

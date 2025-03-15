@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_fragmentAds_to_fragmentAdvertisement"
             app:destination="@id/fragmentAdvertisement" />
+        <action
+            android:id="@+id/action_fragmentAds_to_fragmentCreateAd1"
+            app:destination="@id/fragmentCreateAd1" />
     </fragment>
     <fragment
         android:id="@+id/fragmentMyProfile"
@@ -43,6 +46,9 @@
         <action
             android:id="@+id/action_fragmentAdvertisement_to_fragmentInterestedGroups"
             app:destination="@id/fragmentInterestedGroups" />
+        <argument
+            android:name="adInfo"
+            app:argType="com.example.roommate.data.model.AdModel" />
     </fragment>
     <fragment
         android:id="@+id/fragmentGroup"
@@ -128,6 +134,9 @@
         <action
             android:id="@+id/action_fragmentCreateAd1_to_fragmentCreateAd2"
             app:destination="@id/fragmentCreateAd2" />
+        <argument
+            android:name="route"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCreateAd2"
@@ -140,6 +149,9 @@
         <argument
             android:name="adInfo"
             app:argType="com.example.roommate.data.model.AdModel" />
+        <argument
+            android:name="route"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCreateAd3"
@@ -153,6 +165,12 @@
         <argument
             android:name="adInfo"
             app:argType="com.example.roommate.data.model.AdModel" />
+        <argument
+            android:name="route"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentCreateAd3_to_fragmentAds"
+            app:destination="@id/fragmentAds" />
     </fragment>
     <dialog
         android:id="@+id/dialogCreateGroup"

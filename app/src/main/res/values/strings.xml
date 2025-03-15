@@ -54,11 +54,11 @@
     <string name="what_we_have">O que temos a oferecer</string>
     <string name="r_2_200_00">R$ 2.200,00</string>
     <string name="groups">Grupos</string>
-    <string name="n_bedrooms">Quartos\n 2\t</string>
-    <string name="n_suites">Suítes\n 3</string>
-    <string name="square_meters">Metros²\n59</string>
-    <string name="n_vacancies">Vagas\n4</string>
-    <string name="n_parking">Garagem\n2</string>
+    <string name="number_test">2</string>
+    <string name="suites">Suítes</string>
+    <string name="square_meters">Metros²</string>
+    <string name="vacancies">Vagas</string>
+    <string name="parking">Garagem</string>
     <string name="description_hint">Insira uma descrição</string>
     <string name="is_it_private_group">É um grupo privado?</string>
     <string name="create_group">Criar grupo</string>
@@ -120,6 +120,8 @@
     <string name="feed">Feed</string>
     <string name="show_members_qtt">Members: %1$s</string>
     <string name="bio_default">Olá! Estou usando o RoomMate!</string>
+    <string name="bedrooms">Quartos</string>
+    <string name="parking_hint">Insira a quantidade de vagas</string>
     <string-array name="sex_array">
         <item>Feminino</item>
         <item>Maculino</item>

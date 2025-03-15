@@ -27,8 +27,10 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentAdsBinding.inflate(inflater, container, false)
-        adapter = ListAdAdapter {
-            findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)
+
+        adapter = ListAdAdapter { adModel ->
+            val action = FragmentAdsDirections.actionFragmentAdsToFragmentAdvertisement(adModel)
+            findNavController().navigate(action)
         }
 
         adsVM = ViewModelProvider(this)[FeedViewModel::class.java]
@@ -43,7 +45,8 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
         adsVM.getAds()
 
         binding.createAdBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentAds_to_fragmentAdvertisement)
+            val action = FragmentAdsDirections.actionFragmentAdsToFragmentCreateAd1(0)
+            findNavController().navigate(action)
         }
 
         binding.recycleListAds.layoutManager = LinearLayoutManager(context)

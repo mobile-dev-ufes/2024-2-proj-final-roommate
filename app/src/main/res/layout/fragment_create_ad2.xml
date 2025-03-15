@@ -22,7 +22,7 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <EditText
+        <com.santalu.maskara.widget.MaskEditText
             android:id="@+id/cep_et"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -32,7 +32,10 @@
             android:hint="@string/cep_hint"
             android:inputType="number"
             android:padding="7dp"
-            android:textColor="@color/gray"/>
+            android:textColor="@color/gray"
+            app:mask="__.___-___"
+            app:maskCharacter="_"
+            app:maskStyle="completable"/>
 
         <TextView
             android:layout_width="wrap_content"
