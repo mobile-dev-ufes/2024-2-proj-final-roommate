@@ -1,4 +1,4 @@
-package com.example.roommate.ui.viewModels
+package com.example.roommate.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

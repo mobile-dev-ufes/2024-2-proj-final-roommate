@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentMyGroupsBinding
 import com.example.roommate.ui.adapters.ListMyGroupAdapter
-import com.example.roommate.ui.viewModels.GroupViewModel
+import com.example.roommate.viewModel.GroupViewModel
 
 class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
     private lateinit var binding: FragmentMyGroupsBinding
