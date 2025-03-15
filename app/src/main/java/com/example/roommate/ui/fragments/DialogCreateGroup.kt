@@ -13,8 +13,6 @@ import com.example.roommate.R
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.DialogCreateGroupBinding
 import com.example.roommate.ui.viewModels.GroupViewModel
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
 
 class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
     private lateinit var binding: DialogCreateGroupBinding

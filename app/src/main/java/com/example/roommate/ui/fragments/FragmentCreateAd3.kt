@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.roommate.R
 import com.example.roommate.data.model.AdModel
-import com.example.roommate.data.model.Address
 import com.example.roommate.databinding.FragmentCreateAd3Binding
 import com.example.roommate.utils.statusEnum
 import com.example.roommate.viewModel.CreateAdViewModel

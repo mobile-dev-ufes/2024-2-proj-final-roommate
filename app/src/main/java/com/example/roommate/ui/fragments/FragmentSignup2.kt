@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -15,7 +14,6 @@ import com.example.roommate.R
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.FragmentSignup2Binding
 import java.time.LocalDate
-import java.util.Date
 
 class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListener {
     private lateinit var binding: FragmentSignup2Binding
@@ -48,7 +46,7 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup1), View.OnClickListene
                     name = binding.nameEt.text.toString(),
                     bio = null,
                     sex = binding.sexSp.selectedItem.toString(),
-                    phone = binding.phoneEt.masked.toString(),
+                    phone = binding.phoneEt.masked,
                     birthDate = args.userInfo.birthDate,
                     photo_uri = null
                 )

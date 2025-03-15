@@ -6,7 +6,6 @@ import com.example.roommate.data.model.UserModel
 import com.example.roommate.utils.statusEnum
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
-import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Date
 

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentEntryRequestsBinding
 
@@ -24,13 +23,13 @@ class FragmentEntryRequests : Fragment(R.layout.fragment_entry_requests) {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*
+
         binding.adGroupBtn.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentAdvertisement_to_fragmentInterestedGroups)
         }
-        */
-    }
+
+    } */
 }

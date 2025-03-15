@@ -1,11 +1,9 @@
 package com.example.roommate.data.model
 
-import com.google.firebase.firestore.DocumentReference
-import org.w3c.dom.Document
 import java.io.Serializable
 
 data class GroupModel(
-    val id: String,
+    var id: String = "", // The ID will be assigned after the group is added to Firebase
     val name: String,
     val description: String,
     val qttMembers: Int,
@@ -13,7 +11,37 @@ data class GroupModel(
     val users: List<String>,
     val advertisementId: String
 ) : Serializable {
-    constructor(name: String, description: String, advertisementId: String) : this("salve", name, description, 0, 0, emptyList<String>(), advertisementId)
-    constructor(name: String, description: String, advertisementId: String, qttMembers: Int) : this("salve", name, description, qttMembers, 0, emptyList<String>(), advertisementId)
-    constructor(name: String, description: String, advertisementId: String, users: List<String>) : this("salve", name, description, 1, 0, users, advertisementId)
+
+    // Constructor without the ID, to the createGroup
+    constructor(
+        name: String,
+        description: String,
+        advertisementId: String,
+        users: List<String>
+    ) : this(
+        id = "", // Empty initially, will be assigned later
+        name = name,
+        description = description,
+        qttMembers = users.size, // Set the number of members based on the users list size
+        qttNotifications = 0, // Default value, can be changed later
+        users = users,
+        advertisementId = advertisementId
+    )
+
+    // Constructor to get only the necessary data to show in InterestedGourps
+    constructor(
+        id: String,
+        name: String,
+        description: String,
+        advertisementId: String,
+        qttMembers: Int
+    ) : this(
+        id = id,
+        name = name,
+        description = description,
+        qttMembers = qttMembers,
+        qttNotifications = 0,
+        users = emptyList<String>(),
+        advertisementId = advertisementId,
+    )
 }

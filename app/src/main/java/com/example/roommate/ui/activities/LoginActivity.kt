@@ -11,9 +11,6 @@ import com.example.roommate.databinding.ActivityLoginBinding
 import com.example.roommate.utils.statusEnum
 import com.example.roommate.utils.userManager
 import com.example.roommate.viewModel.UserViewModel
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.firestore
-import java.time.LocalDate
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
