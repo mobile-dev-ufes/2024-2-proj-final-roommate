@@ -40,7 +40,8 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
                     name = binding.createGroupNameTv.text.toString(),
                     description = binding.createGroupDescriptionTv.text.toString(),
                     advertisementId = args.advertisementId,
-                    users = listOf(args.userId)
+                    users = listOf(args.userId),
+                    isPrivate = binding.switchGroup.isChecked
                 )
             )
 

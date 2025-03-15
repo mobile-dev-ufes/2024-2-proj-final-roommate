@@ -86,13 +86,16 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
                             val groupName = groupDocument.getString("name").orEmpty()
                             val groupDescription = groupDocument.getString("description").orEmpty()
                             val qttMembers = (groupDocument.get("qttMembers") as? Long)?.toInt() ?: 0
+                            val isPrivate = groupDocument.getBoolean("isPrivate") ?: false
+
 
                             val group = GroupModel(
                                 id = groupDocument.id,
                                 name = groupName,
                                 description = groupDescription,
                                 advertisementId = advertisementId,
-                                qttMembers = qttMembers
+                                qttMembers = qttMembers,
+                                isPrivate = isPrivate
                             )
 
                             synchronized(groupsList) { groupsList.add(group) }

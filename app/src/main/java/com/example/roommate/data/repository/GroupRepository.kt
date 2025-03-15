@@ -75,6 +75,7 @@ class GroupRepository {
                     val name = document.getString("name") ?: ""
                     val description = document.getString("description") ?: ""
                     val qttNotifications = document.getLong("qttNotifications")?.toInt() ?: 0
+                    val isPrivate = document.getBoolean("isPrivate") ?: false
 
                     // Retrieve 'users' safely
                     val usersList = document.get("users") as? List<*> ?: emptyList<Any>()
@@ -98,7 +99,8 @@ class GroupRepository {
                             qttMembers,
                             qttNotifications,
                             userIdsList,
-                            advertisementId
+                            advertisementId,
+                            isPrivate
                         )
                     )
                 }
