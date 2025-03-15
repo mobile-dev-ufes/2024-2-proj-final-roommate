@@ -137,6 +137,9 @@
         <action
             android:id="@+id/action_fragmentCreateAd2_to_fragmentCreateAd3"
             app:destination="@id/fragmentCreateAd3" />
+        <argument
+            android:name="adInfo"
+            app:argType="com.example.roommate.data.model.AdModel" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCreateAd3"
@@ -147,6 +150,9 @@
         <action
             android:id="@+id/action_fragmentCreateAd3_to_fragmentMyAds"
             app:destination="@id/fragmentMyAds" />
+        <argument
+            android:name="adInfo"
+            app:argType="com.example.roommate.data.model.AdModel" />
     </fragment>
     <dialog
         android:id="@+id/dialogCreateGroup"
