@@ -42,7 +42,7 @@ class UserRepository {
         db.collection("user").document(userEmail)
             .get()
             .addOnSuccessListener { document ->
-                if (document != null) {
+                if (document.exists()) {
                     user = UserModel(
                         document.getString("email"),
                         document.getString("name"),

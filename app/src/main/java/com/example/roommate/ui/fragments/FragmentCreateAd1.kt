@@ -37,9 +37,9 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
     private fun adModelFromViewInfo(): AdModel {
         return AdModel(
             title = binding.titleEt.text.toString(),
-            rent_value = binding.rentEt.text.toString().toDouble(),
-            cond_value = binding.condEt.text.toString().toDouble(),
-            max_client = binding.clientsEt.text.toString().toInt(),
+            rent_value =binding.rentEt.text.toString().takeIf { it.isNotEmpty() }?.toDouble() ?: 0.0,
+            cond_value = binding.condEt.text.toString().takeIf { it.isNotEmpty() }?.toDouble() ?: 0.0,
+            max_client = binding.clientsEt.text.toString().takeIf { it.isNotEmpty() }?.toInt() ?: 0,
             description = binding.descriptionEt.text.toString(),
             suite_qtt = null,
             bedroom_qtt = null,

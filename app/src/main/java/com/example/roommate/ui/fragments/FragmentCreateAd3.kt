@@ -65,9 +65,9 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
             max_client = args.adInfo.max_client,
             description = args.adInfo.description,
             local = args.adInfo.local,
-            bedroom_qtt = binding.bedroomEt.text.toString().toInt(),
-            suite_qtt = binding.suitesEt.text.toString().toInt(),
-            area = binding.suitesEt.text.toString().toDouble(),
+            bedroom_qtt = binding.bedroomEt.text.toString().takeIf { it.isNotEmpty() }?.toInt() ?: 0,
+            suite_qtt = binding.suitesEt.text.toString().takeIf { it.isNotEmpty() }?.toInt() ?: 0,
+            area = binding.areaEt.text.toString().takeIf { it.isNotEmpty() }?.toDouble() ?: 0.0,
             benefits = benefits,
             groups = arrayOf()
         )

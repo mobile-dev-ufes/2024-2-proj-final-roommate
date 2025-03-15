@@ -30,7 +30,7 @@
             android:autofillHints=""
             android:background="@drawable/text_box_shape"
             android:hint="@string/cep_hint"
-            android:inputType="text"
+            android:inputType="number"
             android:padding="7dp"
             android:textColor="@color/gray"/>
 
