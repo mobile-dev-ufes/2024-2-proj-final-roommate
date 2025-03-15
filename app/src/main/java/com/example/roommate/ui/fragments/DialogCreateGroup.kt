@@ -51,11 +51,11 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
                 .setPopUpTo(R.id.fragmentInterestedGroups, true) // Clears back stack up to fragmentMyAds
                 .build()
 
-            findNavController().navigate(
-                R.id.action_dialogCreateGroup_to_fragmentInterestedGroups,
-                null,
-                navOptions
-            )
+            val action = DialogCreateGroupDirections
+                .actionDialogCreateGroupToFragmentInterestedGroups(args.advertisementId, args.userId)
+
+            findNavController().navigate(action, navOptions)
+
         }
     }
 }
