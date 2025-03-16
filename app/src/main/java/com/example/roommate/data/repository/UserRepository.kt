@@ -5,14 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.utils.statusEnum
+import com.google.firebase.Firebase
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.storage
 import java.time.ZoneId
 import java.util.Date
 
 class UserRepository {
     private val db = FirebaseFirestore.getInstance()
+    private val storage = Firebase.storage
 
     fun create(user: UserModel, status : MutableLiveData<statusEnum>){
         val birthDate = Date.from(user.birthDate!!.atStartOfDay(ZoneId.systemDefault()).toInstant())
@@ -130,4 +133,36 @@ class UserRepository {
             Log.w("AddGroupToUser", "Error fetching user document", e)
         }
     }
+
+    fun getProfileImage(
+        userId: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        db.collection("user").document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                val photoUri = document.getString("photo_uri").toString()
+                getStorageUri(photoUri, onSuccess, onFailure)
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
+    private fun getStorageUri(
+        photoUri: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        if (photoUri.isNotEmpty()) {
+            val storageRef = storage.getReferenceFromUrl(photoUri)
+            storageRef.downloadUrl
+                .addOnSuccessListener { uri -> onSuccess(uri.toString()) }
+                .addOnFailureListener { exception -> onFailure(exception) }
+        } else {
+            onFailure(Exception("Photo URI not found"))
+        }
+    }
+
 }
