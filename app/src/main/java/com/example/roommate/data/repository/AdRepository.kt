@@ -19,7 +19,7 @@ class AdRepository {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    adList.add(adModelFromDocument(document))
+                    adList.add(AdModel(document))
                 }
                 liveData.value = adList
             }
@@ -36,7 +36,7 @@ class AdRepository {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    adList.add(adModelFromDocument(document))
+                    adList.add(AdModel(document))
                     Log.d("FIREBASE-MYADS", "${document.id} => ${document.data}")
                 }
                 Log.d("TESTE", "hello")
@@ -73,6 +73,7 @@ class AdRepository {
             }
     }
 
+    // Substituída pelo construtor definido na classe
     private fun adModelFromDocument(document: QueryDocumentSnapshot): AdModel{
         var benefits = document.get("benefits")
         var local = document.get("local")

@@ -1,5 +1,6 @@
 package com.example.roommate.data.model
 
+import com.google.firebase.firestore.QueryDocumentSnapshot
 import java.io.Serializable
 import java.text.NumberFormat
 import java.util.Locale
@@ -72,6 +73,24 @@ class AdModel(
         "security" to "Segurança"
     )
 
+    constructor(document: QueryDocumentSnapshot) : this(
+        id = document.getString("id") ?: "unknown",
+        owner = document.getString("owner") ?: "unknown",
+        title = document.getString("title") ?: "unknown",
+        rent_value = document.getDouble("rent_value") ?: 0.0,
+        cond_value = document.getDouble("cond_value") ?: 0.0,
+        max_client = document.getLong("max_client") ?: 0,
+        description = document.getString("description"),
+        suite_qtt = document.getLong("suite_qtt") ?: 0,
+        bedroom_qtt = document.getLong("bedroom_qtt") ?: 0,
+        parking_qtt = document.getLong("parking_qtt") ?: 0,
+        area = document.getDouble("area") ?: 0.0,
+        benefits = (document.get("benefits") as? Map<*, *>)?.filterKeys { it is String }
+            ?.mapKeys { it.key as String }?.mapValues { it.value as Boolean },
+        local = (document.get("local") as? Map<*, *>)?.let { Address(it as Map<Any, Any>) } ?: Address(),
+        groups = document.get("groups") as? Array<String> ?: arrayOf(),
+        photos = document.get("photos") as? Array<String> ?: arrayOf()
+    )
 
     fun toMap(): Map<String, Any?> {
         return mapOf(
