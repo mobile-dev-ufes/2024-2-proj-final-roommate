@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,9 +24,16 @@ class FragmentFavoriteAds : Fragment(R.layout.fragment_favorite_ads) {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentFavoriteAdsBinding.inflate(inflater, container, false)
-        adapter = ListAdAdapter {
-            findNavController().navigate(R.id.action_fragmentFavoriteAds_to_fragmentAdvertisement)
-        }
+
+        adapter = ListAdAdapter(
+            onClickItem = {
+                findNavController().navigate(R.id.action_fragmentFavoriteAds_to_fragmentAdvertisement)
+            },
+            onClickButton = { ad ->
+                Toast.makeText(requireContext(), "Clicou no botão do anúncio: ${ad.title}", Toast.LENGTH_SHORT).show()
+            }
+        )
+
 
         return binding.root
     }
