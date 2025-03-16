@@ -38,6 +38,8 @@ class UserRepository {
      * @param status LiveData for indicating the success or failure of the operation.
      */
     fun create(user: UserModel, status : MutableLiveData<statusEnum>){
+        saveAssets(user, status)
+
         val birthDate = Date.from(user.birthDate!!.atStartOfDay(ZoneId.systemDefault()).toInstant())
 
         val userMap = hashMapOf(
@@ -53,7 +55,7 @@ class UserRepository {
         db.collection("user").document(user.email!!)
             .set(userMap)
             .addOnSuccessListener {
-                saveAssets(user, status)
+                status.value = statusEnum.SUCCESS
             }
             .addOnFailureListener {
                 status.value = statusEnum.FAIL
@@ -81,7 +83,8 @@ class UserRepository {
         val userId = user.email!!.replace(Regex("[^A-Za-z]"), "")
 
         val file = Uri.parse(user.photo_uri!!)
-        val ref = storageRef.child("users/$userId/${file.lastPathSegment}")
+        val path = "users/$userId/${file.lastPathSegment}"
+        val ref = storageRef.child(path)
 
         val uploadTask = ref.putFile(file)
 
@@ -94,6 +97,7 @@ class UserRepository {
                 liveStatus.value = statusEnum.FAIL_IMG
             }
 
+        user.photo_uri = "gs://${ref.bucket}/$path"
     }
 
     /**

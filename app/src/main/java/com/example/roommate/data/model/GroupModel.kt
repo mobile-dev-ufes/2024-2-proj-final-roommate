@@ -11,7 +11,7 @@ data class GroupModel(
     val users: List<String>,
     val advertisementId: String,
     val isPrivate: Boolean,
-    val photoUri: String? = null
+    var photoUri: String? = null
 ) : Serializable {
 
     constructor(
