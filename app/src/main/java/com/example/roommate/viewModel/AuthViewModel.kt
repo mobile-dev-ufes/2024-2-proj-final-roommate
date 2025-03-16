@@ -19,4 +19,8 @@ class AuthViewModel : ViewModel() {
     fun registerUser(email: String, pass: String){
         authRepository.registerUser(email, pass, status)
     }
+
+    fun authenticateUser(email: String, pass: String){
+        authRepository.authUser(email, pass, status)
+    }
 }

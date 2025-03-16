@@ -9,13 +9,17 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.databinding.ActivityLoginBinding
 import com.example.roommate.data.repository.AuthRepository
+import com.example.roommate.utils.authStatusEnum
 import com.example.roommate.utils.statusEnum
 import com.example.roommate.utils.userManager
+import com.example.roommate.viewModel.AuthViewModel
 import com.example.roommate.viewModel.UserViewModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+
     private lateinit var userVM: UserViewModel
+    private lateinit var authVM: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -24,6 +28,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         userVM = ViewModelProvider(this)[UserViewModel::class.java]
+        authVM = ViewModelProvider(this)[AuthViewModel::class.java]
+
         setObserver()
 
         binding.signUpTv.setOnClickListener({
@@ -31,8 +37,11 @@ class LoginActivity : AppCompatActivity() {
         })
 
         binding.signInBtn.setOnClickListener({
-            if (checkFields() && authenticate()) {
-                userVM.getUser(binding.emailEt.text.toString())
+            if (checkFields()) {
+                val email = binding.emailEt.text.toString()
+                val pass = binding.passEt.text.toString()
+
+                authVM.authenticateUser(email, pass)
             }
         })
     }
@@ -42,7 +51,27 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
+
+
     private fun setObserver() {
+        authVM.isRegistered().observe(this){ status ->
+            when(status){
+                authStatusEnum.SUCCESS ->{
+                    userVM.getUser(binding.emailEt.text.toString())
+                }
+                authStatusEnum.INVALID_CREDENTIAL ->{
+                    Toast.makeText(this, "Usuário ou senha incorreta.", Toast.LENGTH_SHORT).show()
+                }
+                authStatusEnum.NETWORK ->{
+                    Toast.makeText(this, "Verfique sua conexão com a internet.", Toast.LENGTH_SHORT).show()
+                }
+                authStatusEnum.FAIL ->{
+                    Toast.makeText(this, "Erro ao realizar o login.", Toast.LENGTH_SHORT).show()
+                }
+                else -> {}
+            }
+        }
+
         userVM.isRegistered().observe(this) { status ->
             when (status) {
                 statusEnum.SUCCESS -> {
@@ -63,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
                 statusEnum.FAIL -> {
                     Toast.makeText(
                         this,
-                        "Usuário não existe",
+                        "Registro do usuário não localizado.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -71,10 +100,6 @@ class LoginActivity : AppCompatActivity() {
                 else -> UInt
             }
         }
-    }
-
-    private fun authenticate(): Boolean {
-        return true
     }
 
     private fun checkFields(): Boolean {

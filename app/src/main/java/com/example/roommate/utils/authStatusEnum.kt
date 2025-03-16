@@ -6,5 +6,7 @@ enum class authStatusEnum {
     COLLISION,
     NETWORK,
     FAIL,
-    NIL
+    NIL,
+    INVALID_USER,
+    INVALID_CREDENTIAL
 }
