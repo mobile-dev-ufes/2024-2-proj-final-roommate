@@ -54,6 +54,8 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
             val email = binding.emailEt.text.toString()
             val pass = binding.passEt.text.toString()
 
+            args.userInfo.email = email
+
             authVM.registerUser(email, pass)
         }
     }
@@ -88,8 +90,6 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
                         "Cadastro realizado com sucesso!",
                         Toast.LENGTH_SHORT
                     ).show()
-
-
                     navigate()
                 }
 
