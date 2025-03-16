@@ -26,13 +26,14 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="30dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ad_image"
+                android:src="@drawable/no_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/CircularImageViewStyle" />
 
             <LinearLayout
+                android:id="@+id/image_l"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 app:layout_constraintEnd_toEndOf="@id/profile_image"

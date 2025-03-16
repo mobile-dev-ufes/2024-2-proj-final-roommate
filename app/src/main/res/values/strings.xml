@@ -123,6 +123,7 @@
     <string name="grupo_privado">Grupo privado?</string>
     <string name="bedrooms">Quartos</string>
     <string name="parking_hint">Insira a quantidade de vagas</string>
+    <string name="qtt">Quantidade:</string>
     <string name="get_in">Entrar</string>
     <string-array name="sex_array">
         <item>Feminino</item>

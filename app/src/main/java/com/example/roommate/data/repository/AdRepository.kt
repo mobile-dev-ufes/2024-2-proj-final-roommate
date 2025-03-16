@@ -1,16 +1,24 @@
 package com.example.roommate.data.repository
 
 import android.content.ContentValues.TAG
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.data.model.Address
+import com.example.roommate.data.model.UserModel
 import com.example.roommate.utils.statusEnum
+import com.example.roommate.utils.userManager
+import com.google.android.gms.tasks.Task
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.storage
 
 class AdRepository {
     private val db = FirebaseFirestore.getInstance()
+    private var st = Firebase.storage
 
     fun getAllAds(liveData: MutableLiveData<MutableList<AdModel>>) {
         val adList = mutableListOf<AdModel>()
@@ -55,6 +63,8 @@ class AdRepository {
             .addOnSuccessListener { documentReference ->
                 Log.d("FIREBASE-ADS", "Documento adicionado com ID: ${adRef.id}")
 
+                ad.id = adRef.id
+
                 // Update the document with its generated ID
                 adRef.update("id", adRef.id)
                     .addOnSuccessListener {
@@ -65,12 +75,40 @@ class AdRepository {
                     }
 
                 Log.d("FIREBASE-ADS", "Documento adicionado com ID: ${documentReference}")
-                status.value = statusEnum.SUCCESS
+                saveAssets(ad, status)
             }
             .addOnFailureListener {
                 Log.d("FIREBASE-ADS", "Erro ao adicionar o documento")
                 status.value = statusEnum.FAIL
             }
+    }
+
+    private fun saveAssets(ad: AdModel, liveStatus: MutableLiveData<statusEnum>){
+        if (ad.photos.isEmpty()){
+            liveStatus.value = statusEnum.SUCCESS
+            return
+        }
+
+        // Create a storage reference from our app
+        val storageRef = st.reference
+        val userId = userManager.user.email!!.replace(Regex("[^A-Za-z]"), "")
+
+        for (photo in ad.photos){
+            val file = Uri.parse(photo)
+            val ref = storageRef.child("ads/${ad.id}/${file.lastPathSegment}")
+
+            val uploadTask = ref.putFile(file)
+
+            uploadTask
+                .addOnSuccessListener {
+                    liveStatus.value = statusEnum.SUCCESS
+                    Log.d("FIRE - STORAGE", "Upload bem-sucedido: $file")
+                }
+                .addOnFailureListener { exception ->
+                    liveStatus.value = statusEnum.FAIL_IMG
+                    Log.d("FIRE - STORAGE", "Falha no upload: $file", exception)
+                }
+        }
     }
 
     // Substituída pelo construtor definido na classe
