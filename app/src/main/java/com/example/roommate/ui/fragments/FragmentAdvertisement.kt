@@ -38,15 +38,10 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Hardcoded
-        val advertisementId = "D3KsuvpM8BrDlg8MD5tP"
-        val userId = "leticia@email.com"
-
         binding.adGroupBtn.setOnClickListener {
             val action =
                 FragmentAdvertisementDirections.actionFragmentAdvertisementToFragmentInterestedGroups(
-                        advertisementId,
-                        userId
+                    args.adInfo.id.toString()
                     )
             findNavController().navigate(action)
         }

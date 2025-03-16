@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentMyGroupsBinding
 import com.example.roommate.ui.adapters.ListMyGroupAdapter
+import com.example.roommate.utils.userManager
 import com.example.roommate.viewModel.GroupViewModel
 
 class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
@@ -41,7 +42,7 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
         binding.recycleListGroups.layoutManager = LinearLayoutManager(context)
         binding.recycleListGroups.adapter = adapter
 
-        groupViewModel.fetchUserGroups("leticia@email.com")
+        groupViewModel.fetchUserGroups(userManager.user.email.toString())
         observerGroups()
     }
 

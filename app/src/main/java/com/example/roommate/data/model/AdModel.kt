@@ -35,6 +35,7 @@ class Address(
 }
 
 class AdModel(
+    var id: String? = "unknown",
     var owner: String?,
     var title: String?,
     var rent_value: Double?,

@@ -48,11 +48,22 @@ class AdRepository {
     }
 
     fun create(ad: AdModel,  status : MutableLiveData<statusEnum>){
+        val adRef = db.collection("advertisement").document()
         val adMap = ad.toMap()
 
-        db.collection("advertisement").document()
-            .set(adMap)
+        adRef.set(adMap)
             .addOnSuccessListener { documentReference ->
+                Log.d("FIREBASE-ADS", "Documento adicionado com ID: ${adRef.id}")
+
+                // Update the document with its generated ID
+                adRef.update("id", adRef.id)
+                    .addOnSuccessListener {
+                        Log.d("FIREBASE-ADS", "ID atualizado com sucesso")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e("FIREBASE-ADS", "Erro ao atualizar ID", e)
+                    }
+
                 Log.d("FIREBASE-ADS", "Documento adicionado com ID: ${documentReference}")
                 status.value = statusEnum.SUCCESS
             }
@@ -79,6 +90,7 @@ class AdRepository {
         }
 
         return AdModel(
+            id = document.getString("id"),
             owner = document.getString("owner"),
             title = document.getString("title"),
             rent_value = document.getDouble("rent_value") ?: 0.0,

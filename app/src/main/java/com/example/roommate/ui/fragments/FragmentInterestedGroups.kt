@@ -44,8 +44,6 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
         super.onViewCreated(view, savedInstanceState)
 
         val advertisementId = args.advertisementId
-        val userId = args.userId
-        Log.d("Navigation", "Ad ID: $advertisementId, User ID: $userId")
 
         binding.recycleListAds.layoutManager = LinearLayoutManager(context)
         binding.recycleListAds.adapter = adapter
@@ -54,7 +52,7 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
 
         binding.createGroupBtn.setOnClickListener {
             val action = FragmentInterestedGroupsDirections
-                .actionFragmentInterestedGroupsToDialogCreateGroup(advertisementId, userId)
+                .actionFragmentInterestedGroupsToDialogCreateGroup(advertisementId)
             findNavController().navigate(action)
         }
     }
