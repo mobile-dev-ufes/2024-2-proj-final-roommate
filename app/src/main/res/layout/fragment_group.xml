@@ -104,13 +104,66 @@
         android:id="@+id/recycle_list_ads"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/members_tv"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:background="@color/bg_blue1"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="@color/sec_blue"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp">
+
+            <ImageView
+                android:id="@+id/edit_group"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/thumbs_up_description"
+                android:src="@drawable/pencil_icon"
+                android:background="@color/sec_blue"
+                android:layout_margin="5dp"
+
+
+                />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/group_get_in_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="@color/blue3"
+            android:paddingHorizontal="30dp"
+            android:text="@string/get_in"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 

@@ -8,9 +8,8 @@ class ListInterestedGroupViewHolder(private val binding: InterestedGroupsLineBin
     RecyclerView.ViewHolder(binding.root) {
 
         fun bindVH(group: GroupModel){
-            binding.groupDescriptionTv.text = group.description
+            binding.groupDescriptionTv.text = group.name
 
-            // Erro: Tem que pegar o tamanho da lista de usuários
             val textQttMembers = "${group.qttMembers} membros"
             binding.groupQttMembersTv.text = textQttMembers
 
