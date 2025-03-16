@@ -79,7 +79,7 @@ class UserRepository {
         val userId = user.email!!.replace(Regex("[^A-Za-z]"), "")
 
         val file = Uri.parse(user.photo_uri!!)
-        val ref = storageRef.child("$userId/profile/${file.lastPathSegment}")
+        val ref = storageRef.child("users/$userId/${file.lastPathSegment}")
 
         val uploadTask = ref.putFile(file)
 

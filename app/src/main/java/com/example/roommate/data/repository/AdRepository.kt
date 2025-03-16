@@ -95,7 +95,7 @@ class AdRepository {
 
         for (photo in ad.photos){
             val file = Uri.parse(photo)
-            val ref = storageRef.child("$userId/ads/${ad.id}/${file.lastPathSegment}")
+            val ref = storageRef.child("ads/${ad.id}/${file.lastPathSegment}")
 
             val uploadTask = ref.putFile(file)
 
