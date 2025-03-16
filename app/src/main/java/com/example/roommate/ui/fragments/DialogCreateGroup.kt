@@ -37,12 +37,14 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
         binding.createGroupBtn.setOnClickListener {
             groupViewModel.registerGroup(
                 GroupModel(
+                    id = "",
                     name = binding.createGroupNameTv.text.toString(),
                     description = binding.createGroupDescriptionTv.text.toString(),
                     advertisementId = args.advertisementId,
-                    users = listOf(args.userId),
+                    qttMembers = 0,
                     isPrivate = binding.switchGroup.isChecked
-                )
+                ),
+                args.userId
             )
 
             // Navigate and clean the stack until FragmentInterestedGroups
