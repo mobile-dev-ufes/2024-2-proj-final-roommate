@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.utils.statusEnum
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.ZoneId
 import java.util.Date
@@ -66,5 +67,31 @@ class UserRepository {
             }
     }
 
+    fun addGroupToUser(userId: String, groupId: String) {
+        val userRef = db.collection("user").document(userId)
+        val groupRef = db.collection("group").document(groupId)
 
+        // Get the current list of groups for the user
+        userRef.get().addOnSuccessListener { document ->
+            val currentGroups = document.get("groups") as? MutableList<DocumentReference> ?: mutableListOf()
+
+            // Add the new group reference to the list if it's not already present
+            if (!currentGroups.contains(groupRef)) {
+                currentGroups.add(groupRef)
+            } else {
+                println("User already a member of the this group")
+            }
+
+            // Update the user's list of groups
+            userRef.update("groups", currentGroups)
+                .addOnSuccessListener {
+                    Log.d("AddGroupToUser", "Group $groupId added to user $userId")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("AddGroupToUser", "Error adding group to user", e)
+                }
+        }.addOnFailureListener { e ->
+            Log.w("AddGroupToUser", "Error fetching user document", e)
+        }
+    }
 }

@@ -148,6 +148,43 @@ class GroupRepository {
             }
     }
 
+    fun addGroupMember(groupId: String, userId: String) {
+        val groupRef = db.collection("group").document(groupId)
+        val userRef = db.collection("user").document(userId)
+
+        groupRef.get().addOnSuccessListener { document ->
+            // Check if the "users" field exists and is a List
+            val currentUsers = document.get("users") as? MutableList<DocumentReference> ?: mutableListOf()
+
+            // Add the new user to the list if it's not already present
+            if (!currentUsers.contains(userRef)) {
+                currentUsers.add(userRef)
+            } else {
+                println("Group already has this member")
+            }
+
+            // Retrieve the current "qttMembers" value and increment it by 1
+            val currentQttMembers = document.getLong("qttMembers")?.toInt() ?: 0
+            val updatedQttMembers = currentQttMembers + 1
+
+            val updates = mapOf(
+                "users" to currentUsers,
+                "qttMembers" to updatedQttMembers
+            )
+
+            // Update the "users" and "qttMembers" fields in Firestore
+            groupRef.update(updates)
+                .addOnSuccessListener {
+                    Log.d("AddGroupMember", "User $userId added to group $groupId")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("AddGroupMember", "Error adding user to group", e)
+                }
+        }.addOnFailureListener { e ->
+            Log.w("AddGroupMember", "Error fetching group document", e)
+        }
+    }
+
     private fun DocumentSnapshot.toGroupModel(): GroupModel {
         return GroupModel(
             id = getString("id") ?: "",

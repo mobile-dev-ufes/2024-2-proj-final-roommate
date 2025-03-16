@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentGroupBinding
 import com.example.roommate.ui.adapters.ListMemberAdapter
+import com.example.roommate.utils.userManager
 import com.example.roommate.viewModel.GroupViewModel
 
 class FragmentGroup : Fragment(R.layout.fragment_group) {
@@ -50,6 +51,11 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
         binding.groupQttMembersTv.text = getString(R.string.show_members_qtt, argsGroup.qttMembers.toString())
 
         groupViewModel.getMembersFromGroup(argsGroup.id)
+
+        val userEmail = userManager.user.email.toString()
+        binding.groupGetInBtn.setOnClickListener {
+            groupViewModel.groupEntryLogic(argsGroup.id, userEmail)
+        }
 
         observerGroups()
     }

@@ -28,4 +28,8 @@ class UserViewModel : ViewModel() {
     fun getUser(userEmail: String) {
         userRepository.get(userEmail, status, currentUser)
     }
+
+    fun addGroupToUser(userId: String, groupId: String) {
+        userRepository.addGroupToUser(userId, groupId)
+    }
 }

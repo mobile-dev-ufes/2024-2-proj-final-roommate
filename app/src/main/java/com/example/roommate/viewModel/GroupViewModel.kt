@@ -1,5 +1,6 @@
 package com.example.roommate.viewModel
 
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.example.roommate.data.model.UserModel
 import com.example.roommate.data.repository.GroupRepository
 
 class GroupViewModel : ViewModel() {
+    private val userViewModel = UserViewModel()
     private val groupRepository = GroupRepository()
 
     private val _groups = MutableLiveData<List<GroupModel>>()
@@ -30,5 +32,10 @@ class GroupViewModel : ViewModel() {
         groupRepository.fetchUserGroups(userId) { groupList ->
             _groups.postValue(groupList)
         }
+    }
+
+    fun groupEntryLogic(groupId: String, userId: String) {
+        groupRepository.addGroupMember(groupId, userId)
+        userViewModel.addGroupToUser(userId, groupId)
     }
 }
