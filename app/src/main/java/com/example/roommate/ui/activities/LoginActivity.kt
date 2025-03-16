@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
                     userVM.getUser(binding.emailEt.text.toString())
                 }
                 authStatusEnum.INVALID_CREDENTIAL ->{
-                    Toast.makeText(this, "Usuário ou senha incorreta.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Usuário ou senha incorretos.", Toast.LENGTH_SHORT).show()
                 }
                 authStatusEnum.NETWORK ->{
                     Toast.makeText(this, "Verfique sua conexão com a internet.", Toast.LENGTH_SHORT).show()
