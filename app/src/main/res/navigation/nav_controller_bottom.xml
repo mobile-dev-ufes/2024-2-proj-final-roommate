@@ -103,10 +103,6 @@
             android:name="advertisementId"
             app:argType="string"
             app:nullable="false" />
-        <argument
-            android:name="userId"
-            app:argType="string"
-            app:nullable="false" />
         <action
             android:id="@+id/action_fragmentInterestedGroups_to_fragmentGroup"
             app:destination="@id/fragmentGroup" />
@@ -179,11 +175,6 @@
         tools:layout="@layout/dialog_create_group">
         <argument
             android:name="advertisementId"
-            app:argType="string"
-            app:nullable="false" />
-
-        <argument
-            android:name="userId"
             app:argType="string"
             app:nullable="false" />
         <action

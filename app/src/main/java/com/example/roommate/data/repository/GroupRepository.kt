@@ -3,6 +3,7 @@ package com.example.roommate.data.repository
 import android.util.Log
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.data.model.UserModel
+import com.example.roommate.utils.userManager
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -10,12 +11,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 class GroupRepository {
     private val db = FirebaseFirestore.getInstance()
 
-    fun registerGroup(group: GroupModel, userId: String) {
+    fun registerGroup(group: GroupModel) {
         db.collection("group")
             .add(group)
             .addOnSuccessListener { documentReference ->
 
-                val userRef = db.collection("user").document(userId)
+                val userEmail = userManager.user.email.toString()
+                val userRef = db.collection("user").document(userEmail)
                 val userRefList = listOf(userRef)
 
                 val updates = mapOf(

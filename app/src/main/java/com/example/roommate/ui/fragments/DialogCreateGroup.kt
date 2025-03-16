@@ -43,8 +43,7 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
                     advertisementId = args.advertisementId,
                     qttMembers = 0,
                     isPrivate = binding.switchGroup.isChecked
-                ),
-                args.userId
+                )
             )
 
             // Navigate and clean the stack until FragmentInterestedGroups
@@ -53,7 +52,7 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
                 .build()
 
             val action = DialogCreateGroupDirections
-                .actionDialogCreateGroupToFragmentInterestedGroups(args.advertisementId, args.userId)
+                .actionDialogCreateGroupToFragmentInterestedGroups(args.advertisementId)
 
             findNavController().navigate(action, navOptions)
 

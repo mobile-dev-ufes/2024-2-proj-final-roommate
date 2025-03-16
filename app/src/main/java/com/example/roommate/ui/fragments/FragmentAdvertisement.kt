@@ -40,13 +40,11 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
 
         // Hardcoded
         val advertisementId = "D3KsuvpM8BrDlg8MD5tP"
-        val userId = "leticia@email.com"
 
         binding.adGroupBtn.setOnClickListener {
             val action =
                 FragmentAdvertisementDirections.actionFragmentAdvertisementToFragmentInterestedGroups(
-                        advertisementId,
-                        userId
+                        advertisementId
                     )
             findNavController().navigate(action)
         }

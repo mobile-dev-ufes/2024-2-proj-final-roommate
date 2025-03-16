@@ -16,8 +16,8 @@ class GroupViewModel : ViewModel() {
     private val _members = MutableLiveData<List<UserModel>>()
     val members: LiveData<List<UserModel>> = _members
 
-    fun registerGroup(group: GroupModel, userId: String) {
-        groupRepository.registerGroup(group, userId)
+    fun registerGroup(group: GroupModel) {
+        groupRepository.registerGroup(group)
     }
 
     fun getMembersFromGroup(groupId: String) {
