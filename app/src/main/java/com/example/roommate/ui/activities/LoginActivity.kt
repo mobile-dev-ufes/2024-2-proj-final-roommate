@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigate(){
         startActivity(Intent(this, HomeActivity::class.java))
-        finish()
+//        finish()
     }
 
 
