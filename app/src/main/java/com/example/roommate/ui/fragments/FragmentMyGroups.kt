@@ -12,12 +12,12 @@ import com.example.roommate.R
 import com.example.roommate.databinding.FragmentMyGroupsBinding
 import com.example.roommate.ui.adapters.ListMyGroupAdapter
 import com.example.roommate.utils.userManager
-import com.example.roommate.viewModel.GroupViewModel
+import com.example.roommate.viewModel.UserViewModel
 
 class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
     private lateinit var binding: FragmentMyGroupsBinding
     private lateinit var adapter: ListMyGroupAdapter
-    private val groupViewModel: GroupViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,12 +42,12 @@ class FragmentMyGroups : Fragment(R.layout.fragment_my_groups) {
         binding.recycleListGroups.layoutManager = LinearLayoutManager(context)
         binding.recycleListGroups.adapter = adapter
 
-        groupViewModel.fetchUserGroups(userManager.user.email.toString())
+        userViewModel.getGroupsForUser(userManager.user.email.toString())
         observerGroups()
     }
 
     private fun observerGroups() {
-        groupViewModel.groups.observe(viewLifecycleOwner) { groups ->
+        userViewModel.groups.observe(viewLifecycleOwner) { groups ->
             adapter.updateGroupList(groups.toMutableList())
         }
     }

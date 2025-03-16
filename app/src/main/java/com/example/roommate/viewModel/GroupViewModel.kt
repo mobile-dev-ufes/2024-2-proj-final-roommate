@@ -1,6 +1,5 @@
 package com.example.roommate.viewModel
 
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,12 +24,6 @@ class GroupViewModel : ViewModel() {
     fun getMembersFromGroup(groupId: String) {
         groupRepository.getMembersFromGroup(groupId) { userList ->
             _members.postValue(userList)
-        }
-    }
-
-    fun fetchUserGroups(userId: String) {
-        groupRepository.fetchUserGroups(userId) { groupList ->
-            _groups.postValue(groupList)
         }
     }
 

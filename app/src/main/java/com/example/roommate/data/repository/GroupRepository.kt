@@ -109,45 +109,6 @@ class GroupRepository {
             }
     }
 
-
-
-    fun fetchUserGroups(userId: String, callback: (List<GroupModel>) -> Unit) {
-        val groupList = mutableListOf<GroupModel>()
-        db.collection("user").document(userId)
-            .get()
-            .addOnSuccessListener { argsUser ->
-                val groupRefs = argsUser.get("groups")
-
-                val list = if (groupRefs is List<*>) {
-                    groupRefs.filterIsInstance<DocumentReference>()
-                } else {
-                    emptyList()
-                }
-
-                if (list.isEmpty()) {
-                    callback(groupList) // Return empty list if no users
-                    return@addOnSuccessListener
-                }
-
-                var count = 0
-                list.forEach { groupRef ->
-                    groupRef.get().addOnSuccessListener { document ->
-                        document?.let {
-                            groupList.add(it.toGroupModel()) // Using the extension function
-                        }
-                    }.addOnCompleteListener {
-                        count++
-                        if (count == list.size) {
-                            callback(groupList) // Return the list when all users are fetched
-                        }
-                    }
-                }
-            }.addOnFailureListener {
-                println("Erro ao buscar grupo: ${it.message}")
-                callback(emptyList()) // Return an empty list in case of failure
-            }
-    }
-
     fun addGroupMember(groupId: String, userId: String) {
         val groupRef = db.collection("group").document(groupId)
         val userRef = db.collection("user").document(userId)
@@ -183,16 +144,5 @@ class GroupRepository {
         }.addOnFailureListener { e ->
             Log.w("AddGroupMember", "Error fetching group document", e)
         }
-    }
-
-    private fun DocumentSnapshot.toGroupModel(): GroupModel {
-        return GroupModel(
-            id = getString("id") ?: "",
-            name = getString("name") ?: "",
-            description = getString("description") ?: "",
-            advertisementId = getString("advertisementId") ?: "",
-            qttMembers = getLong("qttMembers")?.toInt() ?: 0,
-            isPrivate = getBoolean("isPrivate") ?: false
-        )
     }
 }

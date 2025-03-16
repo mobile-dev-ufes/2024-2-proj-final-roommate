@@ -2,6 +2,7 @@ package com.example.roommate.data.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.roommate.data.model.GroupModel
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.utils.statusEnum
 import com.google.firebase.Timestamp
@@ -66,6 +67,41 @@ class UserRepository {
                 liveStatus.value = statusEnum.FAIL
             }
     }
+
+    fun getGroupsForUser(userId: String, callback: (List<GroupModel>) -> Unit) {
+        val userRef = db.collection("user").document(userId)
+
+        userRef.get().addOnSuccessListener { document ->
+            val groupRefs = document.get("groups") as? List<DocumentReference> ?: return@addOnSuccessListener
+
+            val groupList = mutableListOf<GroupModel>()
+            var count = 0
+
+            groupRefs.forEach { groupRef ->
+                groupRef.get().addOnSuccessListener { groupDoc ->
+                    groupDoc?.let {
+                        val id = it.getString("id") ?: ""
+                        val name = it.getString("name") ?: ""
+                        val description = it.getString("description") ?: ""
+                        val advertisementId = it.getString("advertisementId") ?: ""
+                        val qttMembers = it.getLong("qttMembers")?.toInt() ?: 0
+                        val isPrivate = it.getBoolean("isPrivate") ?: false
+
+                        groupList.add(GroupModel(id, name, description, advertisementId, qttMembers, isPrivate))
+                    }
+                }.addOnCompleteListener {
+                    count++
+                    if (count == groupRefs.size) {
+                        callback(groupList) // Call the callback with the list once all groups are fetched
+                    }
+                }
+            }
+        }.addOnFailureListener { e ->
+            Log.w("GetGroups", "Error getting user document", e)
+            callback(emptyList()) // In case of error, return an empty list
+        }
+    }
+
 
     fun addGroupToUser(userId: String, groupId: String) {
         val userRef = db.collection("user").document(userId)
