@@ -37,11 +37,14 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
         binding.createGroupBtn.setOnClickListener {
             groupViewModel.registerGroup(
                 GroupModel(
+                    id = "",
                     name = binding.createGroupNameTv.text.toString(),
                     description = binding.createGroupDescriptionTv.text.toString(),
                     advertisementId = args.advertisementId,
-                    users = listOf(args.userId)
-                )
+                    qttMembers = 0,
+                    isPrivate = binding.switchGroup.isChecked
+                ),
+                args.userId
             )
 
             // Navigate and clean the stack until FragmentInterestedGroups
@@ -55,5 +58,11 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
             findNavController().navigate(action, navOptions)
 
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent) // This removes the default dark background
     }
 }

@@ -120,6 +120,7 @@
     <string name="feed">Feed</string>
     <string name="show_members_qtt">Members: %1$s</string>
     <string name="bio_default">Olá! Estou usando o RoomMate!</string>
+    <string name="grupo_privado">Grupo privado?</string>
     <string name="bedrooms">Quartos</string>
     <string name="parking_hint">Insira a quantidade de vagas</string>
     <string-array name="sex_array">
