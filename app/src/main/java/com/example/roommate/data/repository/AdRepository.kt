@@ -57,13 +57,15 @@ class AdRepository {
 
     fun create(ad: AdModel,  status : MutableLiveData<statusEnum>){
         val adRef = db.collection("advertisement").document()
+
+        ad.id = adRef.id
+        saveAssets(ad, status)
+
         val adMap = ad.toMap()
 
         adRef.set(adMap)
             .addOnSuccessListener { documentReference ->
                 Log.d("FIREBASE-ADS", "Documento adicionado com ID: ${adRef.id}")
-
-                ad.id = adRef.id
 
                 // Update the document with its generated ID
                 adRef.update("id", adRef.id)
@@ -75,7 +77,6 @@ class AdRepository {
                     }
 
                 Log.d("FIREBASE-ADS", "Documento adicionado com ID: ${documentReference}")
-                saveAssets(ad, status)
             }
             .addOnFailureListener {
                 Log.d("FIREBASE-ADS", "Erro ao adicionar o documento")
@@ -91,13 +92,17 @@ class AdRepository {
 
         // Create a storage reference from our app
         val storageRef = st.reference
-        val userId = userManager.user.email!!.replace(Regex("[^A-Za-z]"), "")
+
+        val photos: MutableList<String> = mutableListOf()
 
         for (photo in ad.photos){
             val file = Uri.parse(photo)
-            val ref = storageRef.child("ads/${ad.id}/${file.lastPathSegment}")
+            val path = "ads/${ad.id}/${file.lastPathSegment}"
+            val ref = storageRef.child(path)
 
             val uploadTask = ref.putFile(file)
+
+            photos.add("gs://${ref.bucket}/$path")
 
             uploadTask
                 .addOnSuccessListener {
@@ -109,6 +114,8 @@ class AdRepository {
                     Log.d("FIRE - STORAGE", "Falha no upload: $file", exception)
                 }
         }
+
+        ad.photos = photos
     }
 
     // Substituída pelo construtor definido na classe
