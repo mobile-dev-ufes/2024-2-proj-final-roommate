@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -33,12 +34,13 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ad2ProceedBtn.setOnClickListener {
-            val action = FragmentCreateAd2Directions.actionFragmentCreateAd2ToFragmentCreateAd3(adModelFromViewInfo(), args.route)
+            updateAdModelFromViewInfo()
+            val action = FragmentCreateAd2Directions.actionFragmentCreateAd2ToFragmentCreateAd3(args.adInfo, args.route)
             findNavController().navigate(action)
         }
     }
 
-    private fun adModelFromViewInfo(): AdModel {
+    private fun updateAdModelFromViewInfo(){
         val address = Address(
             cep = binding.cepEt.masked.toString(),
             number = binding.numberEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
@@ -48,19 +50,6 @@ class FragmentCreateAd2 : Fragment(R.layout.fragment_create_ad2) {
             state = binding.stateEt.text.toString(),
         )
 
-        return AdModel(
-            owner = args.adInfo.owner,
-            title = args.adInfo.title,
-            rent_value = args.adInfo.rent_value,
-            cond_value = args.adInfo.cond_value,
-            max_client = args.adInfo.max_client,
-            description = args.adInfo.description,
-            local = address,
-            suite_qtt = null,
-            bedroom_qtt = null,
-            parking_qtt = null,
-            area = null,
-            groups = arrayOf()
-        )
+        args.adInfo.local = address
     }
 }
