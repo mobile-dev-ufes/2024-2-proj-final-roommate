@@ -10,35 +10,49 @@ import com.google.firebase.firestore.FirebaseFirestore
 class GroupRepository {
     private val db = FirebaseFirestore.getInstance()
 
-    fun registerGroup(group: GroupModel) {
+    fun registerGroup(group: GroupModel, userId: String) {
         db.collection("group")
             .add(group)
             .addOnSuccessListener { documentReference ->
-                group.id = documentReference.id
-                Log.d("RegisterGroup", "Group added with ID: ${documentReference.id}")
 
-                val groupRef = db.collection("group").document(group.id)
+                val userRef = db.collection("user").document(userId)
+                val userRefList = listOf(userRef)
 
-                // Reference path to the advertisement document
-                db.collection("advertisement")
-                    .document(group.advertisementId)
-                    .update("groups", FieldValue.arrayUnion(groupRef))
+                val updates = mapOf(
+                    "users" to userRefList,
+                    "id" to documentReference.id,
+                    "qttMembers" to 1
+                )
+
+                db.collection("group").document(documentReference.id)
+                    .update(updates)
                     .addOnSuccessListener {
-                        Log.d("RegisterGroup", "Group reference added to advertisement")
+                        Log.d("RegisterGroup", "Group updated with ID and user reference.")
                     }
                     .addOnFailureListener { e ->
-                        Log.w("RegisterGroup", "Error updating advertisement with group reference", e)
+                        Log.w("RegisterGroup", "Error updating group", e)
                     }
 
-                // Reference path to the advertisement document
-                db.collection("user")
-                    .document(group.users.first())
-                    .update("groups", FieldValue.arrayUnion(groupRef))
+
+
+                val groupRef = db.collection("group").document(documentReference.id)
+
+                val batch = db.batch()
+
+                // Add group reference to advertisement
+                val advertisementRef = db.collection("advertisement").document(group.advertisementId)
+                batch.update(advertisementRef, "groups", FieldValue.arrayUnion(groupRef))
+
+                // Add group reference to user
+                batch.update(userRef, "groups", FieldValue.arrayUnion(groupRef))
+
+                // Commit the batch
+                batch.commit()
                     .addOnSuccessListener {
-                        Log.d("RegisterGroup", "Group reference added to user")
+                        Log.d("RegisterGroup", "Group reference added to advertisement and user in a single batch.")
                     }
                     .addOnFailureListener { e ->
-                        Log.w("RegisterGroup", "Error updating user with group reference", e)
+                        Log.w("RegisterGroup", "Error updating advertisement and user", e)
                     }
             }
             .addOnFailureListener { e ->
@@ -48,6 +62,11 @@ class GroupRepository {
     }
 
     fun getMembersFromGroup(groupId: String, callback: (List<UserModel>) -> Unit) {
+        if (groupId == "") {
+            println("empty GroupId in getMembersFromGroupId")
+            return
+        }
+
         val userList = mutableListOf<UserModel>()
         db.collection("group").document(groupId)
             .get()
@@ -115,7 +134,7 @@ class GroupRepository {
                             val name = it.getString("name") ?: ""
                             val description = it.getString("description") ?: ""
                             val advertisementId = it.getString("advertisementId") ?: ""
-                            val qttMembers = (it.getLong("qttMembers") as? Long)?.toInt() ?: 0
+                            val qttMembers = it.getLong("qttMembers")?.toInt() ?: 0
                             val isPrivate = it.getBoolean("isPrivate") ?: false
 
                             groupList.add(GroupModel(id, name, description, advertisementId, qttMembers, isPrivate))
@@ -132,54 +151,4 @@ class GroupRepository {
                 callback(emptyList()) // Return an empty list in case of failure
             }
     }
-
-//    fun fetchUserGroups(userId: String, callback: (List<GroupModel>) -> Unit) {
-//        val userRef: DocumentReference = db.collection("user").document(userId)
-//
-//        db.collection("user")
-//            .get()
-//            .addOnSuccessListener { querySnapshot ->
-//                val groupList = mutableListOf<GroupModel>()
-//
-//                for (document in querySnapshot) {
-//                    val id = document.id
-//                    val name = document.getString("name") ?: ""
-//                    val description = document.getString("description") ?: ""
-//                    val qttNotifications = document.getLong("qttNotifications")?.toInt() ?: 0
-//                    val isPrivate = document.getBoolean("isPrivate") ?: false
-//
-//                    // Retrieve 'users' safely
-//                    val usersList = document.get("users") as? List<*> ?: emptyList<Any>()
-//                    val userIdsList = usersList.mapNotNull {
-//                        when (it) {
-//                            is String -> it
-//                            is DocumentReference -> it.id
-//                            else -> null
-//                        }
-//                    }
-//
-//                    val qttMembers = userIdsList.size
-//
-//                    val advertisementId = document.getDocumentReference("advertisementId")!!.id
-//
-//                    groupList.add(
-//                        GroupModel(
-//                            id,
-//                            name,
-//                            description,
-//                            qttMembers,
-//                            qttNotifications,
-//                            userIdsList,
-//                            advertisementId,
-//                            isPrivate
-//                        )
-//                    )
-//                }
-//
-//                callback(groupList)
-//            }
-//            .addOnFailureListener { e ->
-//                println("❌ Error fetching groups: $e")
-//            }
-//    }
 }
