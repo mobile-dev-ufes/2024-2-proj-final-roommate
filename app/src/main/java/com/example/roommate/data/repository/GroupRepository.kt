@@ -5,6 +5,7 @@ import com.example.roommate.data.model.GroupModel
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.utils.userManager
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -132,14 +133,7 @@ class GroupRepository {
                 list.forEach { groupRef ->
                     groupRef.get().addOnSuccessListener { document ->
                         document?.let {
-                            val id = it.getString("id") ?: ""
-                            val name = it.getString("name") ?: ""
-                            val description = it.getString("description") ?: ""
-                            val advertisementId = it.getString("advertisementId") ?: ""
-                            val qttMembers = it.getLong("qttMembers")?.toInt() ?: 0
-                            val isPrivate = it.getBoolean("isPrivate") ?: false
-
-                            groupList.add(GroupModel(id, name, description, advertisementId, qttMembers, isPrivate))
+                            groupList.add(it.toGroupModel()) // Using the extension function
                         }
                     }.addOnCompleteListener {
                         count++
@@ -152,5 +146,16 @@ class GroupRepository {
                 println("Erro ao buscar grupo: ${it.message}")
                 callback(emptyList()) // Return an empty list in case of failure
             }
+    }
+
+    private fun DocumentSnapshot.toGroupModel(): GroupModel {
+        return GroupModel(
+            id = getString("id") ?: "",
+            name = getString("name") ?: "",
+            description = getString("description") ?: "",
+            advertisementId = getString("advertisementId") ?: "",
+            qttMembers = getLong("qttMembers")?.toInt() ?: 0,
+            isPrivate = getBoolean("isPrivate") ?: false
+        )
     }
 }
