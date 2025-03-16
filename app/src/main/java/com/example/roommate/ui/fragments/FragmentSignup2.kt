@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,7 +49,7 @@ class FragmentSignup2 : Fragment(R.layout.fragment_signup2), View.OnClickListene
         pickImage = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
             uri?.let {
                 imageView.setImageURI(it)
-                Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+                args.userInfo.photo_uri = it.toString()
             }
         }
     }
