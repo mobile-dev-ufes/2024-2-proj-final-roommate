@@ -10,7 +10,7 @@ import com.example.roommate.R
 import com.example.roommate.databinding.FragmentMyProfileBinding
 import com.example.roommate.utils.userManager
 
-class FragmentMyProfile : Fragment(R.layout.fragment_signup1) {
+class FragmentMyProfile : Fragment(R.layout.fragment_signup3) {
     private lateinit var binding: FragmentMyProfileBinding
 
     override fun onCreateView(
