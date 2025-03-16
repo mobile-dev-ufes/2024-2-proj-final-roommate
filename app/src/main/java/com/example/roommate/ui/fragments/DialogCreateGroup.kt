@@ -12,7 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.roommate.R
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.DialogCreateGroupBinding
-import com.example.roommate.ui.viewModels.GroupViewModel
+import com.example.roommate.viewModel.GroupViewModel
 
 class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
     private lateinit var binding: DialogCreateGroupBinding

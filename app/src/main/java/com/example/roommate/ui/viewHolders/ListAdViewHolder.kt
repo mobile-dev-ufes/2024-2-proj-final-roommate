@@ -13,12 +13,6 @@ class ListAdViewHolder(private val binding: AdLineBinding) :
         binding.adDescriptionTv.text = ad.title
         binding.adLocalTv.text = ad.localToString()
 
-        // TODO Avaliar modularizar esse trecho
-        val locale = Locale.getDefault()
-        val currencyFormat = NumberFormat.getCurrencyInstance(locale)
-        val formattedCurrency = currencyFormat.format(ad.rent_value)
-        val text = "$formattedCurrency/ mês"
-
-        binding.adPriceTv.text = text
+        binding.adPriceTv.text = ad.getValueString()
     }
 }

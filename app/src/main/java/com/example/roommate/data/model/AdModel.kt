@@ -1,6 +1,8 @@
 package com.example.roommate.data.model
 
 import java.io.Serializable
+import java.text.NumberFormat
+import java.util.Locale
 
 class Address(
     var cep: String? = "unknown",
@@ -98,10 +100,18 @@ class AdModel(
     }
 
     fun getBenefitsList(): MutableList<String>{
-        var trueBenefits = benefits?.filter{ it.value }
+        val trueBenefits = benefits?.filter{ it.value }
             ?.keys
             ?.mapNotNull { customNames[it] }
 
         return trueBenefits?.toMutableList() ?: mutableListOf()
+    }
+
+    fun getValueString(): String{
+        val locale = Locale.getDefault()
+        val currencyFormat = NumberFormat.getCurrencyInstance(locale)
+        val formattedCurrency = currencyFormat.format(this.rent_value)
+
+        return "$formattedCurrency/ mês"
     }
 }
