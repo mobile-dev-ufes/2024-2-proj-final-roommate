@@ -43,7 +43,6 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
             adViewModel = adsVM
         )
 
-
         return binding.root
     }
 
@@ -51,7 +50,7 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
         super.onViewCreated(view, savedInstanceState)
 
         setObserver()
-        adsVM.getAds()
+        adsVM.getAllAds()
 
         binding.createAdBtn.setOnClickListener {
             val action = FragmentAdsDirections.actionFragmentAdsToFragmentCreateAd1(0)

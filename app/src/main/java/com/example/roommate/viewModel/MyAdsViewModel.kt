@@ -24,6 +24,10 @@ class MyAdsViewModel: ViewModel() {
         adRepository.getAdsByUser(userManager.user.email!!, adList)
     }
 
+    fun getAllAds() {
+        adRepository.getAllAds(adList)
+    }
+
     fun loadAdImage(adId: String) {
         adRepository.getAdImage(
             adId = adId,

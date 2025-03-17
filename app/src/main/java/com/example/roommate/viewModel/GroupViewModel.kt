@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.data.model.UserModel
 import com.example.roommate.data.repository.GroupRepository
+import com.google.firebase.firestore.firestore
 
 class GroupViewModel : ViewModel() {
     private val userViewModel = UserViewModel()
@@ -42,5 +43,9 @@ class GroupViewModel : ViewModel() {
             onSuccess = { url -> _groupImageUrl.postValue(url) },
             onFailure = { exception -> Log.e("groupViewModel", "Failed to get image URL", exception) }
         )
+    }
+
+    fun getGroupImage(groupId: String, onSuccess: (String) -> Unit, onFailure: (Exception) -> Unit) {
+        groupRepository.getGroupImage(groupId, onSuccess, onFailure)
     }
 }
