@@ -15,11 +15,13 @@ import com.example.roommate.databinding.FragmentGroupBinding
 import com.example.roommate.ui.adapters.ListMemberAdapter
 import com.example.roommate.utils.userManager
 import com.example.roommate.viewModel.GroupViewModel
+import com.example.roommate.viewModel.UserViewModel
 
 class FragmentGroup : Fragment(R.layout.fragment_group) {
     private lateinit var binding: FragmentGroupBinding
     private lateinit var adapter: ListMemberAdapter
     private val groupViewModel: GroupViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels()
     private val args: FragmentGroupArgs by navArgs()
 
     override fun onCreateView(
@@ -31,11 +33,15 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
 
         binding = FragmentGroupBinding.inflate(inflater, container, false)
 
-        adapter = ListMemberAdapter { user ->
-            val action = FragmentGroupDirections
-                .actionFragmentGroupToFragmentVisitProfile(user) // ✅ Use Safe Args
-            findNavController().navigate(action)
-        }
+        adapter = ListMemberAdapter(
+            onClickItem = { user ->
+                val action = FragmentGroupDirections
+                    .actionFragmentGroupToFragmentVisitProfile(user)
+                findNavController().navigate(action)
+            },
+            userViewModel = userViewModel
+        )
+
         return binding.root
     }
 

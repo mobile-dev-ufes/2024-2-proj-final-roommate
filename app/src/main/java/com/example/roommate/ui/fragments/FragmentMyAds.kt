@@ -38,7 +38,8 @@ class FragmentMyAds : Fragment(R.layout.fragment_my_ads) {
             },
             onClickButton = { ad ->
                 Toast.makeText(requireContext(), "Clicou no botão do anúncio: ${ad.title}", Toast.LENGTH_SHORT).show()
-            }
+            },
+            myAdsVM
         )
 
         return binding.root

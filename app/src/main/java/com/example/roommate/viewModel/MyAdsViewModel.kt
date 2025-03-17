@@ -31,4 +31,15 @@ class MyAdsViewModel: ViewModel() {
             onFailure = { exception -> Log.e("adViewModel", "Failed to get image URL", exception) }
         )
     }
+
+    fun getAdImage(adId: String, onImageLoaded: (String) -> Unit) {
+        adRepository.getAdImage(
+            adId = adId,
+            onSuccess = { url -> onImageLoaded(url) },
+            onFailure = { exception ->
+                Log.e("UserViewModel", "Failed to get image URL for $adId", exception)
+                onImageLoaded("") // Default to empty string to prevent errors
+            }
+        )
+    }
 }

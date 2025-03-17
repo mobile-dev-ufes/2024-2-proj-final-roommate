@@ -6,19 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentAdsBinding
 import com.example.roommate.ui.adapters.ListAdAdapter
-import com.example.roommate.viewModel.FeedViewModel
+import com.example.roommate.viewModel.MyAdsViewModel
 
 class FragmentAds : Fragment(R.layout.fragment_ads) {
     private lateinit var binding: FragmentAdsBinding
     private lateinit var adapter: ListAdAdapter
 
-    private lateinit var adsVM: FeedViewModel
+    private lateinit var adsVM: MyAdsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,6 +30,8 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
 
         binding = FragmentAdsBinding.inflate(inflater, container, false)
 
+        adsVM = ViewModelProvider(this)[MyAdsViewModel::class.java]
+
         adapter = ListAdAdapter(
             onClickItem = { adModel ->
                 val action = FragmentAdsDirections.actionFragmentAdsToFragmentAdvertisement(adModel)
@@ -36,11 +39,10 @@ class FragmentAds : Fragment(R.layout.fragment_ads) {
             },
             onClickButton = { ad ->
                 Toast.makeText(requireContext(), "Clicou no botão do anúncio: ${ad.title}", Toast.LENGTH_SHORT).show()
-            }
+            },
+            adViewModel = adsVM
         )
 
-
-        adsVM = ViewModelProvider(this)[FeedViewModel::class.java]
 
         return binding.root
     }
