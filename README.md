@@ -21,10 +21,9 @@ O **RoomMate** é um aplicativo projetado para facilitar a formação de repúbl
 ## 🚀 Funcionalidades Principais
 🔹 **Cadastro e Login** via Firebase Authentication  
 🔹 **Gerenciamento de Perfil** com edição de informações pessoais  
-🔹 **Feed de Anúncios** com pesquisa e filtros avançados  
+🔹 **Feed de Anúncios** com informações dos imóveis
 🔹 **Criação e Gerenciamento de Anúncios** pelos proprietários  
 🔹 **Criação e Gerenciamento de Grupos** para interessados em uma mesma república  
-🔹 **Notificações Push** com Firebase Cloud Messaging  
 
 ## 🛠️ Tecnologias Utilizadas
 - **Linguagem:** Kotlin ☕
