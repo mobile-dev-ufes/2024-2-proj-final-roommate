@@ -18,7 +18,7 @@ class GroupRepository {
     private val db = FirebaseFirestore.getInstance()
     private var st = Firebase.storage
 
-    fun registerGroup(group: GroupModel) {
+    fun registerGroup(group: GroupModel, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         db.collection("group")
             .add(group)
             .addOnSuccessListener { documentReference ->
@@ -38,11 +38,10 @@ class GroupRepository {
 
                 db.collection("group").document(documentReference.id)
                     .update(updates)
-                    .addOnSuccessListener {
-                        Log.d("RegisterGroup", "Group updated with ID and user reference.")
-                    }
                     .addOnFailureListener { e ->
                         Log.w("RegisterGroup", "Error updating group", e)
+                        onFailure(e)
+                        return@addOnFailureListener
                     }
 
                 val groupRef = db.collection("group").document(documentReference.id)
@@ -60,16 +59,19 @@ class GroupRepository {
                 batch.commit()
                     .addOnSuccessListener {
                         Log.d("RegisterGroup", "Group reference added to advertisement and user in a single batch.")
+                        onSuccess()
                     }
                     .addOnFailureListener { e ->
                         Log.w("RegisterGroup", "Error updating advertisement and user", e)
+                        onFailure(e) // Notifica falha
                     }
             }
             .addOnFailureListener { e ->
                 Log.w("RegisterGroup", "Error adding group", e)
+                onFailure(e)
             }
-
     }
+
 
     private fun saveAssets(group: GroupModel){
         val liveStatus = MutableLiveData<statusEnum>()
@@ -125,10 +127,11 @@ class GroupRepository {
                 list.forEach { userRef ->
                     userRef.get().addOnSuccessListener { document ->
                         document?.let {
+                            val email = it.getString("email") ?: ""
                             val name = it.getString("name") ?: ""
                             val bio = it.getString("bio") ?: ""
                             val phone = it.getString("phone") ?: ""
-                            userList.add(UserModel(name, bio, phone))
+                            userList.add(UserModel(email, name, bio, phone))
                         }
                     }.addOnCompleteListener {
                         count++
@@ -190,5 +193,37 @@ class GroupRepository {
             isPrivate = getBoolean("isPrivate") ?: false,
             photoUri = getString("photoUri") ?: ""
         )
+    }
+
+
+    fun getGroupImage(
+        groupId: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        db.collection("group").document(groupId)
+            .get()
+            .addOnSuccessListener { document ->
+                val photoUri = document.getString("photoUri").toString()
+                getStorageUri(photoUri, onSuccess, onFailure)
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
+    private fun getStorageUri(
+        photoUri: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        if (photoUri.isNotEmpty()) {
+            val storageRef = st.getReferenceFromUrl(photoUri)
+            storageRef.downloadUrl
+                .addOnSuccessListener { uri -> onSuccess(uri.toString()) }
+                .addOnFailureListener { exception -> onFailure(exception) }
+        } else {
+            onFailure(Exception("Photo URI not found"))
+        }
     }
 }

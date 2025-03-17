@@ -1,5 +1,6 @@
 package com.example.roommate.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,9 @@ class UserViewModel : ViewModel() {
 
     private val _groups = MutableLiveData<List<GroupModel>>()
     val groups: LiveData<List<GroupModel>> = _groups
+
+    private val _profileImageUrl = MutableLiveData<String>()
+    val profileImageUrl: LiveData<String> = _profileImageUrl
 
     fun isRegistered(): MutableLiveData<statusEnum> {
         return status
@@ -41,5 +45,14 @@ class UserViewModel : ViewModel() {
     }
     fun addGroupToUser(userId: String, groupId: String) {
         userRepository.addGroupToUser(userId, groupId)
+    }
+
+
+    fun loadProfileImage(userId: String) {
+        userRepository.getProfileImage(
+            userId = userId,
+            onSuccess = { url -> _profileImageUrl.postValue(url) },
+            onFailure = { exception -> Log.e("ProfileViewModel", "Failed to get image URL", exception) }
+        )
     }
 }

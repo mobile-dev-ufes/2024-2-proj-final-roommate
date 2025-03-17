@@ -82,28 +82,30 @@ class DialogCreateGroup: DialogFragment(R.layout.dialog_create_group) {
         }
 
         binding.createGroupBtn.setOnClickListener {
-            groupViewModel.registerGroup(
-                GroupModel(
-                    id = "",
-                    name = binding.createGroupNameTv.text.toString(),
-                    description = binding.createGroupDescriptionTv.text.toString(),
-                    advertisementId = args.advertisementId,
-                    qttMembers = 0,
-                    isPrivate = binding.switchGroup.isChecked,
-                    photoUri=photo_uri
-                )
+            val group = GroupModel(
+                id = "",
+                name = binding.createGroupNameTv.text.toString(),
+                description = binding.createGroupDescriptionTv.text.toString(),
+                advertisementId = args.advertisementId,
+                qttMembers = 0,
+                isPrivate = binding.switchGroup.isChecked,
+                photoUri = photo_uri
             )
 
-            // Navigate and clean the stack until FragmentInterestedGroups
-            val navOptions = NavOptions.Builder()
-                .setPopUpTo(R.id.fragmentInterestedGroups, true) // Clears back stack up to fragmentMyAds
-                .build()
+            groupViewModel.registerGroup(group, onSuccess = {
+                // Navega apenas após o grupo ser registrado com sucesso
+                val navOptions = NavOptions.Builder()
+                    .setPopUpTo(R.id.fragmentInterestedGroups, true)
+                    .build()
 
-            val action = DialogCreateGroupDirections
-                .actionDialogCreateGroupToFragmentInterestedGroups(args.advertisementId)
+                val action = DialogCreateGroupDirections
+                    .actionDialogCreateGroupToFragmentInterestedGroups(args.advertisementId)
 
-            findNavController().navigate(action, navOptions)
-
+                findNavController().navigate(action, navOptions)
+            }, onFailure = { error ->
+                // Exibe mensagem se houver erro
+                Toast.makeText(requireContext(), "Erro ao criar grupo: ${error.message}", Toast.LENGTH_SHORT).show()
+            })
         }
     }
 

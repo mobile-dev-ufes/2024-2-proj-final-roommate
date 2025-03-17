@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -30,10 +31,16 @@ class FragmentMyAds : Fragment(R.layout.fragment_my_ads) {
 
         binding = FragmentMyAdsBinding.inflate(inflater, container, false)
 
-        adapter = ListAdAdapter{adModel ->
-            val action = FragmentMyAdsDirections.actionFragmentMyAdsToFragmentAdvertisement(adModel)
-            findNavController().navigate(action)
-        }
+        adapter = ListAdAdapter(
+            onClickItem = { adModel ->
+                val action = FragmentMyAdsDirections.actionFragmentMyAdsToFragmentAdvertisement(adModel)
+                findNavController().navigate(action)
+            },
+            onClickButton = { ad ->
+                Toast.makeText(requireContext(), "Clicou no botão do anúncio: ${ad.title}", Toast.LENGTH_SHORT).show()
+            }
+        )
+
         return binding.root
     }
 
