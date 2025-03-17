@@ -3,7 +3,8 @@ package com.example.roommate.utils
 /**
  * Enumeração que representa os diferentes estados de autenticação.
  *
- * Cada valor desta enumeração descreve um possível estado de autenticação e estado gerado para cadastro no Firebase Auth durante o processo de login ou verificação de usuário.
+ * Cada valor desta enumeração descreve um possível estado de autenticação e estado gerado para
+ *  cadastro no Firebase Auth durante o processo de login ou verificação de usuário.
  *
  * - [SUCCESS]: Indica que a autenticação foi bem-sucedida.
  * - [WEAK_PASS]: Indica que a senha fornecida é considerada fraca.
