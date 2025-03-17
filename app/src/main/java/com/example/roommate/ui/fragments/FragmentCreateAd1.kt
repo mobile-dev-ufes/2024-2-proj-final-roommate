@@ -22,20 +22,46 @@ import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.FragmentCreateAd1Binding
 import com.example.roommate.utils.userManager
 
+/**
+ * Fragmento responsável pela criação do primeiro passo de um anúncio, onde o usuário insere
+ * informações básicas, como título, valor do aluguel, descrição e fotos do imóvel.
+ *
+ * O [FragmentCreateAd1] permite ao usuário inserir detalhes essenciais de um anúncio, como título,
+ * valor de aluguel, valor de condomínio, quantidade de clientes e descrição. Além disso, o fragmento
+ * possibilita o upload de imagens para o anúncio.
+ *
+ * O fragmento valida e coleta essas informações e, em seguida, navega para o próximo passo
+ * do processo de criação de anúncio [FragmentCreateAd2].
+ */
 class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
+
+    // Binding da view do fragmento, que acessa os elementos da interface
     private lateinit var binding: FragmentCreateAd1Binding
 
+    // Launcher para solicitar permissão de acesso à mídia (fotos)
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
-
+    // Launcher para selecionar uma imagem da galeria
     private lateinit var pickImage: ActivityResultLauncher<PickVisualMediaRequest>
 
+    // Argumentos passados para o fragmento, que contêm dados sobre a navegação
     private val args: FragmentCreateAd1Args by navArgs()
+
+    // Objeto AdModel que armazena as informações do anúncio
     private var ad = AdModel()
 
+    /**
+     * Método chamado para configurar os listeners para o lançamento de permissões e seleção de
+     *  imagem.
+     * A permissão é solicitada para acessar a galeria de mídia e as imagens selecionadas são
+     *  adicionadas à lista de fotos do anúncio.
+     *
+     * @param savedInstanceState O estado salvo da Activity, caso haja.
+     */
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Configura o launcher para solicitar permissão de acesso à mídia
         requestPermissionLauncher =
             registerForActivityResult(
                 ActivityResultContracts.RequestPermission()
@@ -48,6 +74,7 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
                 }
             }
 
+        // Configura o launcher para selecionar imagens da galeria
         pickImage = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
             uri?.let {
                 ad.photos.add(it.toString())
@@ -56,6 +83,15 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
         }
     }
 
+    /**
+     * Método chamado para inflar a view do fragmento e inicializar a interface.
+     *
+     * @param inflater O objeto LayoutInflater usado para inflar a view.
+     * @param container O container no qual a view será colocada.
+     * @param savedInstanceState O estado salvo da Activity, caso haja.
+     * @return A raiz da view inflada.
+     */
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -63,25 +99,39 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
+        // Inicializa o binding da fragmento
         binding = FragmentCreateAd1Binding.inflate(inflater, container, false)
-        binding.qttPhotosTv.text = "0"
+
+        // Inicializa informação na tela
+        binding.qttPhotosTv.text = ad.photos.size.toString()
 
         return binding.root
     }
 
+    /**
+     * Método chamado quando a view foi criada e está pronta para interagir.
+     * Configura os listeners para navegação e seleção de imagens.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Configura o clique do botão para prosseguir para a próxima etapa
         binding.ad1ProceedBtn.setOnClickListener {
             updateAdFromViewInfo()
             val action = FragmentCreateAd1Directions.actionFragmentCreateAd1ToFragmentCreateAd2(ad, args.route)
             findNavController().navigate(action)
         }
+
+        // Configura o clique para adicionar fotos ao anúncio
         binding.addPhotosL.setOnClickListener{
             checkAccessPermission()
         }
     }
 
+    /**
+     * Atualiza o objeto de anúncio com as informações inseridas na interface de usuário.
+     * Isso inclui título, valores de aluguel, descrição e quantidade de clientes.
+     */
     private fun updateAdFromViewInfo(){
         ad.owner = userManager.user.email
         ad.title = binding.titleEt.text.toString()
@@ -94,24 +144,31 @@ class FragmentCreateAd1 : Fragment(R.layout.fragment_create_ad1) {
         ad.parking_qtt = null
         ad.area = null
         ad.local = null
-        ad.groups = arrayOf()
+        ad.groups = arrayOf() // Adiciona um array vazio de grupos
     }
 
+    /**
+     * Verifica se o aplicativo tem permissão para acessar a mídia (fotos) do dispositivo.
+     * Caso não tenha, solicita a permissão ao usuário.
+     */
     private fun checkAccessPermission(){
         when {
             ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_MEDIA_LOCATION
             ) == PackageManager.PERMISSION_GRANTED -> {
-                manageImage()
+                manageImage()  // Se a permissão for concedida, gerencia a seleção de imagens
             }
             else -> {
                 requestPermissionLauncher.launch(
-                    Manifest.permission.ACCESS_MEDIA_LOCATION)
+                    Manifest.permission.ACCESS_MEDIA_LOCATION) // Solicita a permissão
             }
         }
     }
 
+    /**
+     * Inicia o processo de seleção de uma imagem da galeria de mídia do dispositivo.
+     */
     private fun manageImage(){
         pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
