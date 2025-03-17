@@ -3,33 +3,33 @@ package com.example.roommate.ui.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.databinding.AdLineBinding
 import com.example.roommate.ui.viewHolders.ListAdViewHolder
 
-class ListAdAdapter(private val onClickItem: (AdModel) -> Unit) : RecyclerView.Adapter<ListAdViewHolder>() {
+class ListAdAdapter(
+    private val onClickItem: (AdModel) -> Unit,
+    private val onClickButton: (AdModel) -> Unit
+) : RecyclerView.Adapter<ListAdViewHolder>() {
     private var adList: MutableList<AdModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdViewHolder {
         val item = AdLineBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
         return ListAdViewHolder(item)
     }
 
-    override fun onBindViewHolder(
-        holder: ListAdViewHolder, position: Int
-    ) {
-        holder.bindVH(adList[position])
+    override fun onBindViewHolder(holder: ListAdViewHolder, position: Int) {
+        val ad = adList[position]
+        holder.bindVH(ad, onClickButton)
 
-        holder.itemView.setOnClickListener{
-            onClickItem(adList[position])
+        holder.itemView.setOnClickListener {
+            onClickItem(ad)
         }
     }
 
-    override fun getItemCount(): Int {
-        return adList.count()
-    }
+    override fun getItemCount(): Int = adList.size
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateAdList(list: MutableList<AdModel>){

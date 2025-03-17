@@ -8,7 +8,7 @@ class ListMyGroupViewHolder(private val binding: MyGroupsLineBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
         fun bindVH(group: GroupModel){
-            binding.groupDescriptionTv.text = group.description
+            binding.groupDescriptionTv.text = group.name
 
             // TODO Avaliar modularizar
             val textQttMembers = "${group.qttMembers} membros"

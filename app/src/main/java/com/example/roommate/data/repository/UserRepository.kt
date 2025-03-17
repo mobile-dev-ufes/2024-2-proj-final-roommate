@@ -24,6 +24,7 @@ import java.util.Date
 class UserRepository {
     // Firestore database instance
     private val db = FirebaseFirestore.getInstance()
+    private val storage = Firebase.storage
 
     // Firebase Storage instance
     private var st = Firebase.storage
@@ -204,4 +205,36 @@ class UserRepository {
             Log.w("AddGroupToUser", "Error fetching user document", e)
         }
     }
+
+    fun getProfileImage(
+        userId: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        db.collection("user").document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                val photoUri = document.getString("photo_uri").toString()
+                getStorageUri(photoUri, onSuccess, onFailure)
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
+    private fun getStorageUri(
+        photoUri: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        if (photoUri.isNotEmpty()) {
+            val storageRef = st.getReferenceFromUrl(photoUri)
+            storageRef.downloadUrl
+                .addOnSuccessListener { uri -> onSuccess(uri.toString()) }
+                .addOnFailureListener { exception -> onFailure(exception) }
+        } else {
+            onFailure(Exception("Photo URI not found"))
+        }
+    }
+
 }
