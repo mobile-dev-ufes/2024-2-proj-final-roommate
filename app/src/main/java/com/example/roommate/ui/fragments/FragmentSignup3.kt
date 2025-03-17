@@ -102,6 +102,15 @@ class FragmentSignup3 : Fragment(R.layout.fragment_signup3), View.OnClickListene
                     navigate()
                 }
 
+                statusEnum.FAIL_IMG -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocorreu um erro ao salvar a imagem.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigate()
+                }
+
                 else -> UInt
             }
         }

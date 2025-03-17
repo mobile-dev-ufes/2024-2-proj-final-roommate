@@ -1,21 +1,29 @@
 package com.example.roommate.data.repository
 
+import android.net.Uri
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.data.model.UserModel
+import com.example.roommate.utils.statusEnum
 import com.example.roommate.utils.userManager
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.storage
 
 class GroupRepository {
     private val db = FirebaseFirestore.getInstance()
+    private var st = Firebase.storage
 
     fun registerGroup(group: GroupModel) {
         db.collection("group")
             .add(group)
             .addOnSuccessListener { documentReference ->
+                group.id = documentReference.id
+                saveAssets(group)
 
                 val userEmail = userManager.user.email.toString()
                 val userRef = db.collection("user").document(userEmail)
@@ -24,6 +32,7 @@ class GroupRepository {
                 val updates = mapOf(
                     "users" to userRefList,
                     "id" to documentReference.id,
+                    "photoUri" to group.photoUri,
                     "qttMembers" to 1
                 )
 
@@ -35,8 +44,6 @@ class GroupRepository {
                     .addOnFailureListener { e ->
                         Log.w("RegisterGroup", "Error updating group", e)
                     }
-
-
 
                 val groupRef = db.collection("group").document(documentReference.id)
 
@@ -62,6 +69,33 @@ class GroupRepository {
                 Log.w("RegisterGroup", "Error adding group", e)
             }
 
+    }
+
+    private fun saveAssets(group: GroupModel){
+        val liveStatus = MutableLiveData<statusEnum>()
+
+        if (group.photoUri == null){
+            return
+        }
+
+        // Create a storage reference from our app
+        val storageRef = st.reference
+        val file = Uri.parse(group.photoUri)
+        val path = "groups/${group.id}/${file.lastPathSegment}"
+        val ref = storageRef.child(path)
+
+        val uploadTask = ref.putFile(file)
+
+        uploadTask
+            .addOnSuccessListener {
+                liveStatus.value = statusEnum.SUCCESS
+            }
+            .addOnFailureListener(){
+                Log.d("FIRESTORE", "get failed with $file")
+                liveStatus.value = statusEnum.FAIL_IMG
+            }
+
+        group.photoUri = "gs://${ref.bucket}/$path"
     }
 
     fun getMembersFromGroup(groupId: String, callback: (List<UserModel>) -> Unit) {
@@ -144,5 +178,17 @@ class GroupRepository {
         }.addOnFailureListener { e ->
             Log.w("AddGroupMember", "Error fetching group document", e)
         }
+    }
+
+    private fun DocumentSnapshot.toGroupModel(): GroupModel {
+        return GroupModel(
+            id = getString("id") ?: "",
+            name = getString("name") ?: "",
+            description = getString("description") ?: "",
+            advertisementId = getString("advertisementId") ?: "",
+            qttMembers = getLong("qttMembers")?.toInt() ?: 0,
+            isPrivate = getBoolean("isPrivate") ?: false,
+            photoUri = getString("photoUri") ?: ""
+        )
     }
 }

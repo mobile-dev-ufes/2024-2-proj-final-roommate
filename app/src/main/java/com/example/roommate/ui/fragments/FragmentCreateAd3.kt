@@ -64,6 +64,7 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
             max_client = args.adInfo.max_client,
             description = args.adInfo.description,
             local = args.adInfo.local,
+            photos = args.adInfo.photos,
             bedroom_qtt = binding.bedroomEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
             suite_qtt = binding.suitesEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
             parking_qtt = binding.parkingEt.text.toString().takeIf { it.isNotEmpty() }?.toLong() ?: 0,
@@ -74,8 +75,8 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
     }
 
     private fun navigate(){
-        var navOptions: NavOptions
-        var id: Int
+        val navOptions: NavOptions
+        val id: Int
 
         if (args.route == 0){
             navOptions =
@@ -109,6 +110,15 @@ class FragmentCreateAd3 : Fragment(R.layout.fragment_create_ad3) {
                     Toast.makeText(
                         requireContext(),
                         "Ocorreu um erro! Tente novamente.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigate()
+                }
+
+                statusEnum.FAIL_IMG -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocorreu um ao salvar a imagem.",
                         Toast.LENGTH_SHORT
                     ).show()
                     navigate()

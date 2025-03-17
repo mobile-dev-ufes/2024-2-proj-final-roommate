@@ -37,17 +37,17 @@ class Address(
 
 class AdModel(
     var id: String? = "unknown",
-    var owner: String?,
-    var title: String?,
-    var rent_value: Double?,
-    var cond_value: Double?,
-    var max_client: Long?,
-    var description: String?,
-    var local: Address?,
-    var suite_qtt: Long?,
-    var bedroom_qtt: Long?,
-    var parking_qtt: Long?,
-    var area: Double?,
+    var owner: String? = "unknown",
+    var title: String? = "unknown",
+    var rent_value: Double? = 0.0,
+    var cond_value: Double? = 0.0,
+    var max_client: Long? = 0,
+    var description: String? = "unknown",
+    var local: Address? = null,
+    var suite_qtt: Long? = 0,
+    var bedroom_qtt: Long? = 0,
+    var parking_qtt: Long? = 0,
+    var area: Double? = 0.0,
     var benefits: Map<String, Boolean>? =  mapOf(
         "ladies" to false,
         "garage" to false,
@@ -58,8 +58,8 @@ class AdModel(
         "pet" to false,
         "security" to false
     ),
-    var groups: Array<String>,
-    var photos: Array<String> = arrayOf()
+    var groups: Array<String> = arrayOf(),
+    var photos: MutableList<String> = mutableListOf(),
 
 ) : Serializable {
     val customNames = mapOf(
@@ -89,7 +89,7 @@ class AdModel(
             ?.mapKeys { it.key as String }?.mapValues { it.value as Boolean },
         local = (document.get("local") as? Map<*, *>)?.let { Address(it as Map<Any, Any>) } ?: Address(),
         groups = document.get("groups") as? Array<String> ?: arrayOf(),
-        photos = document.get("photos") as? Array<String> ?: arrayOf()
+        photos = document.get("photos") as? MutableList<String> ?: mutableListOf()
     )
 
     fun toMap(): Map<String, Any?> {

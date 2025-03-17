@@ -118,31 +118,60 @@
             android:scrollbars="vertical"
             android:textColor="@color/gray"/>
 
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/input_box_shape"
-            android:gravity="center"
             android:orientation="horizontal"
-            android:padding="7dp">
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_vertical">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="@string/upload_icon_description"
-                android:src="@drawable/update_icon" />
+            <LinearLayout
+                android:id="@+id/add_photos_l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/input_box_shape"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/upload_icon_description"
+                    android:src="@drawable/update_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/upload_photos"
+                    android:textColor="@color/blue3"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/upload_photos"
-                android:textColor="@color/blue3"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center_vertical"
+                android:text="@string/qtt"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/blue3"/>
+            <TextView
+                android:id="@+id/qtt_photos_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:textStyle="bold"
+                android:text="@string/number_test"
+                android:textColor="@color/blue3"/>
         </LinearLayout>
+
+
+
 
         <Space
             android:layout_width="match_parent"

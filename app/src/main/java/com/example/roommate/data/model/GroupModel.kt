@@ -10,7 +10,8 @@ data class GroupModel(
     val qttNotifications: Int,
     val users: List<String>,
     val advertisementId: String,
-    val isPrivate: Boolean
+    val isPrivate: Boolean,
+    var photoUri: String? = null
 ) : Serializable {
 
     constructor(
@@ -19,7 +20,8 @@ data class GroupModel(
         description: String,
         advertisementId: String,
         qttMembers: Int,
-        isPrivate: Boolean
+        isPrivate: Boolean,
+        photoUri: String
     ) : this(
         id = id,
         name = name,
@@ -28,6 +30,7 @@ data class GroupModel(
         qttNotifications = 0,
         users = emptyList<String>(),
         advertisementId = advertisementId,
-        isPrivate = isPrivate
+        isPrivate = isPrivate,
+        photoUri= photoUri
     )
 }
