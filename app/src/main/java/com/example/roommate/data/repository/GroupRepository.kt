@@ -18,7 +18,7 @@ class GroupRepository {
     private val db = FirebaseFirestore.getInstance()
     private var st = Firebase.storage
 
-    fun registerGroup(group: GroupModel) {
+    fun registerGroup(group: GroupModel, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         db.collection("group")
             .add(group)
             .addOnSuccessListener { documentReference ->
@@ -38,11 +38,10 @@ class GroupRepository {
 
                 db.collection("group").document(documentReference.id)
                     .update(updates)
-                    .addOnSuccessListener {
-                        Log.d("RegisterGroup", "Group updated with ID and user reference.")
-                    }
                     .addOnFailureListener { e ->
                         Log.w("RegisterGroup", "Error updating group", e)
+                        onFailure(e)
+                        return@addOnFailureListener
                     }
 
                 val groupRef = db.collection("group").document(documentReference.id)
@@ -60,16 +59,19 @@ class GroupRepository {
                 batch.commit()
                     .addOnSuccessListener {
                         Log.d("RegisterGroup", "Group reference added to advertisement and user in a single batch.")
+                        onSuccess()
                     }
                     .addOnFailureListener { e ->
                         Log.w("RegisterGroup", "Error updating advertisement and user", e)
+                        onFailure(e) // Notifica falha
                     }
             }
             .addOnFailureListener { e ->
                 Log.w("RegisterGroup", "Error adding group", e)
+                onFailure(e)
             }
-
     }
+
 
     private fun saveAssets(group: GroupModel){
         val liveStatus = MutableLiveData<statusEnum>()

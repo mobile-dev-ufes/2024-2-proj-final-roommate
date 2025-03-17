@@ -21,8 +21,8 @@ class GroupViewModel : ViewModel() {
     private val _groupImageUrl = MutableLiveData<String>()
     val groupImageUrl: LiveData<String> = _groupImageUrl
 
-    fun registerGroup(group: GroupModel) {
-        groupRepository.registerGroup(group)
+    fun registerGroup(group: GroupModel, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        groupRepository.registerGroup(group, onSuccess, onFailure)
     }
 
     fun getMembersFromGroup(groupId: String) {
