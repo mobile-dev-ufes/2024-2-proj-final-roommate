@@ -51,7 +51,7 @@ O RoomMate segue o padrão arquitetural **MVVM (Model-View-ViewModel)**, com sep
 ## 📸 Protótipos da Interface
 Os protótipos das telas foram desenvolvidos no **Figma**, garantindo uma experiência fluida e intuitiva para os usuários.
 
-Confira o design no [Figma](https://www.figma.com/design/hIZBSuUrW3CYzYQcDwuMZ1/App-Republica?node-id=0-1&t=dI5UNt4sUxKqxOYF-1)).
+Confira o design no [Figma](https://www.figma.com/design/hIZBSuUrW3CYzYQcDwuMZ1/App-Republica?node-id=0-1&t=dI5UNt4sUxKqxOYF-1).
 
 ![Figma](https://img.shields.io/badge/Design-Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
