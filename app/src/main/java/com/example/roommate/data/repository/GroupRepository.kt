@@ -125,10 +125,11 @@ class GroupRepository {
                 list.forEach { userRef ->
                     userRef.get().addOnSuccessListener { document ->
                         document?.let {
+                            val email = it.getString("email") ?: ""
                             val name = it.getString("name") ?: ""
                             val bio = it.getString("bio") ?: ""
                             val phone = it.getString("phone") ?: ""
-                            userList.add(UserModel(name, bio, phone))
+                            userList.add(UserModel(email, name, bio, phone))
                         }
                     }.addOnCompleteListener {
                         count++
