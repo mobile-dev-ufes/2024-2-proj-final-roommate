@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient1">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ImageView
         android:id="@+id/ad_img_rv"
         android:layout_width="match_parent"
         android:layout_height="300dp"

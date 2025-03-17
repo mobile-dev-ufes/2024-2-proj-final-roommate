@@ -6,14 +6,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.roommate.data.model.AdModel
 import com.example.roommate.data.model.Address
-import com.example.roommate.data.model.UserModel
 import com.example.roommate.utils.statusEnum
-import com.example.roommate.utils.userManager
-import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.storage
 
 class AdRepository {
@@ -151,5 +147,46 @@ class AdRepository {
             local = local,
             groups = arrayOf()
         )
+    }
+
+
+    fun getAdImage(
+        adId: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        db.collection("advertisement").document(adId)
+            .get()
+            .addOnSuccessListener { document ->
+                val photosList = document.get("photos") as? List<String> ?: emptyList()
+
+                if (photosList.isNotEmpty()) {
+                    val firstPhotoUri = photosList.first()
+                    println("PHOTOSURI: $firstPhotoUri")
+                    getStorageUri(firstPhotoUri, onSuccess, onFailure)
+                } else {
+                    println("No photos available")
+                    onFailure(Exception("No photos found"))
+                }
+            }
+
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
+    private fun getStorageUri(
+        photoUri: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        if (photoUri.isNotEmpty()) {
+            val storageRef = st.getReferenceFromUrl(photoUri)
+            storageRef.downloadUrl
+                .addOnSuccessListener { uri -> onSuccess(uri.toString()) }
+                .addOnFailureListener { exception -> onFailure(exception) }
+        } else {
+            onFailure(Exception("Photo URI not found"))
+        }
     }
 }

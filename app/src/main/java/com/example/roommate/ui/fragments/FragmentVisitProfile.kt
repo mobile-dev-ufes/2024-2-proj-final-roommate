@@ -39,7 +39,6 @@ class FragmentVisitProfile : Fragment(R.layout.fragment_visit_profile) {
         binding.userPhoneTv.text = argsUser.phone
 
         val userId = argsUser.email.toString()
-        println("USERID: $userId")
 
         userViewModel.profileImageUrl.observe(viewLifecycleOwner) { url ->
             Glide.with(requireContext())

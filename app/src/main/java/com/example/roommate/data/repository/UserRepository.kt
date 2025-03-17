@@ -228,7 +228,7 @@ class UserRepository {
         onFailure: (Exception) -> Unit
     ) {
         if (photoUri.isNotEmpty()) {
-            val storageRef = storage.getReferenceFromUrl(photoUri)
+            val storageRef = st.getReferenceFromUrl(photoUri)
             storageRef.downloadUrl
                 .addOnSuccessListener { uri -> onSuccess(uri.toString()) }
                 .addOnFailureListener { exception -> onFailure(exception) }

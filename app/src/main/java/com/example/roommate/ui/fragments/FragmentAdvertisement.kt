@@ -8,16 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentAdvertisementBinding
 import com.example.roommate.ui.adapters.ListBenefitsAdapter
+import com.example.roommate.viewModel.MyAdsViewModel
+import com.example.roommate.viewModel.UserViewModel
 
 class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
     private lateinit var binding: FragmentAdvertisementBinding
     private lateinit var adapter: ListBenefitsAdapter
+    private lateinit var adViewModel: MyAdsViewModel
 
     private val args: FragmentAdvertisementArgs by navArgs()
 
@@ -29,6 +34,7 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         binding = FragmentAdvertisementBinding.inflate(inflater, container, false)
         adapter = ListBenefitsAdapter()
 
+        adViewModel = ViewModelProvider(this).get(MyAdsViewModel::class.java)
         bindInfo()
 
         return binding.root
@@ -70,6 +76,18 @@ class FragmentAdvertisement : Fragment(R.layout.fragment_advertisement) {
         binding.parkingTv.text = args.adInfo.parking_qtt.toString()
 
         binding.rentValue.text = args.adInfo.getValueString()
+
+        val adId = args.adInfo.id.toString()
+
+        adViewModel.adImageUrl.observe(viewLifecycleOwner) { url ->
+            Glide.with(requireContext())
+                .load(url)
+                .placeholder(R.drawable.profile_placeholder)
+                .error(R.drawable.error_profile)
+                .into(binding.adImgRv)
+        }
+
+        adViewModel.loadAdImage(adId)
     }
 
     private fun goToMap() {
