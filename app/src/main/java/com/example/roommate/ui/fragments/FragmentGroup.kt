@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.roommate.R
 import com.example.roommate.databinding.FragmentGroupBinding
 import com.example.roommate.ui.adapters.ListMemberAdapter
@@ -56,6 +57,18 @@ class FragmentGroup : Fragment(R.layout.fragment_group) {
         binding.groupGetInBtn.setOnClickListener {
             groupViewModel.groupEntryLogic(argsGroup.id, userEmail)
         }
+
+        val groupId = args.group.id
+
+        groupViewModel.groupImageUrl.observe(viewLifecycleOwner) { url ->
+            Glide.with(requireContext())
+                .load(url)
+                .placeholder(R.drawable.profile_placeholder)
+                .error(R.drawable.error_profile)
+                .into(binding.profileImage)
+        }
+
+        groupViewModel.loadGroupImage(groupId)
 
         observerGroups()
     }

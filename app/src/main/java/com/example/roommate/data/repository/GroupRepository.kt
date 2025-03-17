@@ -192,4 +192,36 @@ class GroupRepository {
             photoUri = getString("photoUri") ?: ""
         )
     }
+
+
+    fun getGroupImage(
+        groupId: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        db.collection("group").document(groupId)
+            .get()
+            .addOnSuccessListener { document ->
+                val photoUri = document.getString("photoUri").toString()
+                getStorageUri(photoUri, onSuccess, onFailure)
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
+    private fun getStorageUri(
+        photoUri: String,
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        if (photoUri.isNotEmpty()) {
+            val storageRef = st.getReferenceFromUrl(photoUri)
+            storageRef.downloadUrl
+                .addOnSuccessListener { uri -> onSuccess(uri.toString()) }
+                .addOnFailureListener { exception -> onFailure(exception) }
+        } else {
+            onFailure(Exception("Photo URI not found"))
+        }
+    }
 }
