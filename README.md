@@ -1,11 +1,10 @@
 # RoomMate 🏠👥
 
-![Android](https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android)
-![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
-![XML](https://img.shields.io/badge/XML-FF6600?style=for-the-badge&logo=xml&logoColor=white)
-![Room Database](https://img.shields.io/badge/RoomDB-4285F4?style=for-the-badge&logo=google&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+[![Android](https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android)](https://developer.android.com/?hl=pt-br)
+[![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
+[![XML](https://img.shields.io/badge/XML-FF6600?style=for-the-badge&logo=xml&logoColor=white)](https://www.w3.org/TR/xml/)
+[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
 
 ## 📌 Sobre o Projeto
 
@@ -51,16 +50,16 @@ O RoomMate segue o padrão arquitetural **MVVM (Model-View-ViewModel)**, com sep
 ## 📸 Protótipos da Interface
 Os protótipos das telas foram desenvolvidos no **Figma**, garantindo uma experiência fluida e intuitiva para os usuários.
 
-Confira o design no [Figma](https://www.figma.com/design/hIZBSuUrW3CYzYQcDwuMZ1/App-Republica?node-id=0-1&t=dI5UNt4sUxKqxOYF-1).
+Confira o design no Figma:
 
-![Figma](https://img.shields.io/badge/Design-Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+[![Figma](https://img.shields.io/badge/Design-Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/hIZBSuUrW3CYzYQcDwuMZ1/App-Republica?node-id=0-1&t=dI5UNt4sUxKqxOYF-1)
 
 ## 📲 Instalação do APK no Android  
 
 ### 🚀 Como instalar  
 
 1. **Baixe o APK**  
-   - Acesse a aba [Releases](https://github.com/seu-repositorio/releases) do repositório e faça o download da versão mais recente.  
+   - Acesse a aba [Releases](https://github.com/mobile-dev-ufes/2024-2-proj-final-roommate/releases) do repositório e faça o download da versão mais recente.  
 
 2. **Ative a instalação de fontes desconhecidas**  
    - Vá para **Configurações** > **Segurança** > **Instalar apps desconhecidos** e permita para o navegador ou gerenciador de arquivos.  
