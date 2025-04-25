@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.InterestedGroupsLineBinding
 import com.example.roommate.ui.viewHolders.ListInterestedGroupViewHolder
+import com.example.roommate.viewModel.GroupViewModel
 
 /**
  * Adaptador responsável por exibir a lista de grupos interessados no RecyclerView.
@@ -18,8 +19,10 @@ import com.example.roommate.ui.viewHolders.ListInterestedGroupViewHolder
  *
  * @property onClickItem Função que será chamada quando um item da lista for clicado, recebendo o [GroupModel] correspondente.
  */
-class ListInterestedGroupAdapter(private val onClickItem: (GroupModel) -> Unit) :
-    RecyclerView.Adapter<ListInterestedGroupViewHolder>() {
+class ListInterestedGroupAdapter(
+    private val onClickItem: (GroupModel) -> Unit,
+    private val groupViewModel: GroupViewModel
+) : RecyclerView.Adapter<ListInterestedGroupViewHolder>() {
 
     // Lista mutável que contém os grupos interessados a serem exibidos no RecyclerView
         private val groupList: MutableList<GroupModel> = mutableListOf()
@@ -41,7 +44,7 @@ class ListInterestedGroupAdapter(private val onClickItem: (GroupModel) -> Unit) 
         val item =
             InterestedGroupsLineBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ListInterestedGroupViewHolder(item)
+        return ListInterestedGroupViewHolder(item, groupViewModel)
     }
 
     /**

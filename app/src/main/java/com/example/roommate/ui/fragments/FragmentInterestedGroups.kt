@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.example.roommate.R
 import com.example.roommate.data.model.GroupModel
 import com.example.roommate.databinding.FragmentInterestedGroupsBinding
 import com.example.roommate.ui.adapters.ListInterestedGroupAdapter
+import com.example.roommate.viewModel.GroupViewModel
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.atomic.AtomicInteger
@@ -38,6 +40,8 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
     // Argumentos passados para o fragmento via Safe Args, contendo o ID do anúncio
     private val args: FragmentInterestedGroupsArgs by navArgs()
 
+    private val groupViewModel: GroupViewModel by viewModels()
+
     /**
      * Método chamado para inflar a view do fragmento e inicializar o adaptador e os componentes
      * necessários.
@@ -58,11 +62,14 @@ class FragmentInterestedGroups : Fragment(R.layout.fragment_interested_groups) {
         binding = FragmentInterestedGroupsBinding.inflate(inflater, container, false)
 
         // Inicializa o adaptador e configura a navegação ao clicar em um grupo
-        adapter = ListInterestedGroupAdapter { group ->
-            val action = FragmentInterestedGroupsDirections
-                .actionFragmentInterestedGroupsToFragmentGroup(group) // Passa o grupo para o próximo fragmento
-            findNavController().navigate(action)
-        }
+        adapter = ListInterestedGroupAdapter(
+            onClickItem = { group ->
+                val action = FragmentInterestedGroupsDirections
+                    .actionFragmentInterestedGroupsToFragmentGroup(group) // Passa o grupo para o próximo fragmento
+                findNavController().navigate(action)
+            },
+            groupViewModel = groupViewModel
+        )
 
         return binding.root
     }
